@@ -11,7 +11,7 @@ format:
       theme: dark
     theme: simple
     logo: https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png
-    footer: "[FAS1001](https://fas1001.com)"
+    footer: "[POL2000](https://pol2k.github.io/)"
     transition: slide
     transition-speed: fast
     code-fold: false
@@ -595,6 +595,6 @@ csl: https://raw.githubusercontent.com/citation-style-language/styles/master/chi
 
 # Le TP1
 
-[Disponible sur le site du cours](https://fas1001.com)
+[Disponible sur le site du cours](https://pol2k.github.io/)
 
 # Conclusion

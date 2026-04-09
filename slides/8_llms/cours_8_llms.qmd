@@ -12,7 +12,7 @@ format:
     theme: simple
     slide-number: true
     logo: img/udem.png 
-    footer: "[FAS1001](https://fas1001.com)"
+    footer: "[POL2000](https://pol2k.github.io/)"
     transition: slide
     transition-speed: fast
     code-fold: false

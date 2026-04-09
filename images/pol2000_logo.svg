@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="POL2000 logo">
+  <rect width="400" height="400" rx="32" fill="#c8102e"/>
+  <rect x="0" y="0" width="400" height="48" fill="#f2c94c"/>
+  <g transform="translate(92 92)">
+    <rect x="0" y="96" width="34" height="112" fill="#ffffff"/>
+    <rect x="54" y="56" width="34" height="152" fill="#ffffff"/>
+    <rect x="108" y="16" width="34" height="192" fill="#ffffff"/>
+    <rect x="162" y="76" width="34" height="132" fill="#ffffff"/>
+  </g>
+  <rect x="74" y="282" width="252" height="12" rx="6" fill="#f2c94c"/>
+  <text
+    x="200"
+    y="342"
+    fill="#ffffff"
+    font-family="Inter, Arial, sans-serif"
+    font-size="52"
+    font-weight="800"
+    letter-spacing="2"
+    text-anchor="middle"
+  >POL2000</text>
+</svg>

@@ -1,22 +1,22 @@
 :root {
     /* Colors */
-    --bg-body: #0f172a;
-    --bg-surface: #1e293b;
-    --bg-surface-hover: #334155;
+    --bg-body: #fffdf7;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #fff6da;
     
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --text-accent: #38bdf8; /* Sky 400 */
+    --text-main: #4a1824;
+    --text-muted: #7c5c4d;
+    --text-accent: #c8102e;
     
-    --primary: #0ea5e9; /* Sky 500 */
-    --primary-hover: #0284c7; /* Sky 600 */
-    --secondary: #6366f1; /* Indigo 500 */
+    --primary: #c8102e;
+    --primary-hover: #a10d26;
+    --secondary: #f2c94c;
     
-    --border: #334155;
-    --border-light: #475569;
+    --border: #f0dcc0;
+    --border-light: #e4b74a;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    --gradient-hero: linear-gradient(135deg, #c8102e 0%, #f2c94c 100%);
     
     /* Spacing */
     --container-width: 1200px;
@@ -120,7 +120,7 @@ img {
 }
 
 .section-darker {
-    background-color: rgba(0,0,0,0.2);
+    background-color: #fff6da;
 }
 
 .section-header {
@@ -149,9 +149,9 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(200, 16, 46, 0.08);
     z-index: 1000;
     height: 70px;
     display: flex;
@@ -217,8 +217,8 @@ img {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: 
-        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.08), transparent 25%);
+        radial-gradient(circle at 15% 50%, rgba(200, 16, 46, 0.1), transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(242, 201, 76, 0.18), transparent 28%);
     z-index: -1;
     pointer-events: none;
 }
@@ -226,13 +226,13 @@ img {
 .hero-label {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(242, 201, 76, 0.25);
     color: var(--text-accent);
     border-radius: 2rem;
     font-size: 0.875rem;
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(200, 16, 46, 0.15);
 }
 
 .hero-title {
@@ -392,7 +392,7 @@ img {
 .list-icon {
     width: 50px;
     height: 50px;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(242, 201, 76, 0.25);
     color: var(--text-accent);
     display: flex;
     align-items: center;
@@ -497,8 +497,8 @@ img {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #10b981; /* Default Success green */
-    background: rgba(16, 185, 129, 0.1);
+    color: var(--text-accent);
+    background: rgba(200, 16, 46, 0.08);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     margin-bottom: 0.5rem;
@@ -556,7 +556,7 @@ img {
 }
 
 .styled-table th {
-    background: rgba(0,0,0,0.2);
+    background: rgba(200, 16, 46, 0.06);
     font-weight: 600;
     color: var(--text-accent);
 }
@@ -566,7 +566,7 @@ img {
 }
 
 .highlight-row {
-    background: rgba(56, 189, 248, 0.05);
+    background: rgba(242, 201, 76, 0.2);
 }
 
 /* Roadmap Timeline (Dynamic) */
@@ -621,13 +621,13 @@ img {
 /* Current Week Active Animation */
 @keyframes pulse-glow {
     0% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
+        box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.35);
     }
     70% {
-        box-shadow: 0 0 0 8px rgba(56, 189, 248, 0);
+        box-shadow: 0 0 0 8px rgba(200, 16, 46, 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+        box-shadow: 0 0 0 0 rgba(200, 16, 46, 0);
     }
 }
 
@@ -640,7 +640,7 @@ img {
     left: 6px; /* Centered on line: 16px - 10px = 6px */
     top: 17px;
     /* Static glow + Pulse animation */
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 10px rgba(200, 16, 46, 0.35);
     animation: pulse-glow 2s infinite;
 }
 
@@ -660,7 +660,7 @@ img {
 
 .roadmap-item.current .roadmap-card {
     border-color: var(--text-accent);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 24px rgba(200, 16, 46, 0.12);
     background: var(--bg-surface-hover);
 }
 
@@ -670,22 +670,21 @@ img {
 
 .roadmap-item.is-break .roadmap-card {
     border-style: dashed;
-    background: rgba(0,0,0,0.1);
+    background: rgba(242, 201, 76, 0.12);
 }
 
-/* Important Evaluations (Red) */
 .roadmap-item.is-important .roadmap-card {
-    border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.05);
+    border-color: var(--primary);
+    background: rgba(200, 16, 46, 0.06);
 }
 
 .roadmap-item.is-important .roadmap-marker {
-    background: #ef4444;
-    border-color: #ef4444;
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
 .roadmap-item.is-important .roadmap-week {
-    color: #ef4444;
+    color: var(--primary);
 }
 
 .roadmap-item.is-important.past .roadmap-card {
@@ -693,8 +692,8 @@ img {
 }
 
 .roadmap-item.is-important.past .roadmap-marker {
-    background: #991b1b; /* Darker red for past */
-    border-color: #991b1b;
+    background: #7e0a1d;
+    border-color: #7e0a1d;
 }
 
 .roadmap-header {
@@ -789,7 +788,7 @@ img {
     justify-content: center;
     color: var(--text-accent);
     font-size: 1.5rem;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(242, 201, 76, 0.25);
 }
 
 /* Roadmap Actions (Right side container) */
@@ -810,7 +809,7 @@ img {
     justify-content: center;
     color: var(--text-muted);
     transition: all 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(200, 16, 46, 0.08);
 }
 
 .roadmap-action-btn:hover {
@@ -818,19 +817,19 @@ img {
     color: white;
     border-color: var(--text-accent);
     transform: translateX(3px);
-    box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 4px 10px rgba(200, 16, 46, 0.2);
 }
 
 .roadmap-item.is-important .roadmap-action-btn {
-    border-color: rgba(239, 68, 68, 0.3);
-    color: #ef4444;
+    border-color: rgba(200, 16, 46, 0.25);
+    color: var(--primary);
 }
 
 .roadmap-item.is-important .roadmap-action-btn:hover {
-    background: #ef4444;
+    background: var(--primary);
     color: white;
-    border-color: #ef4444;
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(200, 16, 46, 0.2);
 }
 
 .roadmap-tags {
@@ -848,8 +847,8 @@ img {
 }
 
 .tag-eval {
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    background: rgba(242, 201, 76, 0.35);
+    color: var(--primary);
 }
 
 .tag-break {
@@ -980,18 +979,18 @@ footer {
 
 /* Evaluation Status Colors */
 .timeline-tag.status-pending {
-    color: #38bdf8; /* Sky 400 (Blue) */
-    background: rgba(56, 189, 248, 0.1);
+    color: #9a6700;
+    background: rgba(242, 201, 76, 0.3);
 }
 
 .timeline-tag.status-active {
-    color: #4ade80; /* Green 400 */
-    background: rgba(74, 222, 128, 0.1);
+    color: var(--primary);
+    background: rgba(200, 16, 46, 0.1);
 }
 
 .timeline-tag.status-completed {
-    color: #94a3b8; /* Slate 400 (Grey) */
-    background: rgba(148, 163, 184, 0.1);
+    color: #8b7d6b;
+    background: rgba(139, 125, 107, 0.1);
 }
 
 /* Rencontres Placeholder */
@@ -1048,7 +1047,7 @@ footer {
 .embed-header .icon-box {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  background: linear-gradient(135deg, #c8102e, #f2c94c);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1108,7 +1107,7 @@ footer {
 .sticker-card:hover {
   transform: translateY(-8px);
   /* Very subtle glow to indicate interactive area */
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(242, 201, 76, 0.12);
 }
 
 .sticker-icon img {

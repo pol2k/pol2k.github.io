@@ -514,7 +514,7 @@ Laurence-Olivier M. Foisy
 <section id="cas-dusage-pour-lanalyse-textuelle" class="slide level2 smaller">
 <h2>Cas d’usage pour l’analyse textuelle</h2>
 <h3 id="retirer-les-urls-dun-texte">Retirer les URLs d’un texte</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>texte <span class="ot">&lt;-</span> <span class="st">"Visitez https://www.umontreal.ca ou http://fas1001.com pour plus d'infos"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>texte <span class="ot">&lt;-</span> <span class="st">"Visitez https://www.umontreal.ca ou https://pol2k.github.io/ pour plus d'infos"</span></span>
 <span id="cb19-2"><a href=""></a>texte_propre <span class="ot">&lt;-</span> <span class="fu">str_remove_all</span>(texte, <span class="st">"https?://[</span><span class="sc">\\</span><span class="st">w</span><span class="sc">\\</span><span class="st">./]+"</span>)</span>
 <span id="cb19-3"><a href=""></a><span class="co"># Résultat: "Visitez  ou  pour plus d'infos"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <h3 id="extraire-les-hashtags">Extraire les hashtags</h3>
@@ -1449,7 +1449,7 @@ Docs   food good price quality
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://fas1001.com">FAS1001</a></p>
+<p><a href="https://pol2k.github.io/">POL2000</a></p>
 </div>
 </div></div>
 

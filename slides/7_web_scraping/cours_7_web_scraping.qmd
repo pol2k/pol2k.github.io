@@ -12,7 +12,7 @@ format:
     theme: simple
     slide-number: true
     logo: img/udem.png 
-    footer: "[FAS1001](https://fas1001.com)"
+    footer: "[POL2000](https://pol2k.github.io/)"
     transition: slide
     transition-speed: fast
     code-fold: false
@@ -1197,7 +1197,7 @@ Sitemap: https://lop.parl.ca/rss/public/en/sitemapxml
 ```r
 session <- polite::bow(
   url = "https://example.com",
-  user_agent = "FAS1001 Educational Scraper"
+  user_agent = "POL2000 Educational Scraper"
 )
 ```
 :::

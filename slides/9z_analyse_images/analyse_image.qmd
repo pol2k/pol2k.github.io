@@ -11,7 +11,7 @@ format:
     theme: simple
     slide-number: true
     logo: images/logo.png
-    footer: "[FAS1001](https://fas1001.com)"
+    footer: "[POL2000](https://pol2k.github.io/)"
     transition: slide
     transition-speed: fast
     code-fold: false
