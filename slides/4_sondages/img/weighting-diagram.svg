@@ -1,0 +1,39 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Titre -->
+  <text x="400" y="40" text-anchor="middle" font-size="24" fill="#1e3a8a">Correction par pondération</text>
+  
+  <!-- Échantillon initial -->
+  <g transform="translate(100,100)">
+    <text x="100" y="-20" text-anchor="middle" font-size="18" fill="#475569">Échantillon initial</text>
+    <rect width="200" height="60" fill="#bfdbfe" rx="5"/>
+    <rect width="200" height="140" fill="#60a5fa" y="60" rx="5"/>
+    <text x="100" y="30" text-anchor="middle" fill="#1e3a8a">Cycles sup (20%)</text>
+    <text x="100" y="130" text-anchor="middle" fill="white">1er cycle (80%)</text>
+  </g>
+
+  <!-- Flèches -->
+  <g transform="translate(350,170)">
+    <path d="M0,0 L100,0" stroke="#1e3a8a" stroke-width="4" marker-end="url(#arrowhead)"/>
+    <text x="50" y="-15" text-anchor="middle" font-size="16" fill="#475569">Pondération</text>
+  </g>
+
+  <!-- Population cible -->
+  <g transform="translate(500,100)">
+    <text x="100" y="-20" text-anchor="middle" font-size="18" fill="#475569">Après pondération</text>
+    <rect width="200" height="100" fill="#bfdbfe" rx="5"/>
+    <rect width="200" height="100" fill="#60a5fa" y="100" rx="5"/>
+    <text x="100" y="50" text-anchor="middle" fill="#1e3a8a">Cycles sup (50%)</text>
+    <text x="100" y="150" text-anchor="middle" fill="white">1er cycle (50%)</text>
+  </g>
+
+  <!-- Marqueur de flèche -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+    refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e3a8a"/>
+    </marker>
+  </defs>
+</svg>

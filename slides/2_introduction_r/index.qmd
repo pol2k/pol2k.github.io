@@ -1,0 +1,874 @@
+---
+title: "Introduction à R"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: Laurence-Olivier M. Foisy
+institute: Université de Montréal
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    mermaid: 
+      theme: dark
+    theme: simple
+    logo: https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: slide
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+---
+
+## Structure du cours
+
+![](img/structure_cours.png)
+
+## Les outils pour y arriver {.smaller}
+
+::: {.r-stack}
+
+![](img/outils_numeriques_2025.jpg)
+
+
+![](img/outils_numeriques_2025_r.jpg){.fragment}
+
+
+![](img/outils_numeriques_2025_qmd.jpg){.fragment}
+
+:::
+
+## Objectifs du cours{.smaller}
+
+- Introduire R pour l'analyse de données.
+  - Les dataframes
+  - Les fonctions
+  - Les packages 
+  - Les graphiques
+  - Les statistiques
+
+> Le but est que vous puissiez sortir d'ici avec une compréhension de base de R et que vous soyez capable d'aller chercher des ressources pour continuer à apprendre.
+
+
+## Les outils d'analyse de données{.smaller}
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/ea/SPSS_logo.svg){.absolute top=400 left=100 width="20%"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/79/Stata_logo_med_blue.png){.absolute top=150 left=800 width="20%"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png){.absolute top=400 left=800 width="20%"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Julia_Programming_Language_Logo.svg/1024px-Julia_Programming_Language_Logo.svg.png){.absolute top=100 left=100 width="20%"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1024px-R_logo.svg.png){.absolute top=200 left=330 width="40%"}
+
+## Pourquoi R?
+
+![](https://capsules-metho.github.io/diapos_intro_r/img/r_logo.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Open source
+
+- Gratuit
+- Collaboratif
+- Communauté active
+- Adapté aux besoins des utilisateurs
+
+## Pourquoi R?
+
+![](https://capsules-metho.github.io/diapos_intro_r/img/r_logo.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Packages
+
+- Offre une extension des fonctionnalités de base presque infinie
+- Peux répondre à des besoins très spécifiques
+- Plus de 22,000 packages sur CRAN (Comprehensive R Archive Network)
+- Beaucoup plus sur GitHub
+
+## Pourquoi R?{.smaller}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1024px-R_logo.svg.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Tidyverse
+
+- Collection de packages pour la manipulation de données
+
+- `dplyr` : manipulation de données
+- `ggplot2` : graphiques
+- `tidyr` : nettoyage de données
+- `readr` : importation de données
+- `stringr` : manipulation de chaînes de caractères
+
+## Pourquoi R?{.smaller}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1024px-R_logo.svg.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Packages CLESSN
+
+<!-- NOTE: Ajouter descriptions packages -->
+
+- [sondr](https://github.com/clessnverse/sondr)
+  - Permet l'automatisation de plusieurs aspects de l'analyse de données. Nous permet de faire des analyses factorielles en quelques secondes.
+- [clellm](https://github.com/clessn/clellm)
+  - Permet d'utiliser des LLM open-source directement en R et permet d'utiliser des fonctions disponibles seulement en Python, en R.
+- [clessnize](https://github.com/clessnverse/clessnize)
+  - Permet de standardiser le style de nos graphiques rapidement sans avoir à répéter les mêmes étapes à chaque fois.
+
+## Pourquoi R?
+
+![](https://capsules-metho.github.io/diapos_intro_r/img/r_logo.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Reproductibilité
+
+- Rendre les analyses reproductibles
+- Permet de partager le code
+- Facilite la transparence et la collaboration
+- Permet de retracer les erreurs
+
+## Pourquoi R?{.smaller}
+
+![](https://capsules-metho.github.io/diapos_intro_r/img/r_logo.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Très utilisé en science sociale
+
+- Beaucoup de ressources
+- Beaucoup de tutoriels orientés vers les sciences sociales
+  - Swirl
+  - Datacamp
+  - Codecademy
+
+#### Important d'utiliser les mêmes outils que les chercheurs dans votre domaine
+
+## Pourquoi R?{.smaller}
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1024px-R_logo.svg.png){.absolute top=0 left=800 width="20%"}
+
+<br><br>
+
+### Exemples d'utilisation par des organisations
+
+- [Utilisé par AirBnB pour l'analyse de données](https://medium.com/airbnb-engineering/using-r-packages-and-education-to-scale-data-science-at-airbnb-906faa58e12d)
+
+- [Utilisé par la BBC pour leurs graphiques](https://bbc.github.io/rcookbook/)
+
+- [Utilisé par la MLB pour l'analyse de données](https://billpetti.github.io/baseballr/)
+
+- [Utilisé par Vox Pop Labs (Boussole électorale) pour l'analyse de données](https://github.com/voxpoplabs)
+
+- [Utilisé par Google, Facebook, Amazon, etc.](https://makemeanalyst.com/companies-using-r/)
+
+## 
+
+![](https://github.com/clessn/agregateur_data/blob/main/img/daily_gif_fr.gif?raw=true)
+
+## 
+
+![](img/datagotchi_graph.png){.absolute top=0 left=0 width="200%"}
+
+::: {.r-stack}
+
+![](img/cartogram.png){.fragment .absolute top=0 left=0 width="200%"}
+
+![](img/turnout.png){.fragment .absolute top=0 left=0 width="200%"}
+
+::: 
+
+
+## Analyse textuelle{.smaller}
+
+- Analyse de ton 
+
+![](img/time_series_by_article.png){.absolute top=200 left=70 width="80%"}  
+
+## Mais aussi ...{.smaller}
+
+- Catégorisation de texte 
+  - Est-ce que le texte parle de politique, de santé, de sport?
+- Analyse d'image
+- Transcription audio
+
+## R : Au-delà de l'analyse de données{.smaller}
+
+- R ne se limite pas à l'analyse statistique, il peut aussi être utilisé pour développer des [applications web interactives](https://mdubel.shinyapps.io/shark-attack/)
+
+![](img/shinygotchi_front.png)
+
+## Après R
+
+### Apprendre R vous permet de comprendre d'autres langages de programmation
+
+- Python
+- Julia
+- SQL
+- JavaScript
+- HTML/CSS
+- Bash 
+
+## Installer R et Positron{.smaller}
+
+- R est le langage de programmation
+- Positron est l'interface
+- Positron offre plein d'outils pour faciliter l'utilisation de R
+- Positron est un IDE parmis tant d'autres 
+
+<br><br>
+
+### À télécharger :
+
+- [Installer R](https://cran.r-project.org/)
+- [Installer Positron](https://positron.posit.co/)
+
+# Aperçu de Positron
+
+## Avant de commencer : Planifier{.smaller} 
+
+#### La plus grosse erreur est de commencer à coder sans savoir ce que vous voulez faire
+
+<br>
+
+- Clarifer vos objectifs: Qu'est-ce que vous voulez faire?
+  - Nettoyer des données?
+  - Faire un graphique?
+
+Les possibilités sont infinies, donc il est important de savoir où vous voulez aller
+
+## Avant de commencer : Décomposer le problème{.smaller}
+
+- Décomposer le problème en petites étapes
+- Un script R pour une seule tâche
+  - Bien nommer vos scripts pour savoir ce qu'ils font
+  - Exemples:
+    - `1_collecte.R`
+    - `2_nettoyage.R`
+    - `3_analyse.R`
+    - `4_graphique.R`
+- Chaque script doit être clair et facile à comprendre
+- Commenter votre code avec des `#`
+
+## Avant de commencer : Le chemin d'arborescence{.smaller}
+
+- À tout moment vous devez savoir où vous êtes dans votre ordinateur
+- Votre R « pointe » toujours vers un dossier de votre ordinateur
+  - C'est le **répertoire de travail** (working directory)
+- La fonction `getwd()` permet de connaitre le répertoire de travail actuel
+
+![](https://habefast.ch/wp-content/uploads/2022/03/habefast-infographies-web-arborescence.png){.absolute top=320 left=75 width="80%"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**~/Collègue/6eme/Centre d'intéret 3/Matériaux/**
+
+## Avant de commencer : Le chemin d'arborescence{.smaller}
+
+![](https://capsules-metho.github.io/diapos_intro_r/img/chemin_arbo.png){width="120%"}
+
+## Importer des données{.smaller}
+
+- Les données sont souvent dans des fichiers Excel, CSV, ou autres
+  - On utilise des fonctions comme `read.csv()` pour lire les fichiers 
+
+<br>
+
+```r
+df <- read.csv("chemin/vers/data.csv")
+```
+<br>
+
+- Dans cette ligne de code il y a plusieurs éléments importants:
+  - Le nom de l'objet : `df` dans ce cas-ci, c'est un dataframe
+  - L'opérateur d'assignation : `<-` 
+  - La fonction qui permet de lire le fichier : `read.csv()`
+  - Le chemin vers le fichier : `"chemin/vers/data.csv"`
+
+## Importer des données{.smaller}
+
+Autres fonctions pour importer des données dépendamment du format:
+
+- `df <- readxl::read_excel("chemin/vers/data.xlsx")`
+- `df <- readRDS("chemin/vers/data.rds")`
+- `df <- haven::read_sav("chemin/vers/data.sav")` 
+
+![](img/df_in_env.png){.absolute top=300 left=150 width="70%"}
+
+## Chemins d'arborescence{.smaller}
+
+#### Important de comprendre comment spécifier le chemin vers un fichier
+
+Voici les deux façons de spécifier le chemin :
+
+- Absolu: `/Users/username/Documents/projet/data/data.csv`
+  - Utile seulement sur votre ordinateur, un autre utilisateur ne pourra pas utiliser le même chemin
+
+- Relatif: `data/data.csv`
+  - Utile pour partager le code avec d'autres utilisateurs
+  
+<br>
+
+#### Différence entre mac et windows
+
+- Mac: `/`
+- Windows: `\` (il faut s'assurer de changer les `\` pour des `/`)
+
+## Anatomie d'une ligne de code {.smaller}
+
+Prenons un exemple simple :
+```r
+resultat <- mean(df$age, na.rm = TRUE)
+```
+
+Décomposons cette ligne :
+
+- `resultat` : nom de l'objet où on stocke le résultat
+- `<-` : opérateur d'assignation
+- `mean()` : fonction qui calcule la moyenne
+- `df$age` : variable 'age' du dataframe 'df'
+- `na.rm = TRUE` : argument de la fonction (ignorer les NA)
+
+## Comprendre les fonctions {.smaller}
+
+Une fonction est comme une **machine** : elle prend des **ingrédients** (arguments), suit une **recette** interne (code), et retourne un **plat** (résultat/output).
+
+```{mermaid}
+flowchart LR
+    A[Ingrédients<br/>Arguments] -->|Entrée| B(La Machine<br/>Fonction)
+    B -->|Traitement| C[Résultat<br/>Output]
+    
+    style A fill:#e74c3c,stroke:#333,stroke-width:2px,color:white
+    style B fill:#3498db,stroke:#333,stroke-width:2px,color:white
+    style C fill:#2ecc71,stroke:#333,stroke-width:2px,color:white
+```
+
+### Exemple concret
+
+```r
+# La machine "mean" (moyenne)
+resultat <- mean(x = c(10, 20, 30), na.rm = TRUE)
+```
+
+1. **Ingrédients (`x`, `na.rm`)** : Les données (le vecteur) et les options (retirer les valeurs manquantes).
+2. **Machine (`mean`)** : Calcule la somme divisée par le nombre d'éléments.
+3. **Résultat (`resultat`)** : La valeur `20` est stockée dans l'objet.
+
+## Structures de données : 1D vs 2D
+
+En R, tout part du **vecteur**. Un dataframe n'est qu'un assemblage de vecteurs (colonnes) de même longueur mis côte à côte.
+
+:::: {.columns}
+
+::: {.column width="48%"}
+::: {.callout-note icon=false}
+
+### 1. Le Vecteur (1D)
+Une suite de valeurs du **même type**.
+<br>
+
+```r
+# Création avec c()
+noms <- c("Alice", "Bob")
+ages <- c(24, 30)
+
+# Calcul direct
+moyenne <- mean(ages)
+```
+:::
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+::: {.callout-tip icon=false}
+
+### 2. Le Dataframe (2D)
+Un tableau rectangulaire.
+<br>
+
+```r
+# Assemblage
+df <- data.frame(
+  nom = noms,
+  age = ages
+)
+```
+
+| nom | age |
+|:---|:---:|
+| Alice | 24 |
+| Bob | 30 |
+
+:::
+:::
+
+::::
+
+## Les types de données dans R {.smaller}
+
+### Types de base :
+
+- `numeric` : nombres (avec ou sans décimales)
+```r
+age <- 25        # integer
+taille <- 1.75   # double
+```
+
+- `character` : texte (chaînes de caractères)
+```r
+nom <- "Pierre"
+ville <- 'Montréal'  # simple ou double quotes
+```
+
+- `logical` : TRUE ou FALSE
+```r
+est_etudiant <- TRUE
+a_un_emploi <- FALSE
+```
+
+## Les types de données dans R {.smaller}
+
+### Types spéciaux :
+
+- `factor` : catégories
+```r
+niveau <- factor(c("Débutant", "Intermédiaire", "Avancé"))
+```
+
+- `Date` : dates
+```r
+date <- as.Date("2025-01-14")
+```
+
+- `NA` : valeurs manquantes
+```r
+donnees <- c(1, NA, 3, NA, 5)
+```
+
+## Parenthèses, guillemets et virgules {.smaller}
+
+### Les parenthèses () :
+- Délimitent les arguments d'une fonction
+- Doivent toujours être fermées
+```r
+# Correct
+moyenne <- mean(donnees)
+
+# Incorrect - parenthèse manquante
+moyenne <- mean(donnees
+```
+
+### Les virgules :
+- Séparent les arguments d'une fonction
+```r
+# Correct
+resultat <- sum(1, 2, 3, na.rm = TRUE)
+
+# Incorrect - virgule manquante
+resultat <- sum(1 2 3, na.rm = TRUE)
+```
+
+## Assignation : = vs <- {.smaller}
+
+### L'opérateur <- :
+- Recommandé pour l'assignation de variables
+- Plus clair et explicite
+- Standard dans la communauté R
+```r
+age <- 25
+nom <- "Alice"
+```
+
+### L'opérateur = :
+- Utilisé principalement pour les arguments de fonctions
+- Peut créer de la confusion
+```r
+# Pour les arguments de fonction
+mean(x = donnees, na.rm = TRUE)
+
+# Éviter pour l'assignation
+age = 25  # Fonctionne mais non recommandé
+```
+
+## Messages d'erreur courants {.smaller}
+
+### Erreur de syntaxe
+```r
+# Message d'erreur
+Error: unexpected symbol in "mon code"
+
+# Cause probable
+# Parenthèse ou guillemet manquant
+```
+
+### Objet non trouvé
+```r
+# Message d'erreur
+Error: object 'data' not found
+
+# Causes probables
+# - Faute de frappe dans le nom
+# - Objet non créé
+# - Mauvais working directory
+```
+
+## Messages d'erreur (suite) {.smaller}
+
+### Comment réagir aux erreurs :
+
+1. Ne pas paniquer ! Les erreurs sont normales
+2. Lire attentivement le message d'erreur
+3. Vérifier la ligne indiquée dans le message
+4. Points à vérifier :
+   - Parenthèses fermées ?
+   - Guillemets fermés ?
+   - Virgules aux bons endroits ?
+   - Noms d'objets corrects ?
+   - Package chargé (`library()`) ?
+
+# Codons!
+
+## Nous allons utiliser le dataframe `swiss`{.smaller}
+
+```r
+# Charger les packages nécessaires
+library(dplyr) # Manipulation de données
+library(ggplot2) # Graphiques
+
+# Importer les données swiss (jeu de données intégré)
+df <- swiss
+
+# Explorer les données
+View(df)
+summary(df)
+names(df)
+head(df)
+ncol(df)
+nrow(df)
+
+```
+
+## Analyse rapide d'une variable
+
+```r
+# Voir le nombre de valeurs pour chaque élément d'une variable
+table(df$Fertility)
+
+# Histogramme de la variable 'Fertility'
+hist(df$Fertility)
+
+# Obtenir la moyenne de la variable 'Fertility'
+mean(df$Fertility)
+
+```
+
+- `$` permet d'accéder à une variable dans un dataframe.
+- On accède à la variable `Fertility` dans le dataframe `df` avec `df$Fertility`
+
+## Filter et sélectionner des variables
+
+```r
+# Sélectionner des colonnes 
+# (par exemple, Fertility, Education et Agriculture)
+
+df_selected <- df %>%
+  select(Fertility, Education, Agriculture)
+
+# Filtrer les lignes pour inclure uniquement les cantons 
+# avec une fertilité supérieure à la moyenne
+
+mean_fertility <- mean(df_selected$Fertility, na.rm = TRUE)
+
+df_filtered <- df_selected %>%
+  filter(Fertility > mean_fertility)
+```
+
+## Le Pipe `|>` ou `%>%` {.smaller}
+
+Le pipe signifie **"et ensuite"**. Il permet de passer le résultat d'une étape à la suivante sans imbriquer les fonctions.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Sans pipe (Difficile à lire)
+
+On lit de l'intérieur vers l'extérieur :
+
+```r
+s'habiller(
+  se_secher(
+    se_doucher(
+      se_lever(moi)
+    )
+  )
+)
+```
+:::
+
+::: {.column width="50%"}
+
+Avec pipe (Lecture naturelle)
+
+On lit de haut en bas :
+
+```r
+
+moi |> 
+  se_lever() |> 
+  se_doucher() |> 
+  se_secher() |> 
+  s'habiller()
+
+```
+:::
+
+::::
+
+:::{.callout-note} 
+
+Le pipe natif |> (R 4.1+) est le nouveau standard, mais vous croiserez souvent %>% (le pipe du tidyverse). Ils font la même chose à 99%. 
+
+:::
+
+## Modifier des variables
+
+```r
+# Créer une nouvelle variable binaire "high_agriculture" 
+# indiquant si le pourcentage d'agriculture est supérieur à 50
+
+df_mutated <- df_filtered %>%
+  mutate(high_agriculture = ifelse(Agriculture > 50, 1, 0))
+
+# Regrouper par "high_agriculture" et calculer la moyenne de l'éducation
+
+df_summarized <- df_mutated %>%
+  group_by(high_agriculture) %>%
+  summarize(moyenne_education = mean(Education, na.rm = TRUE))
+
+# Afficher le résultat final
+print(df_summarized)
+```
+
+## Représentation graphique des données{.smaller}
+
+### Principes généraux de la visualisation
+
+- Montrer les données 
+  - Évitez les distractions inutiles
+- Choisir des visualisations appropriées 
+  - Quelles informations seront utiles ?
+- Éviter les graphiques « spaghetti » 
+  - Évitez les lignes trop complexes qui se chevauchent et s'entremêlent
+- Commencer en noir et blanc 
+  - Utiliser les couleurs de manière efficace
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Initialiser un graphique
+
+```{.r code-line-numbers="1"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) 
+```
+- `df` est le dataframe
+- `aes()` est la fonction qui permet de spécifier les variables à utiliser
+- `x` et `y` sont les variables à utiliser pour les axes x et y
+- `color` est la variable à utiliser pour la couleur
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Ajouter un geom_()
+
+```{.r code-line-numbers="2"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) # Le alpha est la transparence
+```
+
+- Il existe plusieurs `geom_()` pour différents types de graphiques
+  - `geom_point()` est pour un nuage de points
+  - `geom_line()` est pour un graphique en ligne
+  - `geom_bar()` est pour un graphique en barres
+  - `geom_histogram()` est pour un histogramme
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Ajouter une échelle de couleur
+
+```{.r code-line-numbers="3"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") 
+```
+
+- `scale_color_gradient()` permet de spécifier les couleurs pour la variable `Education`
+- `low` et `high` sont les couleurs pour les valeurs les plus basses et les plus hautes
+- `name` est le nom de la légende
+- Vous pouvez utiliser les hexcodes pour les couleurs
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Ajouter des titres et des labels
+
+```{.r code-line-numbers="4,5,6,7,8"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) 
+```
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Ajouter un thème
+
+```{.r code-line-numbers="9"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) +
+  theme_minimal()
+```
+
+- `theme_minimal()` est un thème minimaliste
+- Il existe plusieurs thèmes prédéfinis dans ggplot2
+- Vous pouvez aussi créer votre propre thème
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Sauvegarder le graphique
+
+```{.r code-line-numbers="11"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) +
+  theme_minimal()
+
+ggsave("nom_du_graphique.png", width = 10, height = 6)
+```
+
+- Vous pouvez spécifier le format du graphique (png, pdf, etc.) ainsi que le chemin pour sauvegarder le graphique
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Un histogramme de la variable Fertility
+
+```r
+ggplot(df, aes(x = Fertility)) +
+  geom_histogram(fill = "skyblue", color = "white", bins = 5) +
+  labs(
+    title = "Distribution de la fertilité en Suisse",
+    x = "Fertilité",
+    y = "Nombre de cantons"
+  ) +
+  theme_minimal()
+```
+
+## Analyse statistique
+
+```r
+# Calculer la corrélation entre Fertility et Agriculture
+
+correlation <- cor(df$Fertility, df$Agriculture)
+print(paste("Corrélation entre Fertility et Agriculture:", round(correlation, 2)))
+
+# Effectuer une régression linéaire avec Fertility comme variable dépendante
+
+modele <- lm(Fertility ~ Agriculture, data = df)
+
+# Afficher le résumé du modèle de régression
+
+summary(modele)
+```
+
+## Bonnes pratiques
+
+### [style.tidyverse.org](https://style.tidyverse.org/)
+
+- Utilisé par la communauté R pour standardiser le style du code
+- Utilisé par [Google](https://google.github.io/styleguide/Rguide.html) 
+- Utilisé par des packages populaires comme [stylr](https://styler.r-lib.org/) et [lintr](https://lintr.r-lib.org/)
+
+## Bonnes pratiques {.smaller}
+
+### Règles générales :
+
+- Nommer vos fichiers de manière descriptive
+- Utiliser des minuscules seulement et aucun caractère spécial comme é ou à
+- Si vos fichiers contiennent plusieurs mots, les séparer par des underscores `_`
+- Exemple: `nettoyage_donnees.R`
+- Utiliser des chiffres pour ordonner vos scripts
+- Évitez d'écrire des lignes de code trop longues
+- Utiliser la convention `snake_case` plutôt que `camelCase`
+- Nommez vous dataframe de façon standard. `df_` ou `data_`
+
+## Organiser votre environnement de travail
+
+```bash
+/votre_projet
+├── data
+│   ├── processed
+│   │   └── data_clean.csv
+│   └── raw
+│       └── data_raw.csv
+├── docs
+│   └── article
+│       ├── articles.qmd
+│       └── references.bib
+├── R
+│   ├── 2_analysis.R
+│   └── 3_graph.R
+├── README.md
+└── results
+    └── graphs
+        └── 1_bar_graph.png
+ 
+```
+
+## En apprendre plus{.smaller} 
+
+- [swirl](https://swirlstats.com/students.html)
+- [Datacamp](https://www.datacamp.com/)
+- [R4DS (R for Data Science)](https://r4ds.had.co.nz/)
+- [Advanced R](https://adv-r.hadley.nz/)
+
+
+## Ressources{.smaller}
+
+Quoi faire quand ça ne fonctionne pas?
+
+- ChatGPT
+  - Être clair et précis dans vos requêtes
+  - Expliquer la structure de vos données
+  - Copier-coller le message d'erreur
+  - Copier-coller la documentation d'un package
+- Réessayer ChatGPT
+  - C'est rare que ChatGPT ne trouve pas la réponse
+- La documentation de R (ex: `?mean()` dans votre console)
+- Google
+  - Stackoverflow
+  - Stackexchange
+
+## Conclusion

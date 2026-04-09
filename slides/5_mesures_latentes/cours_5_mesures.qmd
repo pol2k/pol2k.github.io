@@ -1,0 +1,1372 @@
+---
+title: "Les mesures et les analyses statistiques"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: Laurence-Olivier M. Foisy
+institute: Université de Montréal
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    mermaid: 
+      theme: dark
+    theme: simple
+    logo: https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: slide
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+bibliography: bibliography.bib
+---
+
+## Retour sur le Quiz 1{.smaller}  
+
+### Questions
+
+- Trop facile?
+- Combien d'heures ça vous a pris?
+- Comprenez vous la structure du code? `1_`, `2_`, `3_`?
+- Comprenez vous la fonction `source()`?
+- Regarder sur GitHub pour voir si votre commit a bien été push
+- Utiliser le terminal de Positron
+- Ouvrir les pdf directement dans Positron
+- Activer la sauvegarde automatique
+- Activer la mini-map pour naviguer dans les fichiers
+
+## Votre gabarit Quarto
+
+```bash
+quarto use template fas1001/gabarit_udem
+```
+
+## Structure du cours
+
+::: {.r-stack}
+
+![](img/structure_cours.png)
+
+![](img/structure_cours_1.png){.fragment}
+
+:::
+
+# Cours 5
+
+- **Le problème** : On veut étudier des choses invisibles (concepts).
+
+- **La solution** : Construire des échelles de mesure
+
+- **La vérification** : Est-ce que mon échelle est fiable et valide?
+
+- **L'application** : Maintenant que j'ai mesuré mon concept, comment il interagit avec le monde ? (Visualisation -> Régression).
+
+# Les variables latentes
+
+## Introduction
+
+### Qu'est-ce qu'une variable latente?
+
+- Une caractéristique qui ne peut pas être mesurée directement
+  - Idéologie politique
+  - Le support à l'environnement
+  - L'intelligence
+- Doit être inférée à partir d'autres variables observables
+- Concept central en sciences sociales
+
+## Exemple : Mesurer l'intelligence
+
+![](img/intelligence.svg)
+
+::: {.notes}
+- L'intelligence est un concept multidimensionnel
+- Chaque branche représente une facette différente
+- Les tests doivent capturer cette complexité
+:::
+
+## Défi de mesure
+
+### Pourquoi c'est complexe?
+
+::: {.incremental}
+1. **Abstraction** : Les concepts sont souvent abstraits
+2. **Multidimensionnalité** : Plusieurs aspects à considérer
+3. **Subjectivité** : Interprétation variable selon le contexte
+:::
+
+# Échelle de mesure
+
+## échelle de l'attitude politique {transition="none"}
+
+![](img/politique_1.svg)
+
+## échelle de l'attitude politique {transition="none"}
+
+![](img/politique_2.svg)
+
+## échelle de l'attitude politique {transition="none"}
+
+![](img/politique_3.svg)
+
+## échelle de l'attitude politique {transition="none"}
+
+![](img/politique_4.svg)
+
+## L'échelle d'idéologie de Merkley (2022)
+
+![](img/merkley_scale.svg)
+
+## Les 8 questions de l'étude (Merkley, 2022)
+
+![](img/merkley_questions.svg)
+
+## Concept latent : Rednecks
+
+- Est-ce que l'éducation influence la probabilité d'être un "redneck"?
+- Aucune question ne demande directement si quelqu'un est un "redneck"
+- Mais on peut inférer ce statut à partir d'autres variables
+- Créer une variable de "redneckitude"
+
+## Solution : Les échelles de mesure {.smaller}
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+### Comment procéder?
+
+1. **Identifier les dimensions clés**
+   - Décomposer le concept
+   - Définir les aspects mesurables
+
+2. **Créer des indicateurs**
+   - Questions précises
+   - Observations concrètes
+
+3. **Valider l'échelle**
+   - Fiabilité : Tests statistiques
+   - Validité : Théorique
+
+:::
+
+:::{.column width="50%"}
+
+![](img/redneck_concept.svg){width="100%"}
+
+:::
+
+::::
+
+# Hipster? {transition="none"}
+
+# TikTok brain? {transition="none"}
+
+# Confiance envers le gouvernement? {transition="none"}
+
+# Évaluation de la qualité
+
+## Critères essentiels {transition="none"}
+
+![](img/qualite_1.svg)
+
+## Critères essentiels {transition="none"}
+
+![](img/qualite_2.svg)
+
+## Critères essentiels {transition="none"}
+
+![](img/qualite_3.svg)
+
+
+# Fiabilité
+
+## Fiabilité : Mesure Statistique
+
+### Analyse factorielle
+
+- Détecte automatiquement ces anomalies
+- Vérifie si toutes les questions mesurent la même compétence
+- Aide à améliorer la qualité des examens
+- Guide la révision des questions problématiques
+
+## Examen d'histoire
+
+```{r}
+#| echo: false
+#| fig-align: center
+library(ggplot2)
+
+# Simuler des notes d'examen
+set.seed(123)
+notes <- data.frame(
+  Note = rnorm(100, mean = 75, sd = 10)
+)
+
+ggplot(notes, aes(x = Note)) +
+  geom_histogram(binwidth = 5, fill = "#3182bd", color = "white", alpha = 0.8) +
+  labs(
+    title = "Distribution des notes dans une classe",
+    x = "Note (%)",
+    y = "Nombre d'étudiants"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 16),
+    plot.title = element_text(size = 20, face = "bold")
+  )
+```
+
+::: {.notes}
+- Certains étudiants excellent naturellement
+- D'autres sont dans la moyenne
+- Certains ont plus de difficulté
+:::
+
+## L'examen d'histoire : 5 questions {.smaller}
+
+### Notre hypothèse
+- Chaque question mesure la **compétence en histoire**
+- Les bons élèves devraient bien répondre
+- Les élèves moyens répondront moyennement bien
+- Les élèves en difficulté auront plus de mal
+
+## Distribution typique d'un examen {auto-animate=true}
+
+::: {data-id="dist-plot"}
+```{r}
+#| echo: false
+#| fig-align: center
+library(ggplot2)
+
+# Simuler les données
+set.seed(123)
+n_students <- 100
+performance <- rnorm(n_students, mean = 75, sd = 15)
+# S'assurer que les notes restent entre 0 et 100
+performance <- pmax(0, pmin(100, performance))
+
+# Theme commun
+custom_theme <- theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(face = "bold", size = 20, color = "#2c3e50"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_blank()
+  )
+
+# Version avec histogramme
+ggplot(data.frame(Score = performance), aes(x = Score)) +
+  geom_histogram(binwidth = 5, fill = "#2c3e50", color = "white", alpha = 0.9) +
+  scale_y_continuous(breaks = seq(0, 30, 5)) +
+  labs(
+    x = "Note (%)",
+    y = "Nombre d'étudiants",
+    title = "Distribution typique d'un examen"
+  ) +
+  custom_theme
+```
+:::
+
+## Distribution typique d'un examen {auto-animate=true}
+
+::: {data-id="dist-plot"}
+```{r}
+#| echo: false
+#| fig-align: center
+
+# Version avec une seule distribution de densité
+ggplot(data.frame(Score = performance), aes(x = Score)) +
+  geom_density(fill = "#2c3e50", alpha = 0.7, color = NA) +
+  scale_y_continuous(labels = NULL) + # Cacher les chiffres confus
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution typique d'un examen"
+  ) +
+  custom_theme +
+  theme(axis.ticks.y = element_blank())
+```
+:::
+
+## Distribution par groupes d'élèves {auto-animate=true}
+
+::: {data-id="dist-plot"}
+```{r}
+#| echo: false
+#| fig-align: center
+
+# Créer les groupes
+data <- data.frame(
+  Score = performance,
+  Groupe = cut(performance, 
+              breaks = c(-Inf, 60, 80, Inf),
+              labels = c("Élèves en difficulté", "Élèves moyens", "Excellents élèves"),
+              include.lowest = TRUE)
+)
+
+# Couleurs plus modernes
+# Rouge (Difficulté), Jaune/Or (Moyen), Bleu (Excellent)
+colors <- c("#e74c3c", "#f39c12", "#3498db")
+
+ggplot(data, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  scale_y_continuous(labels = NULL) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution par niveau"
+  ) +
+  custom_theme +
+  theme(axis.ticks.y = element_blank())
+```
+:::
+
+## Question 1 : Causes de la guerre {transition="none"}
+
+"Quels événements ont directement mené au déclenchement de la Seconde Guerre Mondiale en Europe?"
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+# Theme commun (copié pour assurer la cohérence)
+custom_theme <- theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(face = "bold", size = 20, color = "#2c3e50"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+colors <- c("#e74c3c", "#f39c12", "#3498db")
+
+# Même distribution pour une bonne question
+ggplot(data, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution des notes"
+  ) +
+  custom_theme
+```
+
+## Question 2 : Analyse stratégique {transition="none"}
+
+"Expliquez pourquoi l'opération Barbarossa a été un tournant décisif dans la guerre."
+
+```{r}
+#| echo: false
+#| fig-align: center
+# Légère variation mais même pattern
+set.seed(124)
+performance2 <- rnorm(n_students, mean = 72, sd = 16)
+data2 <- data.frame(
+  Score = performance2,
+  Groupe = cut(performance2, 
+              breaks = c(-Inf, 60, 80, Inf),
+              labels = c("Élèves en difficulté", "Élèves moyens", "Excellents élèves"),
+              include.lowest = TRUE)
+)
+
+ggplot(data2, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution des notes"
+  ) +
+  custom_theme
+```
+
+## Question 3 : Impact économique {transition="none"}
+
+"Analysez comment la mobilisation industrielle des États-Unis a influencé l'issue de la guerre."
+
+```{r}
+#| echo: false
+#| fig-align: center
+# Nouvelle distribution mais même pattern
+set.seed(125)
+performance3 <- rnorm(n_students, mean = 73, sd = 14)
+data3 <- data.frame(
+  Score = performance3,
+  Groupe = cut(performance3, 
+              breaks = c(-Inf, 60, 80, Inf),
+              labels = c("Élèves en difficulté", "Élèves moyens", "Excellents élèves"),
+              include.lowest = TRUE)
+)
+
+ggplot(data3, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution des notes"
+  ) +
+  custom_theme
+```
+
+## Question 4 : Conséquences géopolitiques {transition="none"}
+
+"Évaluez comment les accord de Yalta ont redessiné la carte politique de l'Europe."
+
+```{r}
+#| echo: false
+#| fig-align: center
+# Autre variation avec le même pattern
+set.seed(126)
+performance4 <- rnorm(n_students, mean = 71, sd = 15)
+data4 <- data.frame(
+  Score = performance4,
+  Groupe = cut(performance4, 
+              breaks = c(-Inf, 60, 80, Inf),
+              labels = c("Élèves en difficulté", "Élèves moyens", "Excellents élèves"),
+              include.lowest = TRUE)
+)
+
+ggplot(data4, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution des notes"
+  ) +
+  custom_theme
+```
+
+## Question 5 : Cigares de Churchill {transition="none"}
+
+"Quelle était la marque de cigares préférée de Winston Churchill?"
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+# Distribution inversée pour la question problématique
+performance_reversed <- 100 - performance + rnorm(n_students, mean = 0, sd = 5)
+data_prob <- data.frame(
+  Score = performance_reversed,
+  Groupe = cut(performance, 
+              breaks = c(-Inf, 60, 80, Inf),
+              labels = c("Élèves en difficulté", "Élèves moyens", "Excellents élèves"),
+              include.lowest = TRUE)
+)
+
+ggplot(data_prob, aes(x = Score, fill = Groupe)) +
+  geom_density(alpha = 0.7, color = NA) +
+  scale_fill_manual(values = colors) +
+  labs(
+    x = "Note (%)",
+    y = "Fréquence relative",
+    title = "Distribution inversée !"
+  ) +
+  custom_theme +
+  annotate("text", x = 20, y = 0.02, 
+           label = "Les meilleurs élèves\néchouent ?!", 
+           color = "#e74c3c", size = 6, fontface = "bold")
+```
+## Une question suspecte
+
+Cette question mesure-t-elle vraiment la **compétence en histoire**?
+
+Ou mesure-t-elle autre chose?
+
+- Culture populaire?
+- Connaissance des cigares?
+
+## Ce qui cloche
+
+- Les meilleurs élèves échouent mystérieusement
+- Les élèves en difficulté excellent soudainement
+- La question ne mesure pas la compétence en histoire
+
+## L'analyse factorielle compare toutes les questions
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 15
+#| fig-height: 4.5
+
+# Simuler les données pour toutes les questions
+set.seed(123)
+n_students <- 100
+
+# Créer les scores pour les 4 bonnes questions
+q1 <- rnorm(n_students, mean = 75, sd = 15)  # Causes de la guerre
+q2 <- rnorm(n_students, mean = 72, sd = 16)  # Barbarossa
+q3 <- rnorm(n_students, mean = 73, sd = 14)  # Impact économique
+q4 <- rnorm(n_students, mean = 71, sd = 15)  # Yalta
+# Question problématique (inverse de q1)
+q5 <- 100 - q1 + rnorm(n_students, mean = 0, sd = 5)
+
+data <- data.frame(
+  Question = rep(c("Causes", "Barbarossa", "Économie", "Yalta", "Cigares"), each = n_students),
+  Score = c(q1, q2, q3, q4, q5),
+  Type = rep(c("Bonne question", "Bonne question", "Bonne question", "Bonne question", "Question suspecte"), 
+            each = n_students)
+)
+
+# Theme
+custom_theme <- theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(face = "bold", size = 20, color = "#2c3e50"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    strip.text = element_text(size = 14, face = "bold", color = "#2c3e50")
+  )
+
+ggplot(data, aes(x = Score, fill = Type)) +
+  geom_density(alpha = 0.7, color = NA) +
+  facet_wrap(~Question, nrow = 1) +
+  scale_fill_manual(values = c("#3498db", "#e74c3c")) + # Bleu (Bon), Rouge (Mauvais)
+  labs(
+    title = "Distribution des notes pour chaque question",
+    x = "Note (%)",
+    y = "Fréquence relative"
+  ) +
+  custom_theme
+```
+
+## Comment ça marche?
+
+::::{.columns}
+:::{.column width="50%"}
+### L'analyse factorielle vérifie
+1. La corrélation entre les questions
+2. Le pattern des réponses
+3. Les questions qui "détonnent"
+:::
+
+:::{.column width="50%"}
+### Nos résultats
+- **Questions 1-4** : ✅
+  - Causes de la guerre
+  - Opération Barbarossa
+  - Impact économique
+  - Accords de Yalta
+- **Question 5** : ❌
+  - Cigares de Churchill
+:::
+::::
+
+::: {.notes}
+- Les 4 premières questions mesurent bien la compétence en histoire
+- La question sur les cigares mesure autre chose (Connaissance des cigares? Culture populaire?)
+- L'analyse factorielle détecte automatiquement ces patterns
+:::
+
+## En résumé
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+### Une bonne question d'histoire devrait:
+  - Tester la compréhension historique
+  - Montrer une distribution "normale"
+  - Discriminer selon la compétence
+
+:::
+
+:::{.column width="50%"}
+
+### Une question problématique peut:
+  - Tester des connaissances non pertinentes
+  - Montrer une distribution inversée
+  - Ne pas refléter la compétence visée
+
+:::
+
+::::
+
+
+## Analyse factorielle
+
+### Trois mesures statistiques
+
+1. **Alpha de Cronbach**
+2. **Première valeur propre (Eigenvalue)**
+3. **Coefficient de saturation (Factor loading)**
+
+# L'Alpha de Cronbach
+
+## Qu'est-ce que c'est?
+- Une mesure de la **cohérence interne** d'un ensemble de questions
+- Indique si les questions mesurent bien la même chose
+- Varie entre 0 et 1 (plus c'est proche de 1, meilleur c'est)
+
+## Exemple Simple
+- Imaginons un questionnaire sur la satisfaction au travail avec 4 questions :
+  - "J'aime mon travail"
+  - "Je suis heureux au bureau"
+  - "Mon travail me satisfait"
+  - "Je m'épanouis dans mon travail"
+- Si les réponses sont cohérentes entre elles → Alpha élevé
+- Si les réponses sont contradictoires → Alpha faible
+
+## En pratique
+- Alpha > 0.6 : Acceptable
+- Alpha > 0.7 : Bon
+- Alpha > 0.8 : Excellent
+
+# La Première Valeur Propre (First Eigenvalue)
+
+## Qu'est-ce que c'est?
+- Indique la **force du concept principal** mesuré par vos questions
+- Plus elle est élevée, plus vos questions mesurent un concept unique et fort
+
+## Analogie Simple
+
+5 questions pour mesurer les habitudes de vie saines
+
+- "Je ne mange jamais de sucre raffiné"
+- "Je privilégie les produits biologiques"
+- "Je vais au gym 4 fois par semaine"
+- "Je prends des suppléments de protéines"
+- "Je possède une montre intelligente pour suivre mon cardio"
+
+## En pratique
+- Valeur > 1 : Acceptable
+- Plus la valeur est élevée, plus c'est fiable
+- Indique qu'il y a un "facteur dominant" dans vos questions
+
+# Le Coefficient de Saturation\(Factor Loading)
+
+## Qu'est-ce que c'est?
+- Mesure la **contribution** de chaque question au concept général
+- Indique si chaque question est pertinente
+
+## Exemple Simple
+- Pour un questionnaire sur "l'amour des chats" :
+  - "Les chats sont doux" → Fort coefficient (pertinent)
+  - "Je mange des pâtes" → Faible coefficient (non pertinent)
+
+## En pratique
+- Coefficient > 0.3 : Acceptable
+- Permet d'identifier les questions à garder ou à supprimer
+- Plus le coefficient est élevé, plus la question est pertinente
+
+## Les trois mesures travaillent ensemble
+- **Alpha de Cronbach** : Cohérence globale
+- **Première valeur propre** : Force du concept principal
+- **Coefficient de saturation** : Pertinence de chaque question
+
+## Utilisation pratique
+
+1. **Alpha de Cronbach** : > 0.6
+2. **Première valeur propre (Eigenvalue)** : > 1
+3. **Coefficient de saturation (Factor loading)** : > 0.3
+
+## Comment faire 
+
+### 1. Installer le package sondr
+
+```r
+# Dans la console:
+install.packages("devtools")
+devtools::install_github("clessnverse/sondr")
+```
+
+## Comment faire ?
+
+### 2. Charger vos données
+
+```r
+library(dplyr)
+library(tidyr)
+
+df <- read.csv("data.csv")
+```
+### 3. Déterminer les variables potentielles
+
+```r
+r$> names(df)
+ [1] "ses_gender"                        "ses_income"                        "ses_housing"                       "ses_language"                     
+ [5] "ses_religion"                      "ses_education"                     "ses_ethnicity"                     "ses_immigrant"                    
+ [9] "ses_skin_tone"                     "lifestyle_pets"                    "lifestyle_album"                   "lifestyle_movie"                  
+[13] "lifestyle_prius"                   "ses_postal_code"                   "lifestyle_coffee"                  "lifestyle_gpt_freq"               
+[17] "lifestyle_transport"               "lifestyle_yoga_freq"               "lifestyle_guns_number"             "lifestyle_classic_meal"           
+[21] "lifestyle_fishing_freq"            "lifestyle_hunting_freq"            "ses_sexual_orientation"            "lifestyle_eat_meat_freq"          
+[25] "lifestyle_clothing_style"          "lifestyle_motorized_freq"          "lifestyle_videogame_freq"          "lifestyle_alcohol_favorite"       
+[29] "ses_religiosity_importance"        "lifestyle_nonmotorized_freq"       "lifestyle_watch_soccer_freq"       "lifestyle_movie_barbenheimer"     
+[33] "lifestyle_watch_baseball_freq"     "lifestyle_volunteeringsocial_freq"
+```
+## Comment faire ?{.smaller}
+
+### 4. Cleaner les variables à évaluer pour qu'elles soient numériques
+
+```r
+df_clean <- data.frame(id = 1:nrow(df))
+
+# Variable de fréquence de pêche
+table(df$lifestyle_fishing_freq)
+df_clean$lifestyle_fishing_freq_scale<- NA
+df_clean$lifestyle_fishing_freq_scale[df$lifestyle_fishing_freq == "Never"] <- 0    
+df_clean$lifestyle_fishing_freq_scale[df$lifestyle_fishing_freq == "Almost never"] <- 0.25
+df_clean$lifestyle_fishing_freq_scale[df$lifestyle_fishing_freq == "Sometimes"] <- 0.5
+df_clean$lifestyle_fishing_freq_scale[df$lifestyle_fishing_freq == "Often"] <- 0.75
+df_clean$lifestyle_fishing_freq_scale[df$lifestyle_fishing_freq == " Very often"] <- 1
+table(df_clean$lifestyle_fishing_freq_scale, useNA = "ifany")
+
+saveRDS(df_clean, "data_clean.rds")
+```
+
+## Comment faire ? {.smaller}
+
+::::{.columns}
+
+:::{.column width="55%"}
+
+### 5. Isoler les variables à évaluer
+
+```r
+
+# Sélectionner les variables à évaluer
+df_fa <- df %>%
+  select(lifestyle_fishing_scale, 
+         lifestyle_hunting_scale, 
+         lifestyle_guns_number_scale,
+         lifestyle_motorized_scale, 
+         lifestyle_pickup_scale,
+         lifestyle_eat_meat_scale) %>%
+  drop_na() # Supprimer les valeurs manquantes
+
+```
+
+:::
+
+:::{.column width="45%"}
+
+### 6. Conditions à respecter
+
+1. Un dataframe contenant uniquement les variables à évaluer
+2. AUCUNE valeur manquante
+3. La même échelle de mesure pour toutes les questionc (0-1)
+4. La même orientation pour tous les items (positif ou négatif) 
+
+:::
+
+::::
+
+
+## Comment faire ? {.smaller}
+
+::::{.columns}
+
+:::{.column width="35%"}
+
+### 7. Utiliser la fonction 
+
+`sondr::topdown_fa()`
+
+```r
+# Lancer l'analyse
+sondr::topdown_fa(df_fa)
+```
+
+:::
+
+:::{.column width="65%"}
+
+![](img/redneck_scale_bad.png)
+
+:::
+
+::::
+
+## Comment faire ? {.smaller}
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+### 8. Réesayer 
+
+Essaie erreur jusqu'à trouver une combinaison gagnante
+
+```r
+# Supprimer les variables 
+# non pertinentes
+df_fa_2 <- df_fa %>%
+  select(-c(lifestyle_eat_meat_scale, 
+            lifestyle_pickup_scale)) 
+
+# Relancer l'analyse
+sondr::topdown_fa(df_fa_2)
+
+```
+
+:::
+
+:::{.column width="60%"}
+
+![](img/redneck_scale.png)
+
+:::
+
+::::
+
+
+## La validité?
+
+### Comment la mesurer?
+
+1. **Concordance avec la théorie**
+  - Les questions mesurent-elles bien le concept?
+  - Les résultats sont-ils cohérents avec la littérature?
+
+2. **Concordance avec d'autres mesures**
+  - Les résultats sont-ils similaires à d'autres échelles?
+  - Les résultats sont-ils stables dans le temps?
+
+## Faire l'échelle
+
+### Si la fiabilité et la validité sont acceptables
+
+```R
+df$scale_redneck <- NA
+df$scale_redneck <- (df$lifestyle_motorized_freq_scale +
+                    df$lifestyle_hunting_freq_scale +
+                    df$lifestyle_fishing_freq_scale +
+                    df$lifestyle_pickup_scale +
+                    df$lifestyle_guns_number_scale) / 5
+table(df$scale_redneck)
+hist(df$scale_redneck)
+
+saveRDS(df, "data_scale.rds")
+```
+
+## df$scale_redneck
+
+![](img/redneck_scale_hist.png)
+
+# Conclusion
+
+::: {.incremental}
+1. Les variables latentes sont omniprésentes en sciences sociales
+2. La mesure nécessite une approche systématique
+3. La validation est cruciale pour la qualité
+:::
+
+# La grammaire des graphiques
+
+## Représentation graphique des données{.smaller}
+
+### Principes généraux de la visualisation
+
+- Visualiser des données 
+
+- Éviter les distractions inutiles
+
+- Éviter les graphiques « spaghetti » 
+
+- Évitez les lignes trop complexes qui se chevauchent et s'entremêlent
+
+- Commencer en noir et blanc et utiliser les couleurs de manière efficace
+
+## Les composants de base
+
+![](img/grammaire.svg)
+
+
+
+## Visualisation avec ggplot2{auto-animate=true .smaller}
+
+::::{.columns}
+
+### Initialiser un graphique
+
+```{.r code-line-numbers="1"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) 
+```
+
+:::{.column width="40%"}
+
+- `df` est le dataframe
+- `aes()` est la fonction qui permet de spécifier les variables à utiliser
+- `x` et `y` sont les variables à utiliser pour les axes x et y
+- `color` est la variable à utiliser pour la couleur
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+df <- swiss
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) 
+```
+
+:::
+
+::::
+
+## Visualisation avec ggplot2{auto-animate=true .smaller}
+
+::::{.columns}
+
+### Ajouter un geom_()
+
+```{.r code-line-numbers="2"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) # Le alpha est la transparence
+```
+
+:::{.column width="40%"}
+
+- Il existe plusieurs `geom_()` pour différents types de graphiques
+  - `geom_point()` pour un nuage de points
+  - `geom_line()` pour un graphique linéaire
+  - `geom_bar()` pour un graphique à barres
+  - `geom_histogram()` pour un histogramme
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) # Le alpha est la transparence
+```
+
+:::
+
+::::
+
+## Visualisation avec ggplot2{auto-animate=true .smaller}
+
+### Ajouter une échelle de couleur
+
+```{.r code-line-numbers="3"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") 
+```
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+- `scale_color_gradient()` permet de spécifier les couleurs pour la variable `Education`
+- `low` et `high` sont les couleurs pour les valeurs les plus basses et les plus hautes
+- `name` est le nom de la légende
+- Vous pouvez utiliser les hexcodes pour les couleurs
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") 
+```
+
+
+:::
+
+::::
+
+## Visualisation avec ggplot2{auto-animate=true .smaller}
+
+### Ajouter des titres et des labels
+
+```{.r code-line-numbers="4,5,6,7,8"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) 
+```
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) 
+```
+
+:::
+
+::::
+
+## Visualisation avec ggplot2{auto-animate=true .smaller}
+
+### Ajouter un thème
+
+```{.r code-line-numbers="9"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) +
+  theme_minimal()
+```
+
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+- `theme_minimal()` est un thème minimaliste
+- Il existe plusieurs thèmes prédéfinis dans ggplot2
+- Vous pouvez aussi créer votre propre thème
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) +
+  theme_minimal()
+```
+
+:::
+
+::::
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Sauvegarder le graphique
+
+```{.r code-line-numbers="11"}
+ggplot(df, aes(x = Agriculture, y = Fertility, color = Education)) +
+  geom_point(alpha = 0.8) + # Le alpha est la transparence
+  scale_color_gradient(low = "blue", high = "red", name = "Éducation") +
+  labs(
+    title = "Relation entre l'agriculture et la fertilité en Suisse",
+    x = "Pourcentage d'agriculture",
+    y = "Fertilité"
+  ) +
+  theme_minimal()
+
+ggsave("chemin/vers/nom_du_graphique.png", width = 16, height = 9)
+```
+
+- Vous pouvez spécifier le format du graphique (png, pdf, etc.) ainsi que le chemin pour sauvegarder le graphique
+
+## Visualisation avec ggplot2{auto-animate=true}
+
+### Un histogramme de la variable Fertility
+
+```r
+ggplot(df, aes(x = Fertility)) +
+  geom_histogram(fill = "skyblue", color = "white", bins = 5) +
+  labs(
+    title = "Distribution de la fertilité en Suisse",
+    x = "Fertilité",
+    y = "Nombre de cantons"
+  ) +
+  theme_minimal()
+```
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot(df, aes(x = Fertility)) +
+  geom_histogram(fill = "skyblue", color = "white", bins = 5) +
+  labs(
+    title = "Distribution de la fertilité en Suisse",
+    x = "Fertilité",
+    y = "Nombre de cantons"
+  ) +
+  theme_minimal()
+```
+
+:::
+
+::::
+
+## Points clés à retenir
+
+::: {.incremental}
+1. ggplot2 utilise une grammaire des graphiques cohérente
+2. Construire les graphiques couche par couche
+3. La personnalisation est simple mais puissante
+4. Toujours penser à la lisibilité
+:::
+
+
+# Regression linéaire
+
+$$
+\begin{aligned}
+y &= \beta_0 + \beta_1x + \epsilon \\
+\end{aligned}
+$$
+
+```r
+model <- lm(df$y ~ df$x, data = df) # Une seule ligne de code!
+```
+
+## Qu'est-ce que c'est?
+
+- Un outil pour comprendre la relation entre deux variables
+- Permet de prédire une variable à partir d'une autre
+- Trouve la "meilleure ligne" qui représente cette relation
+
+## Visualisation de la régression {.smaller}
+
+```{r historical-plot}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+library(dplyr)
+
+# Create example data for height prediction
+set.seed(123)
+n <- 50
+father_height <- rnorm(n, 175, 7)
+# Using slope of 0.5 to demonstrate regression to mean
+son_height <- 0.5 * father_height + rnorm(n, 85, 5)
+height_data <- data.frame(father = father_height, son = son_height)
+
+# Add reference line data
+ref_data <- data.frame(
+  x = c(min(father_height), max(father_height)),
+  y = c(min(father_height), max(father_height))
+)
+
+ggplot(height_data, aes(x = father, y = son)) +
+  # Add reference line first (what Galton expected)
+  geom_line(data = ref_data, aes(x = x, y = y), 
+            color = "gray", linetype = "dashed", size = 1) +
+  geom_point(alpha = 0.6, color = "#1f77b4") +
+  geom_smooth(method = "lm", color = "#d62728", se = FALSE) +
+  labs(
+    title = "La découverte de Galton",
+    subtitle = "Ligne pointillée: ce qu'il attendait (pente = 1)\nLigne rouge: ce qu'il a observé (pente < 1)",
+    x = "Taille du père (cm)",
+    y = "Taille du fils (cm)"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  ) +
+  annotate("text", x = 185, y = 165, 
+           label = "Régression\nvers la moyenne", 
+           color = "#d62728", 
+           size = 4)
+```
+
+## Comment ça marche? {.smaller transition="none"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Create example data for intuitive understanding
+set.seed(456)
+x <- seq(1, 10, length.out = 30)
+y <- 2 * x + rnorm(30, 0, 1.5)
+intuitive_data <- data.frame(x = x, y = y)
+
+ggplot(intuitive_data, aes(x = x, y = y)) +
+  geom_point(color = "#1f77b4", size = 3) +
+  labs(
+    title = "La régression trouve la meilleure ligne",
+    subtitle = "Elle minimise la distance entre les points et la ligne",
+    x = "Variable X",
+    y = "Variable Y"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+::: {.notes}
+La régression trouve la ligne qui passe "au mieux" à travers les points.
+Plus les points sont proches de la ligne, meilleure est la régression.
+:::
+
+## Comment ça marche? {.smaller transition="none"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(intuitive_data, aes(x = x, y = y)) +
+  geom_smooth(method = "lm", color = "#d62728", se = FALSE) +
+  geom_point(color = "#1f77b4", size = 3) +
+  geom_segment(
+    aes(xend = x, yend = predict(lm(y ~ x))),
+    color = "darkgray",
+    linetype = "dashed"
+  ) +
+  labs(
+    title = "La régression trouve la meilleure ligne",
+    subtitle = "Elle minimise la distance entre les points et la ligne",
+    x = "Variable X",
+    y = "Variable Y"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+## Comment ça marche? {.smaller transition="none"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Create example data for intuitive understanding
+set.seed(456)
+x <- seq(1, 10, length.out = 30)
+y <- 2 * x + rnorm(30, 0, 1.5)
+intuitive_data <- data.frame(x = x, y = y)
+
+ggplot(intuitive_data, aes(x = x, y = y)) +
+  geom_point(color = "#1f77b4", size = 3) +
+  geom_smooth(method = "lm", color = "#d62728", se = TRUE) +
+  labs(
+    title = "La régression trouve la meilleure ligne",
+    subtitle = "Elle minimise la distance entre les points et la ligne",
+    x = "Variable X",
+    y = "Variable Y"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+## Pourquoi utiliser la régression?
+
+- Comprendre les relations entre variables
+- Prédire des valeurs futures
+- Tester des hypothèses scientifiques
+- Contrôler pour plusieurs facteurs à la fois
+
+## Régression
+
+```r
+model <- lm(df$ses_education ~ df$redneck_scale)
+
+summary(model)
+
+modelsummary::modelsummary(
+  model,
+  output = "results/tables/regression.md",
+  stars = TRUE,
+  title = "Régression linéaire simple"
+)
+```
+## {transition="none"}
+
+![](img/00_regression.png) 
+
+## {transition="none"}
+
+![](img/01_regression.png)
+
+## {transition="none"}
+
+![](img/02_regression.png)
+
+## {transition="none"}
+
+![](img/03_regression.png)
+
+## {transition="none"}
+
+![](img/04_regression.png)
+
+## {transition="none"}
+
+![](img/05_regression.png)
+
+## {transition="none"}
+
+![](img/06_regression.png)
+
+## {transition="none"}
+
+![](img/07_regression.png)
+
+## {transition="none"}
+
+![](img/08_regression.png)
+
+## {transition="none"}
+
+![](img/09_regression.png)
+
+## {transition="none"}
+
+![](img/10_regression.png)
+
+## {transition="none"}
+
+![](img/11_regression.png)
+
+## {transition="none"}
+
+![](img/12_regression.png)
+
+
+## Points clés à retenir
+
+::: {.incremental}
+1. Toujours explorer vos données avant l'analyse
+2. Interpréter les résultats avec prudence
+3. Visualiser pour mieux comprendre
+:::
+
+# Conclusion

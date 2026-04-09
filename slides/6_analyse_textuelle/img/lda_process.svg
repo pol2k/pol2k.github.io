@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <!-- Arrow style -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- Box 1: Textes bruts -->
+  <rect x="20" y="50" width="180" height="100" rx="5" fill="#e8f4f8" stroke="#333" stroke-width="2"/>
+  <text x="110" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Textes bruts</text>
+
+  <!-- Arrow 1 -->
+  <line x1="200" y1="100" x2="260" y2="100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Box 2: Tokenisation + nettoyage -->
+  <rect x="260" y="50" width="180" height="100" rx="5" fill="#b8dce8" stroke="#333" stroke-width="2"/>
+  <text x="350" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Tokenisation +</text>
+  <text x="350" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">nettoyage</text>
+
+  <!-- Arrow 2 -->
+  <line x1="440" y1="100" x2="500" y2="100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Box 3: Matrice document-terme -->
+  <rect x="500" y="50" width="180" height="100" rx="5" fill="#88c4d8" stroke="#333" stroke-width="2"/>
+  <text x="590" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Matrice</text>
+  <text x="590" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">document-terme</text>
+
+  <!-- Arrow 3 -->
+  <line x1="680" y1="100" x2="740" y2="100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Box 4: Modèle LDA -->
+  <rect x="740" y="50" width="180" height="100" rx="5" fill="#58acc8" stroke="#333" stroke-width="2"/>
+  <text x="830" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Modèle LDA</text>
+
+  <!-- Arrow 4 -->
+  <line x1="920" y1="100" x2="980" y2="100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Box 5: Topics découverts -->
+  <rect x="980" y="50" width="180" height="100" rx="5" fill="#2894b8" stroke="#333" stroke-width="2"/>
+  <text x="1070" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Topics</text>
+  <text x="1070" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">découverts</text>
+</svg>

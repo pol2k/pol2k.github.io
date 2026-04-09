@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <!-- Background -->
+  <rect width="400" height="600" fill="white"/>
+  
+  <!-- Boxes -->
+  <g fill="#9CA3AF" stroke="none">
+    <rect x="150" y="40" width="100" height="60" rx="4"/>
+    <rect x="150" y="140" width="100" height="60" rx="4"/>
+    <rect x="150" y="240" width="100" height="60" rx="4"/>
+    <rect x="150" y="340" width="100" height="60" rx="4"/>
+    <rect x="150" y="440" width="100" height="60" rx="4"/>
+    <rect x="150" y="540" width="100" height="60" rx="4"/>
+  </g>
+  
+  <!-- Solid Arrows -->
+  <g stroke="#4B5563" stroke-width="2" fill="none">
+    <path d="M200 100 L200 140"/>
+    <path d="M200 200 L200 240"/>
+    <path d="M200 300 L200 340"/>
+    <path d="M200 400 L200 440"/>
+    <path d="M200 500 L200 540"/>
+  </g>
+  
+  <!-- Dotted feedback arrow -->
+  <path d="M250 570 C300 570 300 70 250 70" stroke="#4B5563" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+  
+  <!-- Arrow heads for solid arrows -->
+  <g fill="#4B5563">
+    <path d="M200 140 L195 130 L205 130 Z"/>
+    <path d="M200 240 L195 230 L205 230 Z"/>
+    <path d="M200 340 L195 330 L205 330 Z"/>
+    <path d="M200 440 L195 430 L205 430 Z"/>
+    <path d="M200 540 L195 530 L205 530 Z"/>
+    <!-- Separate arrowhead for feedback arrow -->
+    <path d="M250 70 L245 80 L255 80 Z"/>
+  </g>
+  
+  <!-- Text -->
+  <g fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">
+    <text x="200" y="75">Question</text>
+    <text x="200" y="175">Théorie</text>
+    <text x="200" y="275">Hypothèses</text>
+    <text x="200" y="375">Méthodologie</text>
+    <text x="200" y="475">Résultats</text>
+    <text x="200" y="575">Conclusion</text>
+  </g>
+  
+  <!-- Contribution label -->
+  <text x="320" y="300" fill="#4B5563" font-family="Arial, sans-serif" font-size="14" writing-mode="tb">Contribution</text>
+</svg>

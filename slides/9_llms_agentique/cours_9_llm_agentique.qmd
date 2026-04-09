@@ -1,0 +1,180 @@
+---
+title: "L'IA agentique"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: Laurence-Olivier M. Foisy
+institute: Université de Montréal
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    logo: img/udem.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: none
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+    highlight-style: github
+    embed-resources: true
+---
+
+## Structure du cours
+
+![](img/structure_cours.png)
+
+## Structure du cours
+
+![](img/structure_cours_1.png)
+
+## Structure du cours
+
+![](img/structure_cours_2.png)
+
+## TP 3
+
+![](img/tp3.png){.absolute top=250 right=150}
+
+## {background-image="img/llm_text.png"}
+
+# IA agentique
+
+## C'est quoi un agent ?
+
+::: {.r-stack}
+
+![](img/007.png){.absolute top=320 right=800 .fragment}
+
+
+![](img/smith.png){.absolute top=350 right=-100 .fragment}
+
+![](img/47.png){.absolute top=-100 right=-200 style="transform: rotate(-180deg);" width="40%" .fragment}
+
+:::
+
+## C'est quoi un agent ?
+
+::: {.r-stack}
+
+![](img/remax.png){.absolute top=200 right=-100 .fragment}
+
+![](img/voyage.png){.absolute top=250 right=600 .fragment width="70%"}
+
+:::
+
+## C'est quoi un agent ?
+
+Un agent est une entité autonome mandatée pour agir dans le monde afin de produire un effet au nom d'un objectif ou d'un mandant.
+
+- **La délégation**
+
+- **L'autonomie**
+
+- **L'effectivité** 
+
+## Donc ?
+
+L'IA Agentique est une façon de faire accomplir des actions  un LLM
+
+
+### Comment ? 
+
+Les LLM ne font que générer du texte ?
+
+## Donc ?
+
+L'IA Agentique est une façon de faire accomplir des actions  un LLM
+
+### Comment ?
+
+![](img/Gnu-bash-logo.svg)
+
+## LLM - Génération de texte
+
+![](img/llm_isole_texte_seulement_fr.svg)
+
+## LLM - Faire des actions
+
+![](img/claude_code_pont_local_cloud_fr.svg)
+
+## Les outils
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+### Terminal
+
+- Claude Code
+- Codex
+- Gemini-cli
+- OpenCode
+- Crush
+
+:::
+
+:::{.column width="50%"}
+
+### IDE/UI
+
+- Cursor
+- GitHub Copilot
+- Claude Desktop / Cowork
+- Etc. 
+
+:::
+
+::::
+
+# MCP
+
+::: {.r-stack}
+
+![](img/consensus.png){.absolute top=320 right=800 .fragment}
+
+![](img/notion.png){.absolute top=350 right=400 .fragment}
+
+![](img/drive.png){.absolute top=200 right=300 .fragment}
+
+![](img/brave.png){.absolute top=-100 right=200 .fragment}
+
+![](img/github.png){.absolute top=100 right=600}
+
+:::
+
+## C'est quoi un MCP ? {background="black"}
+
+![](img/api_vs_mcp_flow.svg){.absolute top=200 right=100 width="110%"}
+
+
+# 
+
+![](img/openclaw.png)
+
+## 
+
+![](img/openclaw_github.png)
+
+##
+
+![](img/clawhub.png)
+
+##
+
+![](img/clawhub_skill.png)
+
+## 
+
+![](img/moltbook.png)
+
+## Qu'est-ce qu'on fait avec des agents ?
+
+- La collecte de données automatisée 
+
+- Le nettoyage de données (Tidy Data) 
+
+- La simulation de données sociales ?
+
+- Avez vous des idées ?
+
+# Installer OpenClaw ?

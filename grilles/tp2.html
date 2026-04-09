@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="fr" style="overflow: hidden; height: 100%;">
+<head>
+    <title>Correction TP2 - FAS1001</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <style>
+        /* Bold & Large Full Screen Layout */
+        html, body { 
+            height: 100vh; 
+            overflow: hidden; 
+            background: #f1f5f9 !important; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        
+        #main { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            padding: 0.75rem;
+            box-sizing: border-box;
+        }
+
+        /* Header - Bold and clear */
+        header.compact-header {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #1e293b;
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-info h2 { font-size: 1.4rem !important; margin: 0 !important; color: white !important; font-weight: 800; letter-spacing: -0.02em; }
+        
+        .header-actions { display: flex; align-items: center; gap: 2rem; }
+        .score-display { font-size: 2.2rem; font-weight: 900; color: #4ade80; line-height: 1; }
+        .score-total { font-size: 1.1rem; opacity: 0.7; font-weight: 600; }
+
+        .btn-group { display: flex; gap: 0.75rem; }
+        .btn {
+            padding: 0.6rem 1.5rem !important;
+            font-size: 0.9rem !important;
+            font-weight: 800 !important;
+            border-radius: 8px !important;
+            cursor: pointer;
+            height: auto !important;
+            line-height: 1 !important;
+            border: none !important;
+            color: white !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: transform 0.1s;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-copy { background: #3b82f6 !important; }
+        .btn-reset { background: #64748b !important; }
+
+        /* Main Grid */
+        .app-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1rem; 
+            flex: 1; 
+            min-height: 0;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            height: 100%;
+        }
+
+        .section-title { 
+            background: #f8fafc; 
+            padding: 0.75rem 1.25rem; 
+            font-weight: 800; 
+            font-size: 1rem;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .criterion-list {
+            padding: 0.5rem 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around; /* Distribute items to fill height */
+        }
+
+        .criterion-row { 
+            display: flex; 
+            align-items: center; 
+            padding: 0.75rem 0; 
+            border-bottom: 1px solid #f1f5f9; 
+            gap: 1.5rem;
+        }
+        .criterion-row:last-child { border-bottom: none; }
+        
+        .criterion-info { flex: 1; }
+        .criterion-name { font-weight: 800; font-size: 1.2rem; color: #1e293b; display: block; margin-bottom: 2px; }
+        .criterion-desc { font-size: 0.95rem; color: #64748b; line-height: 1.3; display: block; font-weight: 400; }
+        
+        .criterion-pts { width: 100px; flex-shrink: 0; }
+        input[type="number"] { 
+            width: 100%; 
+            padding: 0.6rem; 
+            font-size: 1.5rem; 
+            font-weight: 900;
+            text-align: center; 
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            background: #fff;
+            color: #1e293b;
+            transition: all 0.2s;
+        }
+        input[type="number"]:focus { border-color: #3b82f6; outline: none; background: #eff6ff; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+
+        /* Toast */
+        .toast { 
+            position: fixed; top: 5rem; right: 2rem; background: #10b981; color: white;
+            padding: 1rem 2rem; border-radius: 10px; font-weight: 800; font-size: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-150px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000;
+        }
+        .toast.visible { transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <div id="toast" class="toast">COPIÉ DANS LE PRESSE-PAPIER ! 📋</div>
+
+    <div id="main">
+        <header class="compact-header">
+            <div class="header-info">
+                <h2>GRILLE DE CORRECTION • TP2</h2>
+            </div>
+            <div class="header-actions">
+                <div class="score-display">
+                    <span id="total-score">20</span><span class="score-total">/20</span>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-copy" onclick="copyMarkdown()">Copier Markdown</button>
+                    <button class="btn btn-reset" onclick="resetForm()">Réinitialiser</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-grid">
+            <!-- Colonne 1 -->
+            <section class="section-card">
+                <div class="section-title">CONTENU DU RAPPORT <span>8 PTS</span></div>
+                <div class="criterion-list">
+                    <div class="criterion-row" data-section="Rapport" data-max="1.5">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Introduction et question</span>
+                            <span class="criterion-desc">Clarté de la question, contexte et hypothèse</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1.5" value="1.5" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Rapport" data-max="2">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Revue de littérature</span>
+                            <span class="criterion-desc">4 sources académiques, synthèse cohérente</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="2" value="2" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Rapport" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Justification variables</span>
+                            <span class="criterion-desc">Lien entre la question CES et le concept</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Rapport" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Interprétation graphiques</span>
+                            <span class="criterion-desc">Analyse fine des patterns observés</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Rapport" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Discussion</span>
+                            <span class="criterion-desc">Lien avec littérature et limites du travail</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Rapport" data-max="1.5">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Mesure alternative</span>
+                            <span class="criterion-desc">Proposition concrète et réaliste</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1.5" value="1.5" class="score-input" /></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Colonne 2 -->
+            <section class="section-card">
+                <div class="section-title">VOLET TECHNIQUE <span>12 PTS</span></div>
+                <div class="criterion-list">
+                    <div class="criterion-row" data-section="Technique" data-max="2">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Structure du projet</span>
+                            <span class="criterion-desc">Organisation des dossiers et fichiers</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="2" value="2" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="3">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Scripts R: Nettoyage</span>
+                            <span class="criterion-desc">Recodage 0-1 et propreté du code</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="3" value="3" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Scripts R: Chemins</span>
+                            <span class="criterion-desc">Utilisation de chemins relatifs fonctionnels</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Scripts R: Documentation</span>
+                            <span class="criterion-desc">Commentaires et clarté des étapes</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="3">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Graphiques</span>
+                            <span class="criterion-desc">Axes titrés, échelle 0-1 et esthétique</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="3" value="3" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Quarto et PDF</span>
+                            <span class="criterion-desc">Métadonnées et compilation sans erreur</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                    <div class="criterion-row" data-section="Technique" data-max="1">
+                        <div class="criterion-info">
+                            <span class="criterion-name">Citations et biblio</span>
+                            <span class="criterion-desc">Format automatisé et références complètes</span>
+                        </div>
+                        <div class="criterion-pts"><input type="number" step="0.25" min="0" max="1" value="1" class="score-input" /></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function resetForm() {
+            if (confirm('Réinitialiser la grille ?')) {
+                localStorage.removeItem('tp2_grille_data');
+                location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem('tp2_grille_data');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                const scores = data.scores || [];
+                document.querySelectorAll('.score-input').forEach((input, index) => {
+                    if (scores[index] !== undefined) input.value = scores[index];
+                });
+                calculateTotal();
+            }
+            document.querySelector('.score-input').focus();
+        });
+
+        document.addEventListener('focusin', (e) => {
+            if (e.target.classList.contains('score-input')) e.target.select();
+        });
+
+        function saveData() {
+            const data = {
+                scores: Array.from(document.querySelectorAll('.score-input')).map(i => i.value)
+            };
+            localStorage.setItem('tp2_grille_data', JSON.stringify(data));
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            document.querySelectorAll('.score-input').forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
+            document.getElementById('total-score').innerText = total.toFixed(2).replace('.00', '');
+            saveData();
+        }
+
+        document.querySelectorAll('.score-input').forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        function copyMarkdown() {
+            const total = document.getElementById('total-score').innerText;
+            let md = `## Grille de correction - TP2\n\n`;
+            md += `| Critère | Note |\n|:---|:---:|\n`;
+            let currentSection = "";
+            document.querySelectorAll('.criterion-row').forEach(row => {
+                const section = row.getAttribute('data-section');
+                const name = row.querySelector('.criterion-name').innerText;
+                const max = row.getAttribute('data-max');
+                const score = row.querySelector('.score-input').value;
+                if (section !== currentSection) {
+                    md += `| **${section === "Rapport" ? "CONTENU DU RAPPORT" : "VOLET TECHNIQUE"}** | |\n`;
+                    currentSection = section;
+                }
+                md += `| ${name} | ${score} / ${max} |\n`;
+            });
+            md += `| **TOTAL** | **${total} / 20** |\n`;
+
+            navigator.clipboard.writeText(md).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('visible');
+                setTimeout(() => toast.classList.remove('visible'), 2000);
+            });
+        }
+    </script>
+</body>
+</html>

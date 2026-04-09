@@ -1,0 +1,30 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cercles concentriques -->
+    <circle cx="400" cy="250" r="200" fill="#bfdbfe" opacity="0.3"/>
+    <circle cx="400" cy="250" r="150" fill="#60a5fa" opacity="0.4"/>
+    <circle cx="400" cy="250" r="100" fill="#3b82f6" opacity="0.6"/>
+    <circle cx="400" cy="250" r="50" fill="#1d4ed8" opacity="0.8"/>
+
+    <!-- Légendes avec lignes -->
+    <!-- Population cible -->
+    <line x1="600" y1="250" x2="650" y2="250" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="660" y="255" font-size="14" fill="#1e3a8a">Population cible</text>
+    
+    <!-- Base de sondage -->
+    <line x1="550" y1="200" x2="650" y2="200" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="660" y="205" font-size="14" fill="#1e3a8a">Base de sondage</text>
+    
+    <!-- Échantillon -->
+    <line x1="500" y1="150" x2="650" y2="150" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="660" y="155" font-size="14" fill="#1e3a8a">Échantillon</text>
+    
+    <!-- Répondants -->
+    <line x1="450" y1="100" x2="650" y2="100" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="660" y="105" font-size="14" fill="#1e3a8a">Répondants</text>
+
+    <!-- Titre -->
+    <text x="400" y="450" text-anchor="middle" font-size="16" fill="#1e3a8a" font-weight="bold">Les différents niveaux de représentativité</text>
+
+    <!-- Description -->
+    <text x="400" y="475" text-anchor="middle" font-size="14" fill="#475569">Chaque niveau introduit potentiellement des biais de représentation</text>
+</svg>

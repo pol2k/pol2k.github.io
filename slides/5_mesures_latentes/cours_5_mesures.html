@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<script src="cours_5_mesures_files/libs/clipboard/clipboard.min.js"></script>
+<script src="cours_5_mesures_files/libs/quarto-html/tabby.min.js"></script>
+<script src="cours_5_mesures_files/libs/quarto-html/popper.min.js"></script>
+<script src="cours_5_mesures_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="cours_5_mesures_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="cours_5_mesures_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="cours_5_mesures_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="Laurence-Olivier M. Foisy">
+  <title>Les mesures et les analyses statistiques</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="cours_5_mesures_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="cours_5_mesures_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="cours_5_mesures_files/libs/revealjs/dist/theme/quarto-7262fb28817f0fdf3c802d565bf43787.css">
+  <link href="cours_5_mesures_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="cours_5_mesures_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="cours_5_mesures_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="cours_5_mesures_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Les mesures et les analyses statistiques</h1>
+  <p class="subtitle">Introduction aux mégadonnées en sciences sociales</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Laurence-Olivier M. Foisy 
+</div>
+        <p class="quarto-title-affiliation">
+            Université de Montréal
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="retour-sur-le-quiz-1" class="slide level2 smaller">
+<h2>Retour sur le Quiz 1</h2>
+<h3 id="questions">Questions</h3>
+<ul>
+<li>Trop facile?</li>
+<li>Combien d’heures ça vous a pris?</li>
+<li>Comprenez vous la structure du code? <code>1_</code>, <code>2_</code>, <code>3_</code>?</li>
+<li>Comprenez vous la fonction <code>source()</code>?</li>
+<li>Regarder sur GitHub pour voir si votre commit a bien été push</li>
+<li>Utiliser le terminal de Positron</li>
+<li>Ouvrir les pdf directement dans Positron</li>
+<li>Activer la sauvegarde automatique</li>
+<li>Activer la mini-map pour naviguer dans les fichiers</li>
+</ul>
+</section>
+<section id="votre-gabarit-quarto" class="slide level2">
+<h2>Votre gabarit Quarto</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">quarto</span> use template fas1001/gabarit_udem</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="structure-du-cours" class="slide level2">
+<h2>Structure du cours</h2>
+<div class="r-stack">
+<p><img data-src="img/structure_cours.png"></p>
+<p><img data-src="img/structure_cours_1.png" class="fragment"></p>
+</div>
+</section>
+<section id="cours-5" class="title-slide slide level1 center">
+<h1>Cours 5</h1>
+<ul>
+<li><p><strong>Le problème</strong> : On veut étudier des choses invisibles (concepts).</p></li>
+<li><p><strong>La solution</strong> : Construire des échelles de mesure</p></li>
+<li><p><strong>La vérification</strong> : Est-ce que mon échelle est fiable et valide?</p></li>
+<li><p><strong>L’application</strong> : Maintenant que j’ai mesuré mon concept, comment il interagit avec le monde ? (Visualisation -&gt; Régression).</p></li>
+</ul>
+</section>
+
+<section>
+<section id="les-variables-latentes" class="title-slide slide level1 center">
+<h1>Les variables latentes</h1>
+
+</section>
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<h3 id="quest-ce-quune-variable-latente">Qu’est-ce qu’une variable latente?</h3>
+<ul>
+<li>Une caractéristique qui ne peut pas être mesurée directement
+<ul>
+<li>Idéologie politique</li>
+<li>Le support à l’environnement</li>
+<li>L’intelligence</li>
+</ul></li>
+<li>Doit être inférée à partir d’autres variables observables</li>
+<li>Concept central en sciences sociales</li>
+</ul>
+</section>
+<section id="exemple-mesurer-lintelligence" class="slide level2">
+<h2>Exemple : Mesurer l’intelligence</h2>
+
+<img data-src="img/intelligence.svg" class="r-stretch"><aside class="notes">
+<ul>
+<li>L’intelligence est un concept multidimensionnel</li>
+<li>Chaque branche représente une facette différente</li>
+<li>Les tests doivent capturer cette complexité</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="défi-de-mesure" class="slide level2">
+<h2>Défi de mesure</h2>
+<h3 id="pourquoi-cest-complexe">Pourquoi c’est complexe?</h3>
+<ol type="1">
+<li class="fragment"><strong>Abstraction</strong> : Les concepts sont souvent abstraits</li>
+<li class="fragment"><strong>Multidimensionnalité</strong> : Plusieurs aspects à considérer</li>
+<li class="fragment"><strong>Subjectivité</strong> : Interprétation variable selon le contexte</li>
+</ol>
+</section></section>
+<section>
+<section id="échelle-de-mesure" class="title-slide slide level1 center">
+<h1>Échelle de mesure</h1>
+
+</section>
+<section id="échelle-de-lattitude-politique" class="slide level2" data-transition="none">
+<h2>échelle de l’attitude politique</h2>
+
+<img data-src="img/politique_1.svg" class="r-stretch"></section>
+<section id="échelle-de-lattitude-politique-1" class="slide level2" data-transition="none">
+<h2>échelle de l’attitude politique</h2>
+
+<img data-src="img/politique_2.svg" class="r-stretch"></section>
+<section id="échelle-de-lattitude-politique-2" class="slide level2" data-transition="none">
+<h2>échelle de l’attitude politique</h2>
+
+<img data-src="img/politique_3.svg" class="r-stretch"></section>
+<section id="échelle-de-lattitude-politique-3" class="slide level2" data-transition="none">
+<h2>échelle de l’attitude politique</h2>
+
+<img data-src="img/politique_4.svg" class="r-stretch"></section>
+<section id="léchelle-didéologie-de-merkley-2022" class="slide level2">
+<h2>L’échelle d’idéologie de Merkley (2022)</h2>
+
+<img data-src="img/merkley_scale.svg" class="r-stretch"></section>
+<section id="les-8-questions-de-létude-merkley-2022" class="slide level2">
+<h2>Les 8 questions de l’étude (Merkley, 2022)</h2>
+
+<img data-src="img/merkley_questions.svg" class="r-stretch"></section>
+<section id="concept-latent-rednecks" class="slide level2">
+<h2>Concept latent : Rednecks</h2>
+<ul>
+<li>Est-ce que l’éducation influence la probabilité d’être un “redneck”?</li>
+<li>Aucune question ne demande directement si quelqu’un est un “redneck”</li>
+<li>Mais on peut inférer ce statut à partir d’autres variables</li>
+<li>Créer une variable de “redneckitude”</li>
+</ul>
+</section>
+<section id="solution-les-échelles-de-mesure" class="slide level2 smaller">
+<h2>Solution : Les échelles de mesure</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="comment-procéder">Comment procéder?</h3>
+<ol type="1">
+<li><strong>Identifier les dimensions clés</strong>
+<ul>
+<li>Décomposer le concept</li>
+<li>Définir les aspects mesurables</li>
+</ul></li>
+<li><strong>Créer des indicateurs</strong>
+<ul>
+<li>Questions précises</li>
+<li>Observations concrètes</li>
+</ul></li>
+<li><strong>Valider l’échelle</strong>
+<ul>
+<li>Fiabilité : Tests statistiques</li>
+<li>Validité : Théorique</li>
+</ul></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/redneck_concept.svg" style="width:100.0%"></p>
+</div></div>
+</section></section>
+<section id="hipster" class="title-slide slide level1 center" data-transition="none">
+<h1>Hipster?</h1>
+
+</section>
+
+<section id="tiktok-brain" class="title-slide slide level1 center" data-transition="none">
+<h1>TikTok brain?</h1>
+
+</section>
+
+<section id="confiance-envers-le-gouvernement" class="title-slide slide level1 center" data-transition="none">
+<h1>Confiance envers le gouvernement?</h1>
+
+</section>
+
+<section>
+<section id="évaluation-de-la-qualité" class="title-slide slide level1 center">
+<h1>Évaluation de la qualité</h1>
+
+</section>
+<section id="critères-essentiels" class="slide level2" data-transition="none">
+<h2>Critères essentiels</h2>
+
+<img data-src="img/qualite_1.svg" class="r-stretch"></section>
+<section id="critères-essentiels-1" class="slide level2" data-transition="none">
+<h2>Critères essentiels</h2>
+
+<img data-src="img/qualite_2.svg" class="r-stretch"></section>
+<section id="critères-essentiels-2" class="slide level2" data-transition="none">
+<h2>Critères essentiels</h2>
+
+<img data-src="img/qualite_3.svg" class="r-stretch"></section></section>
+<section>
+<section id="fiabilité" class="title-slide slide level1 center">
+<h1>Fiabilité</h1>
+
+</section>
+<section id="fiabilité-mesure-statistique" class="slide level2">
+<h2>Fiabilité : Mesure Statistique</h2>
+<h3 id="analyse-factorielle">Analyse factorielle</h3>
+<ul>
+<li>Détecte automatiquement ces anomalies</li>
+<li>Vérifie si toutes les questions mesurent la même compétence</li>
+<li>Aide à améliorer la qualité des examens</li>
+<li>Guide la révision des questions problématiques</li>
+</ul>
+</section>
+<section id="examen-dhistoire" class="slide level2">
+<h2>Examen d’histoire</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
+<ul>
+<li>Certains étudiants excellent naturellement</li>
+<li>D’autres sont dans la moyenne</li>
+<li>Certains ont plus de difficulté</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lexamen-dhistoire-5-questions" class="slide level2 smaller">
+<h2>L’examen d’histoire : 5 questions</h2>
+<h3 id="notre-hypothèse">Notre hypothèse</h3>
+<ul>
+<li>Chaque question mesure la <strong>compétence en histoire</strong></li>
+<li>Les bons élèves devraient bien répondre</li>
+<li>Les élèves moyens répondront moyennement bien</li>
+<li>Les élèves en difficulté auront plus de mal</li>
+</ul>
+</section>
+<section id="distribution-typique-dun-examen" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Distribution typique d’un examen</h2>
+<div data-id="dist-plot">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-typique-dun-examen-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Distribution typique d’un examen</h2>
+<div data-id="dist-plot">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-par-groupes-délèves" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Distribution par groupes d’élèves</h2>
+<div data-id="dist-plot">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-causes-de-la-guerre" class="slide level2" data-transition="none">
+<h2>Question 1 : Causes de la guerre</h2>
+<p>“Quels événements ont directement mené au déclenchement de la Seconde Guerre Mondiale en Europe?”</p>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="question-2-analyse-stratégique" class="slide level2" data-transition="none">
+<h2>Question 2 : Analyse stratégique</h2>
+<p>“Expliquez pourquoi l’opération Barbarossa a été un tournant décisif dans la guerre.”</p>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="question-3-impact-économique" class="slide level2" data-transition="none">
+<h2>Question 3 : Impact économique</h2>
+<p>“Analysez comment la mobilisation industrielle des États-Unis a influencé l’issue de la guerre.”</p>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="question-4-conséquences-géopolitiques" class="slide level2" data-transition="none">
+<h2>Question 4 : Conséquences géopolitiques</h2>
+<p>“Évaluez comment les accord de Yalta ont redessiné la carte politique de l’Europe.”</p>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="question-5-cigares-de-churchill" class="slide level2" data-transition="none">
+<h2>Question 5 : Cigares de Churchill</h2>
+<p>“Quelle était la marque de cigares préférée de Winston Churchill?”</p>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="une-question-suspecte" class="slide level2">
+<h2>Une question suspecte</h2>
+<p>Cette question mesure-t-elle vraiment la <strong>compétence en histoire</strong>?</p>
+<p>Ou mesure-t-elle autre chose?</p>
+<ul>
+<li>Culture populaire?</li>
+<li>Connaissance des cigares?</li>
+</ul>
+</section>
+<section id="ce-qui-cloche" class="slide level2">
+<h2>Ce qui cloche</h2>
+<ul>
+<li>Les meilleurs élèves échouent mystérieusement</li>
+<li>Les élèves en difficulté excellent soudainement</li>
+<li>La question ne mesure pas la compétence en histoire</li>
+</ul>
+</section>
+<section id="lanalyse-factorielle-compare-toutes-les-questions" class="slide level2">
+<h2>L’analyse factorielle compare toutes les questions</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1440"></section>
+<section id="comment-ça-marche" class="slide level2">
+<h2>Comment ça marche?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="lanalyse-factorielle-vérifie">L’analyse factorielle vérifie</h3>
+<ol type="1">
+<li>La corrélation entre les questions</li>
+<li>Le pattern des réponses</li>
+<li>Les questions qui “détonnent”</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<h3 id="nos-résultats">Nos résultats</h3>
+<ul>
+<li><strong>Questions 1-4</strong> : ✅
+<ul>
+<li>Causes de la guerre</li>
+<li>Opération Barbarossa</li>
+<li>Impact économique</li>
+<li>Accords de Yalta</li>
+</ul></li>
+<li><strong>Question 5</strong> : ❌
+<ul>
+<li>Cigares de Churchill</li>
+</ul></li>
+</ul>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Les 4 premières questions mesurent bien la compétence en histoire</li>
+<li>La question sur les cigares mesure autre chose (Connaissance des cigares? Culture populaire?)</li>
+<li>L’analyse factorielle détecte automatiquement ces patterns</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="en-résumé" class="slide level2">
+<h2>En résumé</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="une-bonne-question-dhistoire-devrait">Une bonne question d’histoire devrait:</h3>
+<ul>
+<li>Tester la compréhension historique</li>
+<li>Montrer une distribution “normale”</li>
+<li>Discriminer selon la compétence</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="une-question-problématique-peut">Une question problématique peut:</h3>
+<ul>
+<li>Tester des connaissances non pertinentes</li>
+<li>Montrer une distribution inversée</li>
+<li>Ne pas refléter la compétence visée</li>
+</ul>
+</div></div>
+</section>
+<section id="analyse-factorielle-1" class="slide level2">
+<h2>Analyse factorielle</h2>
+<h3 id="trois-mesures-statistiques">Trois mesures statistiques</h3>
+<ol type="1">
+<li><strong>Alpha de Cronbach</strong></li>
+<li><strong>Première valeur propre (Eigenvalue)</strong></li>
+<li><strong>Coefficient de saturation (Factor loading)</strong></li>
+</ol>
+</section></section>
+<section>
+<section id="lalpha-de-cronbach" class="title-slide slide level1 center">
+<h1>L’Alpha de Cronbach</h1>
+
+</section>
+<section id="quest-ce-que-cest" class="slide level2">
+<h2>Qu’est-ce que c’est?</h2>
+<ul>
+<li>Une mesure de la <strong>cohérence interne</strong> d’un ensemble de questions</li>
+<li>Indique si les questions mesurent bien la même chose</li>
+<li>Varie entre 0 et 1 (plus c’est proche de 1, meilleur c’est)</li>
+</ul>
+</section>
+<section id="exemple-simple" class="slide level2">
+<h2>Exemple Simple</h2>
+<ul>
+<li>Imaginons un questionnaire sur la satisfaction au travail avec 4 questions :
+<ul>
+<li>“J’aime mon travail”</li>
+<li>“Je suis heureux au bureau”</li>
+<li>“Mon travail me satisfait”</li>
+<li>“Je m’épanouis dans mon travail”</li>
+</ul></li>
+<li>Si les réponses sont cohérentes entre elles → Alpha élevé</li>
+<li>Si les réponses sont contradictoires → Alpha faible</li>
+</ul>
+</section>
+<section id="en-pratique" class="slide level2">
+<h2>En pratique</h2>
+<ul>
+<li>Alpha &gt; 0.6 : Acceptable</li>
+<li>Alpha &gt; 0.7 : Bon</li>
+<li>Alpha &gt; 0.8 : Excellent</li>
+</ul>
+</section></section>
+<section>
+<section id="la-première-valeur-propre-first-eigenvalue" class="title-slide slide level1 center">
+<h1>La Première Valeur Propre (First Eigenvalue)</h1>
+
+</section>
+<section id="quest-ce-que-cest-1" class="slide level2">
+<h2>Qu’est-ce que c’est?</h2>
+<ul>
+<li>Indique la <strong>force du concept principal</strong> mesuré par vos questions</li>
+<li>Plus elle est élevée, plus vos questions mesurent un concept unique et fort</li>
+</ul>
+</section>
+<section id="analogie-simple" class="slide level2">
+<h2>Analogie Simple</h2>
+<p>5 questions pour mesurer les habitudes de vie saines</p>
+<ul>
+<li>“Je ne mange jamais de sucre raffiné”</li>
+<li>“Je privilégie les produits biologiques”</li>
+<li>“Je vais au gym 4 fois par semaine”</li>
+<li>“Je prends des suppléments de protéines”</li>
+<li>“Je possède une montre intelligente pour suivre mon cardio”</li>
+</ul>
+</section>
+<section id="en-pratique-1" class="slide level2">
+<h2>En pratique</h2>
+<ul>
+<li>Valeur &gt; 1 : Acceptable</li>
+<li>Plus la valeur est élevée, plus c’est fiable</li>
+<li>Indique qu’il y a un “facteur dominant” dans vos questions</li>
+</ul>
+</section></section>
+<section>
+<section id="le-coefficient-de-saturationfactor-loading" class="title-slide slide level1 center">
+<h1>Le Coefficient de Saturation(Factor Loading)</h1>
+
+</section>
+<section id="quest-ce-que-cest-2" class="slide level2">
+<h2>Qu’est-ce que c’est?</h2>
+<ul>
+<li>Mesure la <strong>contribution</strong> de chaque question au concept général</li>
+<li>Indique si chaque question est pertinente</li>
+</ul>
+</section>
+<section id="exemple-simple-1" class="slide level2">
+<h2>Exemple Simple</h2>
+<ul>
+<li>Pour un questionnaire sur “l’amour des chats” :
+<ul>
+<li>“Les chats sont doux” → Fort coefficient (pertinent)</li>
+<li>“Je mange des pâtes” → Faible coefficient (non pertinent)</li>
+</ul></li>
+</ul>
+</section>
+<section id="en-pratique-2" class="slide level2">
+<h2>En pratique</h2>
+<ul>
+<li>Coefficient &gt; 0.3 : Acceptable</li>
+<li>Permet d’identifier les questions à garder ou à supprimer</li>
+<li>Plus le coefficient est élevé, plus la question est pertinente</li>
+</ul>
+</section>
+<section id="les-trois-mesures-travaillent-ensemble" class="slide level2">
+<h2>Les trois mesures travaillent ensemble</h2>
+<ul>
+<li><strong>Alpha de Cronbach</strong> : Cohérence globale</li>
+<li><strong>Première valeur propre</strong> : Force du concept principal</li>
+<li><strong>Coefficient de saturation</strong> : Pertinence de chaque question</li>
+</ul>
+</section>
+<section id="utilisation-pratique" class="slide level2">
+<h2>Utilisation pratique</h2>
+<ol type="1">
+<li><strong>Alpha de Cronbach</strong> : &gt; 0.6</li>
+<li><strong>Première valeur propre (Eigenvalue)</strong> : &gt; 1</li>
+<li><strong>Coefficient de saturation (Factor loading)</strong> : &gt; 0.3</li>
+</ol>
+</section>
+<section id="comment-faire" class="slide level2">
+<h2>Comment faire</h2>
+<h3 id="installer-le-package-sondr">1. Installer le package sondr</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Dans la console:</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb2-3"><a href=""></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"clessnverse/sondr"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comment-faire-1" class="slide level2">
+<h2>Comment faire ?</h2>
+<h3 id="charger-vos-données">2. Charger vos données</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="déterminer-les-variables-potentielles">3. Déterminer les variables potentielles</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>r<span class="sc">$</span><span class="er">&gt;</span> <span class="fu">names</span>(df)</span>
+<span id="cb4-2"><a href=""></a> [<span class="dv">1</span>] <span class="st">"ses_gender"</span>                        <span class="st">"ses_income"</span>                        <span class="st">"ses_housing"</span>                       <span class="st">"ses_language"</span>                     </span>
+<span id="cb4-3"><a href=""></a> [<span class="dv">5</span>] <span class="st">"ses_religion"</span>                      <span class="st">"ses_education"</span>                     <span class="st">"ses_ethnicity"</span>                     <span class="st">"ses_immigrant"</span>                    </span>
+<span id="cb4-4"><a href=""></a> [<span class="dv">9</span>] <span class="st">"ses_skin_tone"</span>                     <span class="st">"lifestyle_pets"</span>                    <span class="st">"lifestyle_album"</span>                   <span class="st">"lifestyle_movie"</span>                  </span>
+<span id="cb4-5"><a href=""></a>[<span class="dv">13</span>] <span class="st">"lifestyle_prius"</span>                   <span class="st">"ses_postal_code"</span>                   <span class="st">"lifestyle_coffee"</span>                  <span class="st">"lifestyle_gpt_freq"</span>               </span>
+<span id="cb4-6"><a href=""></a>[<span class="dv">17</span>] <span class="st">"lifestyle_transport"</span>               <span class="st">"lifestyle_yoga_freq"</span>               <span class="st">"lifestyle_guns_number"</span>             <span class="st">"lifestyle_classic_meal"</span>           </span>
+<span id="cb4-7"><a href=""></a>[<span class="dv">21</span>] <span class="st">"lifestyle_fishing_freq"</span>            <span class="st">"lifestyle_hunting_freq"</span>            <span class="st">"ses_sexual_orientation"</span>            <span class="st">"lifestyle_eat_meat_freq"</span>          </span>
+<span id="cb4-8"><a href=""></a>[<span class="dv">25</span>] <span class="st">"lifestyle_clothing_style"</span>          <span class="st">"lifestyle_motorized_freq"</span>          <span class="st">"lifestyle_videogame_freq"</span>          <span class="st">"lifestyle_alcohol_favorite"</span>       </span>
+<span id="cb4-9"><a href=""></a>[<span class="dv">29</span>] <span class="st">"ses_religiosity_importance"</span>        <span class="st">"lifestyle_nonmotorized_freq"</span>       <span class="st">"lifestyle_watch_soccer_freq"</span>       <span class="st">"lifestyle_movie_barbenheimer"</span>     </span>
+<span id="cb4-10"><a href=""></a>[<span class="dv">33</span>] <span class="st">"lifestyle_watch_baseball_freq"</span>     <span class="st">"lifestyle_volunteeringsocial_freq"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comment-faire-2" class="slide level2 smaller">
+<h2>Comment faire ?</h2>
+<h3 id="cleaner-les-variables-à-évaluer-pour-quelles-soient-numériques">4. Cleaner les variables à évaluer pour qu’elles soient numériques</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>df_clean <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df))</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a><span class="co"># Variable de fréquence de pêche</span></span>
+<span id="cb5-4"><a href=""></a><span class="fu">table</span>(df<span class="sc">$</span>lifestyle_fishing_freq)</span>
+<span id="cb5-5"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale<span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-6"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale[df<span class="sc">$</span>lifestyle_fishing_freq <span class="sc">==</span> <span class="st">"Never"</span>] <span class="ot">&lt;-</span> <span class="dv">0</span>    </span>
+<span id="cb5-7"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale[df<span class="sc">$</span>lifestyle_fishing_freq <span class="sc">==</span> <span class="st">"Almost never"</span>] <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb5-8"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale[df<span class="sc">$</span>lifestyle_fishing_freq <span class="sc">==</span> <span class="st">"Sometimes"</span>] <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb5-9"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale[df<span class="sc">$</span>lifestyle_fishing_freq <span class="sc">==</span> <span class="st">"Often"</span>] <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
+<span id="cb5-10"><a href=""></a>df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale[df<span class="sc">$</span>lifestyle_fishing_freq <span class="sc">==</span> <span class="st">" Very often"</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-11"><a href=""></a><span class="fu">table</span>(df_clean<span class="sc">$</span>lifestyle_fishing_freq_scale, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span>
+<span id="cb5-12"><a href=""></a></span>
+<span id="cb5-13"><a href=""></a><span class="fu">saveRDS</span>(df_clean, <span class="st">"data_clean.rds"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comment-faire-3" class="slide level2 smaller">
+<h2>Comment faire ?</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<h3 id="isoler-les-variables-à-évaluer">5. Isoler les variables à évaluer</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a></span>
+<span id="cb6-2"><a href=""></a><span class="co"># Sélectionner les variables à évaluer</span></span>
+<span id="cb6-3"><a href=""></a>df_fa <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">select</span>(lifestyle_fishing_scale, </span>
+<span id="cb6-5"><a href=""></a>         lifestyle_hunting_scale, </span>
+<span id="cb6-6"><a href=""></a>         lifestyle_guns_number_scale,</span>
+<span id="cb6-7"><a href=""></a>         lifestyle_motorized_scale, </span>
+<span id="cb6-8"><a href=""></a>         lifestyle_pickup_scale,</span>
+<span id="cb6-9"><a href=""></a>         lifestyle_eat_meat_scale) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href=""></a>  <span class="fu">drop_na</span>() <span class="co"># Supprimer les valeurs manquantes</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:45%;">
+<h3 id="conditions-à-respecter">6. Conditions à respecter</h3>
+<ol type="1">
+<li>Un dataframe contenant uniquement les variables à évaluer</li>
+<li>AUCUNE valeur manquante</li>
+<li>La même échelle de mesure pour toutes les questionc (0-1)</li>
+<li>La même orientation pour tous les items (positif ou négatif)</li>
+</ol>
+</div></div>
+</section>
+<section id="comment-faire-4" class="slide level2 smaller">
+<h2>Comment faire ?</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<h3 id="utiliser-la-fonction">7. Utiliser la fonction</h3>
+<p><code>sondr::topdown_fa()</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Lancer l'analyse</span></span>
+<span id="cb7-2"><a href=""></a>sondr<span class="sc">::</span><span class="fu">topdown_fa</span>(df_fa)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:65%;">
+<p><img data-src="img/redneck_scale_bad.png"></p>
+</div></div>
+</section>
+<section id="comment-faire-5" class="slide level2 smaller">
+<h2>Comment faire ?</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="réesayer">8. Réesayer</h3>
+<p>Essaie erreur jusqu’à trouver une combinaison gagnante</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Supprimer les variables </span></span>
+<span id="cb8-2"><a href=""></a><span class="co"># non pertinentes</span></span>
+<span id="cb8-3"><a href=""></a>df_fa_2 <span class="ot">&lt;-</span> df_fa <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(lifestyle_eat_meat_scale, </span>
+<span id="cb8-5"><a href=""></a>            lifestyle_pickup_scale)) </span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a><span class="co"># Relancer l'analyse</span></span>
+<span id="cb8-8"><a href=""></a>sondr<span class="sc">::</span><span class="fu">topdown_fa</span>(df_fa_2)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:60%;">
+<p><img data-src="img/redneck_scale.png"></p>
+</div></div>
+</section>
+<section id="la-validité" class="slide level2">
+<h2>La validité?</h2>
+<h3 id="comment-la-mesurer">Comment la mesurer?</h3>
+<ol type="1">
+<li><strong>Concordance avec la théorie</strong></li>
+</ol>
+<ul>
+<li>Les questions mesurent-elles bien le concept?</li>
+<li>Les résultats sont-ils cohérents avec la littérature?</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Concordance avec d’autres mesures</strong></li>
+</ol>
+<ul>
+<li>Les résultats sont-ils similaires à d’autres échelles?</li>
+<li>Les résultats sont-ils stables dans le temps?</li>
+</ul>
+</section>
+<section id="faire-léchelle" class="slide level2">
+<h2>Faire l’échelle</h2>
+<h3 id="si-la-fiabilité-et-la-validité-sont-acceptables">Si la fiabilité et la validité sont acceptables</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>df<span class="sc">$</span>scale_redneck <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb9-2"><a href=""></a>df<span class="sc">$</span>scale_redneck <span class="ot">&lt;-</span> (df<span class="sc">$</span>lifestyle_motorized_freq_scale <span class="sc">+</span></span>
+<span id="cb9-3"><a href=""></a>                    df<span class="sc">$</span>lifestyle_hunting_freq_scale <span class="sc">+</span></span>
+<span id="cb9-4"><a href=""></a>                    df<span class="sc">$</span>lifestyle_fishing_freq_scale <span class="sc">+</span></span>
+<span id="cb9-5"><a href=""></a>                    df<span class="sc">$</span>lifestyle_pickup_scale <span class="sc">+</span></span>
+<span id="cb9-6"><a href=""></a>                    df<span class="sc">$</span>lifestyle_guns_number_scale) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb9-7"><a href=""></a><span class="fu">table</span>(df<span class="sc">$</span>scale_redneck)</span>
+<span id="cb9-8"><a href=""></a><span class="fu">hist</span>(df<span class="sc">$</span>scale_redneck)</span>
+<span id="cb9-9"><a href=""></a></span>
+<span id="cb9-10"><a href=""></a><span class="fu">saveRDS</span>(df, <span class="st">"data_scale.rds"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="dfscale_redneck" class="slide level2">
+<h2>df$scale_redneck</h2>
+
+<img data-src="img/redneck_scale_hist.png" class="r-stretch"></section></section>
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
+<ol type="1">
+<li class="fragment">Les variables latentes sont omniprésentes en sciences sociales</li>
+<li class="fragment">La mesure nécessite une approche systématique</li>
+<li class="fragment">La validation est cruciale pour la qualité</li>
+</ol>
+</section>
+
+<section>
+<section id="la-grammaire-des-graphiques" class="title-slide slide level1 center">
+<h1>La grammaire des graphiques</h1>
+
+</section>
+<section id="représentation-graphique-des-données" class="slide level2 smaller">
+<h2>Représentation graphique des données</h2>
+<h3 id="principes-généraux-de-la-visualisation">Principes généraux de la visualisation</h3>
+<ul>
+<li><p>Visualiser des données</p></li>
+<li><p>Éviter les distractions inutiles</p></li>
+<li><p>Éviter les graphiques « spaghetti »</p></li>
+<li><p>Évitez les lignes trop complexes qui se chevauchent et s’entremêlent</p></li>
+<li><p>Commencer en noir et blanc et utiliser les couleurs de manière efficace</p></li>
+</ul>
+</section>
+<section id="les-composants-de-base" class="slide level2">
+<h2>Les composants de base</h2>
+
+<img data-src="img/grammaire.svg" class="r-stretch"></section>
+<section id="visualisation-avec-ggplot2" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<div class="columns">
+<h3 id="initialiser-un-graphique">Initialiser un graphique</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb10-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="column" style="width:40%;">
+<ul>
+<li><code>df</code> est le dataframe</li>
+<li><code>aes()</code> est la fonction qui permet de spécifier les variables à utiliser</li>
+<li><code>x</code> et <code>y</code> sont les variables à utiliser pour les axes x et y</li>
+<li><code>color</code> est la variable à utiliser pour la couleur</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="visualisation-avec-ggplot2-1" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<div class="columns">
+<h3 id="ajouter-un-geom_">Ajouter un geom_()</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) <span class="sc">+</span></span>
+<span id="cb11-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="co"># Le alpha est la transparence</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="column" style="width:40%;">
+<ul>
+<li>Il existe plusieurs <code>geom_()</code> pour différents types de graphiques
+<ul>
+<li><code>geom_point()</code> pour un nuage de points</li>
+<li><code>geom_line()</code> pour un graphique linéaire</li>
+<li><code>geom_bar()</code> pour un graphique à barres</li>
+<li><code>geom_histogram()</code> pour un histogramme</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="visualisation-avec-ggplot2-2" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<h3 id="ajouter-une-échelle-de-couleur">Ajouter une échelle de couleur</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb12-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) <span class="sc">+</span></span>
+<span id="cb12-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> <span class="co"># Le alpha est la transparence</span></span>
+<span id="cb12-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">name =</span> <span class="st">"Éducation"</span>) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><code>scale_color_gradient()</code> permet de spécifier les couleurs pour la variable <code>Education</code></li>
+<li><code>low</code> et <code>high</code> sont les couleurs pour les valeurs les plus basses et les plus hautes</li>
+<li><code>name</code> est le nom de la légende</li>
+<li>Vous pouvez utiliser les hexcodes pour les couleurs</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="visualisation-avec-ggplot2-3" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<h3 id="ajouter-des-titres-et-des-labels">Ajouter des titres et des labels</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-code-line-numbers="4,5,6,7,8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) <span class="sc">+</span></span>
+<span id="cb13-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> <span class="co"># Le alpha est la transparence</span></span>
+<span id="cb13-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">name =</span> <span class="st">"Éducation"</span>) <span class="sc">+</span></span>
+<span id="cb13-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-5" class="hljs-ln-code"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relation entre l'agriculture et la fertilité en Suisse"</span>,</span>
+<span id="cb13-6" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> <span class="st">"Pourcentage d'agriculture"</span>,</span>
+<span id="cb13-7" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> <span class="st">"Fertilité"</span></span>
+<span id="cb13-8" class="hljs-ln-code"><a href=""></a>  ) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="visualisation-avec-ggplot2-4" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<h3 id="ajouter-un-thème">Ajouter un thème</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) <span class="sc">+</span></span>
+<span id="cb14-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> <span class="co"># Le alpha est la transparence</span></span>
+<span id="cb14-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">name =</span> <span class="st">"Éducation"</span>) <span class="sc">+</span></span>
+<span id="cb14-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-5" class="hljs-ln-code"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relation entre l'agriculture et la fertilité en Suisse"</span>,</span>
+<span id="cb14-6" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> <span class="st">"Pourcentage d'agriculture"</span>,</span>
+<span id="cb14-7" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> <span class="st">"Fertilité"</span></span>
+<span id="cb14-8" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb14-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><code>theme_minimal()</code> est un thème minimaliste</li>
+<li>Il existe plusieurs thèmes prédéfinis dans ggplot2</li>
+<li>Vous pouvez aussi créer votre propre thème</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="visualisation-avec-ggplot2-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<h3 id="sauvegarder-le-graphique">Sauvegarder le graphique</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, <span class="at">color =</span> Education)) <span class="sc">+</span></span>
+<span id="cb15-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span> <span class="co"># Le alpha est la transparence</span></span>
+<span id="cb15-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">name =</span> <span class="st">"Éducation"</span>) <span class="sc">+</span></span>
+<span id="cb15-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-5" class="hljs-ln-code"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relation entre l'agriculture et la fertilité en Suisse"</span>,</span>
+<span id="cb15-6" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> <span class="st">"Pourcentage d'agriculture"</span>,</span>
+<span id="cb15-7" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> <span class="st">"Fertilité"</span></span>
+<span id="cb15-8" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb15-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb15-10" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb15-11" class="hljs-ln-code"><a href=""></a><span class="fu">ggsave</span>(<span class="st">"chemin/vers/nom_du_graphique.png"</span>, <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">9</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Vous pouvez spécifier le format du graphique (png, pdf, etc.) ainsi que le chemin pour sauvegarder le graphique</li>
+</ul>
+</section>
+<section id="visualisation-avec-ggplot2-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualisation avec ggplot2</h2>
+<h3 id="un-histogramme-de-la-variable-fertility">Un histogramme de la variable Fertility</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Fertility)) <span class="sc">+</span></span>
+<span id="cb16-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb16-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-4" class="hljs-ln-code"><a href=""></a>    <span class="at">title =</span> <span class="st">"Distribution de la fertilité en Suisse"</span>,</span>
+<span id="cb16-5" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> <span class="st">"Fertilité"</span>,</span>
+<span id="cb16-6" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> <span class="st">"Nombre de cantons"</span></span>
+<span id="cb16-7" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb16-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="points-clés-à-retenir" class="slide level2">
+<h2>Points clés à retenir</h2>
+<ol type="1">
+<li class="fragment">ggplot2 utilise une grammaire des graphiques cohérente</li>
+<li class="fragment">Construire les graphiques couche par couche</li>
+<li class="fragment">La personnalisation est simple mais puissante</li>
+<li class="fragment">Toujours penser à la lisibilité</li>
+</ol>
+</section></section>
+<section>
+<section id="regression-linéaire" class="title-slide slide level1 center">
+<h1>Regression linéaire</h1>
+<p><span class="math display">\[
+\begin{aligned}
+y &amp;= \beta_0 + \beta_1x + \epsilon \\
+\end{aligned}
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(df<span class="sc">$</span>y <span class="sc">~</span> df<span class="sc">$</span>x, <span class="at">data =</span> df) <span class="co"># Une seule ligne de code!</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="quest-ce-que-cest-3" class="slide level2">
+<h2>Qu’est-ce que c’est?</h2>
+<ul>
+<li>Un outil pour comprendre la relation entre deux variables</li>
+<li>Permet de prédire une variable à partir d’une autre</li>
+<li>Trouve la “meilleure ligne” qui représente cette relation</li>
+</ul>
+</section>
+<section id="visualisation-de-la-régression" class="slide level2 smaller">
+<h2>Visualisation de la régression</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/historical-plot-1.png" width="960" class="r-stretch"></section>
+<section id="comment-ça-marche-1" class="slide level2 smaller" data-transition="none">
+<h2>Comment ça marche?</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><aside class="notes">
+<p>La régression trouve la ligne qui passe “au mieux” à travers les points. Plus les points sont proches de la ligne, meilleure est la régression.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comment-ça-marche-2" class="slide level2 smaller" data-transition="none">
+<h2>Comment ça marche?</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<section id="comment-ça-marche-3" class="slide level2 smaller" data-transition="none">
+<h2>Comment ça marche?</h2>
+
+<img data-src="cours_5_mesures_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<section id="pourquoi-utiliser-la-régression" class="slide level2">
+<h2>Pourquoi utiliser la régression?</h2>
+<ul>
+<li>Comprendre les relations entre variables</li>
+<li>Prédire des valeurs futures</li>
+<li>Tester des hypothèses scientifiques</li>
+<li>Contrôler pour plusieurs facteurs à la fois</li>
+</ul>
+</section>
+<section id="régression" class="slide level2">
+<h2>Régression</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(df<span class="sc">$</span>ses_education <span class="sc">~</span> df<span class="sc">$</span>redneck_scale)</span>
+<span id="cb18-2"><a href=""></a></span>
+<span id="cb18-3"><a href=""></a><span class="fu">summary</span>(model)</span>
+<span id="cb18-4"><a href=""></a></span>
+<span id="cb18-5"><a href=""></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(</span>
+<span id="cb18-6"><a href=""></a>  model,</span>
+<span id="cb18-7"><a href=""></a>  <span class="at">output =</span> <span class="st">"results/tables/regression.md"</span>,</span>
+<span id="cb18-8"><a href=""></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-9"><a href=""></a>  <span class="at">title =</span> <span class="st">"Régression linéaire simple"</span></span>
+<span id="cb18-10"><a href=""></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/00_regression.png" class="r-stretch"></section>
+<section id="section-1" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/01_regression.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/02_regression.png" class="r-stretch"></section>
+<section id="section-3" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/03_regression.png" class="r-stretch"></section>
+<section id="section-4" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/04_regression.png" class="r-stretch"></section>
+<section id="section-5" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/05_regression.png" class="r-stretch"></section>
+<section id="section-6" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/06_regression.png" class="r-stretch"></section>
+<section id="section-7" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/07_regression.png" class="r-stretch"></section>
+<section id="section-8" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/08_regression.png" class="r-stretch"></section>
+<section id="section-9" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/09_regression.png" class="r-stretch"></section>
+<section id="section-10" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/10_regression.png" class="r-stretch"></section>
+<section id="section-11" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/11_regression.png" class="r-stretch"></section>
+<section id="section-12" class="slide level2" data-transition="none">
+<h2></h2>
+
+<img data-src="img/12_regression.png" class="r-stretch"></section>
+<section id="points-clés-à-retenir-1" class="slide level2">
+<h2>Points clés à retenir</h2>
+<ol type="1">
+<li class="fragment">Toujours explorer vos données avant l’analyse</li>
+<li class="fragment">Interpréter les résultats avec prudence</li>
+<li class="fragment">Visualiser pour mieux comprendre</li>
+</ol>
+</section></section>
+<section id="conclusion-1" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://fas1001.com">FAS1001</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="cours_5_mesures_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="cours_5_mesures_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copié");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copié");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

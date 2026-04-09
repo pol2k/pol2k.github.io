@@ -1,0 +1,67 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8V0Z" fill="#1A1A1A"/>
+    </marker>
+    <style>
+      .title { font: 700 30px "Georgia", "Times New Roman", serif; fill: #111111; }
+      .section { font: 700 22px "Georgia", "Times New Roman", serif; fill: #111111; letter-spacing: 0.04em; }
+      .head { font: 700 26px "Georgia", "Times New Roman", serif; fill: #111111; }
+      .body { font: 400 20px "Georgia", "Times New Roman", serif; fill: #2F2F2F; }
+      .mono { font: 600 20px "Menlo", "Consolas", monospace; fill: #111111; }
+      .tag { font: 700 14px "Georgia", "Times New Roman", serif; fill: #FFFFFF; }
+      .note { font: 400 17px "Georgia", "Times New Roman", serif; fill: #555555; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" rx="18" fill="#FAFAF8"/>
+  <text x="600" y="74" text-anchor="middle" class="title">Nom de domaine, DNS et connexion web</text>
+
+  <line x1="100" y1="118" x2="1100" y2="118" stroke="#D9D9D5" stroke-width="1.5"/>
+
+  <text x="600" y="164" text-anchor="middle" class="section">1. Resolution DNS</text>
+
+  <rect x="120" y="210" width="280" height="178" rx="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6"/>
+  <rect x="800" y="210" width="280" height="178" rx="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6"/>
+
+  <circle cx="148" cy="236" r="13" fill="#1A1A1A"/>
+  <circle cx="828" cy="236" r="13" fill="#1A1A1A"/>
+  <text x="148" y="241" text-anchor="middle" class="tag">1</text>
+  <text x="828" y="241" text-anchor="middle" class="tag">2</text>
+
+  <text x="260" y="278" text-anchor="middle" class="head">Ordinateur</text>
+  <text x="260" y="324" text-anchor="middle" class="body">Question DNS</text>
+  <text x="260" y="360" text-anchor="middle" class="mono">google.com ?</text>
+
+  <text x="940" y="278" text-anchor="middle" class="head">Serveur DNS</text>
+  <text x="940" y="324" text-anchor="middle" class="body">Reponse DNS</text>
+  <text x="940" y="360" text-anchor="middle" class="mono">142.250.217.110</text>
+
+  <path d="M400 282H800" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M800 324H400" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="600" y="266" text-anchor="middle" class="note">nom de domaine</text>
+  <text x="600" y="348" text-anchor="middle" class="note">adresse IP</text>
+
+  <line x1="100" y1="448" x2="1100" y2="448" stroke="#D9D9D5" stroke-width="1.5"/>
+
+  <text x="600" y="500" text-anchor="middle" class="section">2. Connexion au site web</text>
+
+  <rect x="120" y="538" width="280" height="124" rx="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6"/>
+  <rect x="800" y="538" width="280" height="124" rx="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6"/>
+
+  <circle cx="148" cy="562" r="13" fill="#1A1A1A"/>
+  <circle cx="828" cy="562" r="13" fill="#1A1A1A"/>
+  <text x="148" y="567" text-anchor="middle" class="tag">3</text>
+  <text x="828" y="567" text-anchor="middle" class="tag">4</text>
+
+  <text x="260" y="592" text-anchor="middle" class="head">Ordinateur</text>
+  <text x="260" y="628" text-anchor="middle" class="body">Se connecte a</text>
+
+  <text x="940" y="592" text-anchor="middle" class="head">Google</text>
+  <text x="940" y="628" text-anchor="middle" class="body">renvoie la page web</text>
+
+  <path d="M400 586H800" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M800 628H400" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="600" y="570" text-anchor="middle" class="note">requete HTTP/HTTPS</text>
+  <text x="600" y="652" text-anchor="middle" class="note">reponse du site</text>
+</svg>

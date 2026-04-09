@@ -1,0 +1,800 @@
+---
+title: "Les sondages"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: Laurence-Olivier M. Foisy
+institute: Université de Montréal
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    mermaid: 
+      theme: dark
+    theme: simple
+    logo: https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: slide
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+bibliography: bibliography.bib
+---
+
+## Retour sur le TP1{.smaller}  
+
+::: {.columns}
+
+### Questions
+
+:::: {.column width="50%"}
+
+- Qu'est-ce qui était le plus difficile?
+- Combien d'heures ça vous a pris?
+- Pourquoi on met `../` dans le chemin d'accès du graphique dans Quarto mais pas dans R?
+- C'est quoi un package?
+- Pourquoi le Quarto ne compilait pas?
+- Packages LaTeX vs packages R?
+
+::::
+
+:::: {.column width="50%"}
+
+### Conseils
+
+- Rerouler le code quand ça ne fonctionne pas
+- Utiliser la poubelle dans Positron pour réinitialiser l'environnement
+- `This is not a git repository`
+- **UTILISEZ L'IA POUR COMPRENDRE LES MESSAGES D'ERREUR!**
+
+::::
+
+:::
+
+
+# Un peu plus de R?
+
+## Structure du cours
+
+::: {.r-stack}
+
+![](img/structure_cours.png)
+
+![](img/structure_cours_1.png){.fragment}
+
+:::
+
+# Plan du cours
+
+1. Introduction
+2. Tidy data
+3. Les sondages
+    1. Comment collecter des données de sondages?
+    2. Comment nettoyer des données de sondages?
+
+## Notre objectif
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](img/abstraction.png)
+:::
+
+::: {.column width="50%"}
+
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2hkcXlidGx1NThxcHc0NTdvZmZmZ3Y0eHozcThwcjA5ajdzNzlndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VfrLCmybNyDcVc5lfU/giphy.gif){.absolute top=120 right=150 width="40%"}
+
+:::
+::::
+
+
+# Tidy Data {.center .smaller}
+
+::: {columns}
+:::: {.column width="50%"}
+
+![](img/tidydata.png){width="70%"}
+
+::::
+
+:::: {.column width="50%"}
+
+> Like families, tidy datasets are all alike but every messy dataset is messy in its own way.
+
+Utiliser le format "tidy" équivaut à prendre le chemin de moindre résistance pour l'analyse de données.
+
+::::
+
+:::
+
+
+## Pourquoi "Tidy" les données? {.center}
+
+> "80% du temps d'analyse de données est consacré au nettoyage et à la préparation des données"
+
+- Facilite la manipulation
+- Simplifie la visualisation  
+- Standardise l'analyse
+
+## Les 3 Règles des Données Tidy {.center}
+
+| Règle | Description |
+|-------|-------------|
+| 1 | Chaque colonne est une variable |
+| 2 | Chaque ligne est une observation |
+| 3 | Chaque table est un type d'unité observé |
+
+## Étude électorale canadienne 2019
+
+![](img/ces19.png){.absolute top=100 right=120 width="80%"}
+
+## Les 5 Problèmes Communs {.center}
+
+1. Les en-têtes de colonnes sont des valeurs
+2. Plusieurs variables dans une colonne
+3. Variables stockées dans les lignes et colonnes
+4. Plusieurs types d'observations dans un tableau
+5. Une même observation dans plusieurs tableaux
+
+## 1. Les en-têtes sont des valeurs 
+
+**❌ Données de religion et revenu**
+
+| religion  | <$10k | $10-20k | $20-30k |
+|-----------|-------|---------|---------|
+| Agnostic  | 27    | 34      | 60      |
+| Atheist   | 12    | 27      | 37      |
+| Buddhist  | 27    | 21      | 30      |
+
+## 1. Les en-têtes sont des valeurs 
+
+```R
+library(dplyr)
+library(tidyr)
+
+df %>%
+  pivot_longer(
+    cols = matches("\\$"), # Sélectionne les colonnes contenant "$"
+    names_to = "revenu",
+    values_to = "freq"
+  ) 
+```
+
+## 1. Les en-têtes sont des valeurs 
+
+**✅ Données de religion et revenu**
+
+| religion  | revenu  | freq |
+|-----------|---------|------|
+| Agnostic  | <$10k   | 27   |
+| Agnostic  | $10-20k | 34   |
+| Agnostic  | $20-30k | 60   |
+| Atheist   | <$10k   | 12   |
+| Atheist   | $10-20k | 27   |
+
+## 2. Plusieurs variables dans une colonne 
+
+**❌ Données sur la tuberculose**
+
+| pays | année | m014 | m1524 | m2534 | m3544 |
+|------|-------|------|-------|-------|-------|
+| AD   | 2000  | 0    | 0     | 1     | 0     |
+| AE   | 2000  | 2    | 4     | 4     | 6     |
+| AF   | 2000  | 52   | 228   | 183   | 149   |
+
+## 2. Plusieurs variables dans une colonne {.smaller}
+
+```R
+df %>%
+  pivot_longer(
+    cols = starts_with("m"),
+    names_to = "groupe",
+    values_to = "cas"
+  ) %>%
+  separate(groupe, 
+    into = c("sexe", "age"),
+    sep = 1,
+    ) %>%
+  mutate(
+    age = case_when(
+      age == "014" ~ "0-14",
+      age == "1524" ~ "15-24",
+      age == "2534" ~ "25-34",
+      age == "3544" ~ "35-44"
+    )
+  )
+
+```
+
+## 2. Plusieurs variables dans une colonne 
+
+**✅ Données sur la tuberculose**
+
+| pays | année | sexe | groupe_age | cas |
+|------|-------|------|------------|-----|
+| AD   | 2000  |  m   | 0-14       | 0   |
+| AD   | 2000  |  m   | 15-24      | 0   |
+| AD   | 2000  |  m   | 25-34      | 1   |
+| AD   | 2000  |  m   | 35-44      | 0   |
+| AE   | 2000  |  m   | 0-14       | 2   |
+
+## 3. Variables dans lignes et colonnes
+
+**❌ Données sur la température au Mexique**
+
+| id      | élément | d1  | d2  | d3  | d4  |
+|---------|---------|-----|-----|-----|-----|
+| MX17004 | tmax    | NA  | 27.3| 24.1| NA  |
+| MX17004 | tmin    | NA  | 14.4| 14.4| NA  |
+
+
+## 3. Variables dans lignes et colonnes 
+
+```R
+# Solution avec pivot_longer
+df %>%
+  pivot_longer(
+    cols = starts_with("d"),
+    names_to = "date",
+    values_to = "valeur",
+    values_drop_na = TRUE  # Optionnel: supprime les NA
+  ) %>%
+  rename(mesure = élément)
+```
+
+## 3. Variables dans lignes et colonnes 
+
+**✅ Données sur la température au Mexique**
+
+| id      | date | mesure | valeur |
+|---------|------|---------|--------|
+| MX17004 | d1   | tmax    | NA     |
+| MX17004 | d1   | tmin    | NA     |
+| MX17004 | d2   | tmax    | 27.3   |
+| MX17004 | d2   | tmin    | 14.4   |
+| MX17004 | d3   | tmax    | 24.1   |
+
+## 4. Plusieurs types d'observations 
+
+**❌ Données sur les chansons et le classement du Billboard**
+
+| chanson   | artiste | durée | rang_sem1 | rang_sem2 |
+|-----------|---------|--------|-----------|-----------|
+| Baby Don't| 2Pac    | 4:22   | 87        | 82        |
+| Try Again | Aaliyah | 4:03   | 84        | 62        |
+
+## 4. Plusieurs types d'observations 
+
+```R
+# Création des deux tables
+# Table 1: Info Chansons
+chansons <- df %>%
+  select(chanson, artiste, durée) %>%
+  mutate(id_chanson = row_number())
+
+# Table 2: Classements
+classements <- df %>%
+  mutate(id_chanson = row_number()) %>%
+  pivot_longer(
+    cols = starts_with("rang_"),
+    names_to = "semaine",
+    values_to = "rang",
+    names_prefix = "rang_sem"
+  )
+```
+
+## 4. Plusieurs types d'observations {.smaller}
+
+**✅ Données sur les chansons du Billboard**
+
+| id_chanson | chanson    | artiste | durée |
+|------------|------------|---------|--------|
+| 1          | Baby Don't | 2Pac    | 4:22   |
+| 2          | Try Again  | Aaliyah | 4:03   |
+
+**✅ Données sur le classement du Billboard**
+
+| id_chanson | semaine | rang |
+|------------|---------|------|
+| 1          | 1       | 87   |
+| 1          | 2       | 82   |
+| 2          | 1       | 84   |
+| 2          | 2       | 62   |
+
+## 5. Une observation dans plusieurs tableaux {.smaller}
+
+**❌ Données médicales**
+
+Table 1 - Info Patient:
+
+| id_patient | nom   | age |
+|------------|-------|-----|
+| 1          | Alice | 32  |
+| 2          | Bob   | 45  |
+
+Table 2 - Mesures:
+
+| id_patient | pression | glucose |
+|------------|----------|---------|
+| 1          | 120/80   | 95      |
+| 2          | 130/85   | 105     |
+
+## 5. Une observation dans plusieurs tableaux 
+
+```R
+# Transformation en format long
+df_mesures <- df_mesures %>%
+  pivot_longer(
+    cols = c(pression, glucose),
+    names_to = "mesure",
+    values_to = "valeur"
+  )
+
+# Joindre les tables
+df_final <- df_patients %>%
+  left_join(df_mesures, by = "id_patient")
+```
+
+## 5. Une observation dans plusieurs tableaux 
+
+**✅ Données médicales**
+
+| id_patient | nom   | age | mesure   | valeur |
+|------------|-------|-----|-----------|---------|
+| 1          | Alice | 32  | pression | 120/80  |
+| 1          | Alice | 32  | glucose  | 95      |
+| 2          | Bob   | 45  | pression | 130/85  |
+| 2          | Bob   | 45  | glucose  | 105     |
+
+## Avantages des Données Tidy {.center}
+
+- Facilite l'utilisation des outils d'analyse
+- Standardise la structure des données
+- Simplifie la visualisation
+- Rend le code plus lisible
+
+```r
+# Exemple avec des données tidy
+donnees_tidy %>%
+  group_by(categorie) %>%
+  summarise(moyenne = mean(valeur))
+```
+
+## En Résumé {.center}
+
+- Structure consistante
+- Une observation = une ligne
+- Une variable = une colonne
+- Un type d'observation = un tableau
+
+# Les sondages {.smaller}
+
+## Observer vs. Demander
+
+- Observer: Regarder ce que les gens font.
+  - Données de médias sociaux
+  - Données de déplacements
+- Demander: Poser des questions aux gens.
+  - Sondages
+  - Entrevues
+
+## Vague 1: Le Face à Face (1930-1950) {.smaller}
+
+::: {.columns}
+
+::: {.column width="60%"}
+**L'approche artisanale**
+
+- **Échantillonnage** : Probabiliste par zone géographique (on découpe une carte).
+- **Collecte** : Un enquêteur cogne à la porte.
+- **Contexte** : Le sondage est un événement rare.
+- **Avantage** : Taux de réponse très élevé (difficile de dire non en face).
+- **Inconvénient** : Extrêmement coûteux et lent.
+:::
+
+::: {.column width="40%"}
+![](img/survey_30s.png)
+:::
+
+:::
+
+## Vague 2: L'ère du téléphone (1950-1990) {.smaller}
+
+::: {.columns}
+
+::: {.column width="60%"}
+**L'industrialisation (L'âge d'or)**
+
+- **Innovation** : Le *Random Digit Dialing* (RDD).
+- **Collecte** : Centralisée dans des centres d'appels.
+- **Contexte** : Presque tout le monde a une ligne fixe.
+- **Avantage** : Rapide, standardisé, anonyme.
+- **Inconvénient** : Commence à décliner quand les gens filtrent les appels.
+:::
+
+::: {.column width="40%"}
+![](img/survey_50s.png)
+:::
+
+:::
+
+## Vague 3: L'ère numérique (1990-2010) {.smaller}
+
+::: {.columns}
+
+::: {.column width="60%"}
+**La démocratisation**
+
+- **Changement** : Déclin du téléphone fixe, montée d'Internet.
+- **Collecte** : Sondages Web, Panels opt-in (volontaires).
+- **Nouveau défi** : L'échantillon n'est plus aléatoire simple.
+- **Solution** : Nécessité de méthodes de pondération complexes.
+- **Coût** : Drastiquement réduit.
+:::
+
+::: {.column width="40%"}
+![](img/survey_00s.png)
+:::
+
+:::
+
+## Maintenant: L'ère comportementale (2010+) {.smaller}
+
+::: {.columns}
+
+::: {.column width="60%"}
+**La "Dataification"**
+
+- **Paradigme** : On ne pose plus de questions, on observe.
+- **Collecte** : Passive (GPS, Clics, Transactions, Réseaux sociaux).
+- **Risque** : Données collectées et utilisées sans consentement.
+- **Futur** : Hybridation (Sondages + Traces numériques).
+:::
+
+::: {.column width="40%"}
+![](img/survey_10s.png)
+:::
+
+:::
+
+# Représentativité des sondages
+
+## 
+
+![](https://cdn.prod.website-files.com/62ba4211475cc61b25d12c08/62bf3c6e8f4a5a5241c79536_3B-Diagram-01.png)
+
+## Un sondage historique {.center .smaller}
+
+- Magazine populaire **Literary Digest**
+- Sondages présidentiels réussis en 1920, 1924, 1928 et 1932
+- En 1936, sondage massif durant la grande dépression :
+  - 10 millions de bulletins envoyés
+  - 2.4 millions de réponses (240x plus que les sondages modernes!)
+  - Sources : annuaires téléphoniques et registres automobiles
+
+::: {.callout-important}
+### Le résultat? 
+- Prédiction : Victoire d'Alf Landon
+- Réalité : Victoire écrasante de Roosevelt
+:::
+
+::: {.notes}
+Points clés pour la discussion:
+- Illustre les dangers de l'échantillonnage biaisé
+- Montre que la taille ≠ qualité
+- Parallèles avec les enjeux des mégadonnées aujourd'hui
+:::
+
+## Le cas du literary digest {.smaller}
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+- **Population** = électeurs américains en 1936
+- **Population accessible** = Propriétaires de voitures et les gens dans le botin téléphonique
+- **Méthode d'échantillonnage** = Envoi postal massif
+- **Base d'échantillonnage** = 10 millions de personnes
+- **Échantillon** = 2.4 millions de répondants
+
+:::
+
+:::{.column width="60%"}
+![](https://cdn.prod.website-files.com/62ba4211475cc61b25d12c08/62bf3c6e8f4a5a5241c79536_3B-Diagram-01.png){.absolute top=100 right=-100 width="70%"}
+
+:::
+
+::::
+
+## Erreurs de représentativité {.smaller}
+
+![](img/errors.png){width="100%"}
+
+- Les gens de la frame population du Literary Digest étaient systématiquement différents de la population générale.
+- L'échantillonnage doit être représentatif de la population cible.
+- Les non-réponses doivent être distribuées de manière aléatoire.
+
+
+
+## La pondération{.smaller}
+
+### Qu'est-ce que la pondération?
+- On donne plus ou moins de "poids" à certaines réponses pour corriger les biais d'échantillonnage
+- But : Faire en sorte que notre échantillon représente mieux la population réelle
+
+### Exemple simple : La cafétéria universitaire 
+Imaginons un sondage sur la satisfaction des repas :
+
+- 50 étudiants de 1er cycle répondent
+- 50 étudiants des cycles supérieurs répondent
+- MAIS dans la population universitaire, c'est 70% 1er cycle et 30% cycles supérieurs
+
+## Pourquoi pondérer? {.smaller}
+
+### Le problème de la représentativité
+- Certains groupes sont sur-représentés
+- D'autres sont sous-représentés 
+- Les non-réponses ne sont pas aléatoires
+
+### L'exemple de la cafétéria (suite)
+- Dans notre sondage: 50% cycle 1 / 50% cycles sup
+- Réalité: 70% cycle 1 / 30% cycles sup
+- Solution: Donner plus de poids aux réponses des 1er cycle et moins aux cycles sup
+
+## Comment pondérer? {.smaller} 
+
+### La formule de base
+
+```
+Poids = % dans population / % dans échantillon
+```
+
+### Pour notre exemple
+- Étudiants 1er cycle: 70/50 = 1.4
+- Étudiants cycles sup: 30/50 = 0.6
+
+### En pratique
+1. On compare notre échantillon au recensement
+2. On calcule les poids pour chaque groupe
+3. On applique les poids dans nos analyses
+
+## Exemple réel : Sondage électoral {.smaller}
+
+### La situation
+- Sondage de 1000 personnes, population totale de 1000000
+- Sur-représentation des 65+ ans
+- Sous-représentation des 18-34 ans
+
+### Les données
+
+| Âge    | Sondage (%) | Sondage (n) | Recensement (%) | Population (n) | Poids |
+|--------|-------------|-------------|-----------------|----------------|-------|
+| 18-34  | 20%         | 200         | 30%             | 300,000        | 1.5   |
+| 35-64  | 45%         | 450         | 45%             | 450,000        | 1.0   |
+| 65+    | 35%         | 350         | 25%             | 250,000        | 0.71  |
+| Total  | 100%        | 1,000       | 100%            | 1,000,000      | -     |
+
+## Visualisation de l'ajustement
+
+![](img/weighting-diagram.png)
+
+## Comment utiliser les poids en R? {.smaller}
+
+### Exemple dans une régression linéaire
+
+```r
+# Exemple avec une régression linéaire
+# Opinion sur échelle 0-10 selon l'âge et le revenu
+model <- lm(opinion ~ revenu,
+            data = df,
+            weights = poids)  # Ajouter les poids ici
+# Voir les résultats
+summary(model)
+```
+
+### Exemple dans un graphique
+
+```r
+
+# Nuage de points pondéré
+ggplot(sondage_individual, aes(x = revenu, y = opinion)) +
+  geom_smooth(method = "lm", aes(weight = poids)) +
+  labs(title = "Relation revenu-opinion (pondérée)",
+       x = "Revenu",
+       y = "Opinion (0-10)")
+```
+
+# Mesure
+
+## Une question de formulation...
+
+::: {.columns}
+::: {.column width="60%"}
+
+- Le premier demande:  
+  *"Est-ce que c'est permis de fumer **pendant** qu'on prie?"*  
+  → **Non!** C'est un péché
+
+- Le deuxième demande:  
+  *"Est-ce que c'est permis de prier **pendant** qu'on fume?"*  
+  → **Oui!** Bien sûr
+:::
+
+::: {.column width="40%"}
+::: {.callout-tip}
+## Point méthodologique
+La façon dont on formule une question peut drastiquement influencer la réponse obtenue!
+:::
+:::
+:::
+
+## L'effet de l'ordre des questions {.smaller}
+
+**Version A:**  
+"How much do you agree: Individuals are more to blame than social conditions for crime and lawlessness in this country."  
+→ **Résultat**: ~60% blâment les individus
+
+**Version B:**  
+"How much do you agree: Social conditions are more to blame than individuals for crime and lawlessness in this country."  
+→ **Résultat**: ~60% blâment les conditions sociales
+
+::: {.callout-warning}
+Même question avec ordre inversé = conclusions opposées!
+:::
+
+::: {.notes}
+Source: Schuman et Presser 1996
+- Démontre comment de subtils changements dans l'ordre peuvent affecter drastiquement les résultats
+- Implications importantes pour la conception de questionnaires
+:::
+
+## Meilleure façon de poser des questions {.smaller}
+
+::: {.r-fit-text}
+- Copier les questions des sondages précédents
+:::
+
+## Comment collecter des données de sondages? 
+
+- Plusieurs plateforme 
+  - [Qualtrics](https://www.qualtrics.com/){preview-link="true"}
+  - [Survey Monkey](https://www.surveymonkey.com/){preview-link="true"}
+  - [MTurk](https://www.mturk.com/){preview-link="true"}
+- Compagnies de sondage.
+- Les sondages sont dispendieux
+
+## Quelle plateforme de sondage choisir?
+
+![](https://www.rlp.manchester.ac.uk/wp-content/uploads/sites/151/2020/12/QualtricsXM_RBG-logo-1000px.jpg){.absolute top=500 right=0 width="40%"}
+
+- La plateforme de sondage la plus populaire dans le monde académique et corporatif.
+- S'intègre avec les panels de répondants les plus populaires.
+- Très dispendieux. Environ 15000$ par année.
+- Permet d'ajouter des quotas et des logiques conditionnelles.
+
+## Autres options?
+
+- Données électorales comme les [ces](https://cran.r-project.org/web/packages/ces/index.html)
+- Banques de données comme [Odesi](https://odesi.ca/en)
+
+# Nettoyer des données de sondages
+
+## Étude électorale canadienne de 1993
+
+### Raw
+
+| CPSIGEN | CPSA3 | CPSG1 | CPSO11 | CPSA2 |
+|---------|-------|-------|--------|-------|
+| 5       | 1     | 7     | 1      | 1     |
+| 5       | 2     | 5     | 1      | 1     |
+| 5       | 99    | 7     | 1      | 1     |
+| 1       | 2     | 7     | 1      | 1     |
+| 5       | 1     | 3     | 1      | 1     |
+| 1       | 2     | 5     | 1      | 1     |
+
+## Codebooks {.smaller}
+
+:::: {.columns}
+
+::: {.column width="65%"}
+
+![](img/codebook.png){width="100%"}
+
+:::
+
+::: {.column width="35%"}
+
+```R
+r$> table(df_raw$CPSG1)
+
+   1    3    5    7    8    9 
+ 169  743  957 1843   57    6 
+```
+:::
+
+::::
+
+## Étude électorale canadienne de 1993 {.smaller}
+
+### Clean
+
+| ses_gender | ses_born_canada | vote_intention | vote_probability_to_vote | issue_gst_opposed |
+|------------|----------------|----------------|-------------------------|------------------|
+| female     | 1              | cpc            | 1                       | 1.00             |
+| female     | 1              | lpc            | 1                       | 0.67             |
+| female     | 1              | NA             | 1                       | 1.00             |
+| male       | 1              | lpc            | 1                       | 1.00             |
+| female     | 1              | cpc            | 1                       | 0.33             |
+| male       | 1              | lpc            | 1                       | 0.67             |
+
+## Décortiquer le processus de cleaning {.smaller}
+
+```R
+library(dplyr)
+
+df_raw <- read.csv("data/ces/1993/raw/CES-E-1993_F1_subset.csv")
+
+df_clean <- data.frame(id = 1:nrow(df_raw))
+
+#------------------------------------------------------------------------------#
+# VARIABLE : CPSG1 - GST opposition
+# Question : In 1991 the Federal government adopted a new tax on goods and 
+#           services, the GST. All things considered, are you VERY MUCH IN FAVOUR, 
+#           SOMEWHAT IN FAVOUR, SOMEWHAT OPPOSED, or VERY MUCH OPPOSED to the GST?
+# Codage   : 1 = Opposed, 0 = Favour
+#------------------------------------------------------------------------------#
+table(df_raw$CPSG1, useNA = "ifany")
+df_clean$issue_gst_opposed <- NA
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 1] <- 0
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 3] <- 0.33
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 5] <- 0.67
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 7] <- 1
+table(df_clean$issue_gst_opposed, useNA = "ifany")
+
+write.csv(df_clean, "data/ces/1993/ces93_clean.csv", row.names = FALSE)
+```
+
+## Anatomie d'une ligne de code {.smaller}
+
+```r
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 1] <- 0
+```
+
+1 - **Nouvelle variable** : `df_clean$issue_gst_opposed`
+
+- Dataframe de destination : `df_clean`
+- Nom de la variable créée : `issue_gst_opposed`
+
+2 - **Condition de sélection** : `[df_raw$CPSG1 == 1]`
+
+- Dataframe source : `df_raw`
+- Variable source : `CPSG1`
+- Condition : égal à 1
+
+3 - **Attribution** : `<- 0`
+
+- Opérateur d'assignation : `<-`
+- Nouvelle valeur : `0`
+
+## En langage naturel
+
+```r
+df_clean$issue_gst_opposed[df_raw$CPSG1 == 1] <- 0
+```
+
+> "Pour toutes les observations où `CPSG1` égale 1 dans `df_raw`,assigner la valeur 0 à la variable `issue_gst_opposed` dans `df_clean`"
+
+## {background-image="img/cleaning.svg" background-size="90%" background-position="center"}
+
+## Avantage de standardiser le cleaning 
+
+![](img/graph_ideologies_evolution_bw.png){.absolute top=100 right=120 width="80%"}
+
+
+## Avantage de standardiser le cleaning {.smaller}
+
+![](img/ajps_glm_coefficients_by_year_overall_categorical.png){.absolute top=140 right=120 width="80%"}
+
+## Questions?
+
+# Prochain cours
+

@@ -1,0 +1,276 @@
+---
+title: "Introduction"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: Laurence-Olivier M. Foisy
+institute: Université de Montréal
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    mermaid: 
+      theme: dark
+    theme: simple
+    logo: https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Universite_de_Montreal_logo.svg/1920px-Universite_de_Montreal_logo.svg.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: slide
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+---
+
+## Votre chargé de cours {.biggest}
+
+- Laurence-Olivier M. Foisy
+- Courriel: [mail@mfoisy.com](mailto:mail@mfoisy.com)
+- Meilleure façon de me rejoindre: Slack
+- Bureau: Aucun
+- Université: Laval 
+
+## Mon parcours en science des données {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](https://www.clessn.com/assets/img/logo-black.svg)
+
+:::
+
+::: {.column width="50%"}
+
+- Maitrise au Japon en études de la paix, 100% quali
+- Arrivée au doctorat en 2023 
+- Rencontre avec le directeur de la CLESSN
+- Ouverture au monde de la science des données
+- Participation à plusieurs projets de recherche
+
+:::
+
+::::
+
+## Questions pour vous 
+
+- Vos programmes d'études?
+- Votre connaissance en R?
+- Utilisez-vous l'IA générative?
+- Votre connaissance en bases de données?
+- Avez-vous déjà scrapé des données sur le web?
+- Pourquoi avez-vous pris ce cours?
+
+# Présentation du cours
+
+## Qu'est-ce que des mégadonnées? {auto-animate=true}
+
+### Les trois V ? 
+
+- Volume
+- Vélocité
+- Variété
+
+## Les trois V?
+
+![](https://www.coforge.com/hubfs/Imported_Blog_Media/The-3Vs-of-big-data-1-1.png){.absolute width="50%" .fragment .fade-in}
+
+## Les quatre V?
+
+![](https://opensistemas.com/wp-content/uploads/2020/06/4-Vs-of-big-data-1.jpg){.absolute width="80%" .fragment .fade-in}
+
+## Les cinq V?
+
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*YejjU_69ffDyrC0z-X9jYQ.jpeg){.absolute width="100%" .fragment .fade-in}
+
+## Les six V?
+
+![](https://www.researchgate.net/profile/Javier-Andreu-Perez/publication/280124446/figure/fig2/AS:284445564260357@1444828515809/Six-Vs-of-big-data-value-volume-velocity-variety-veracity-and-variability-which.png){.absolute width="60%" .fragment .fade-in}
+
+## Les sept V?
+
+![](https://impact.com/wp-content/uploads/2022/10/The-7vs-of-big-data.png){.absolute width="70%" .fragment .fade-in}
+
+## Les huit V?
+
+![](https://www.researchgate.net/profile/Ijaz-Ahmad-27/publication/368766798/figure/fig2/AS:11431281122255075@1677251046475/Characteristics-of-Big-Data-with-8Vs-that-support-InX-Big-Data-management.ppm){.absolute width="50%" .fragment .fade-in}
+
+## Les neuf V?
+
+![](https://www.researchgate.net/profile/Bihter-Das-2/publication/350075342/figure/fig1/AS:1001705609109517@1615836636962/characteristics-of-big-data.png){.absolute width="60%" .fragment .fade-in}
+
+## Les dix V?
+
+![](https://datasciencedojo.com/wp-content/uploads/10-vs-of-big-data-1030x1030.png.webp){.absolute width="60%" .fragment .fade-in}
+
+## Les onze V?
+
+![](https://www.researchgate.net/publication/356019405/figure/fig1/AS:1088172826066952@1636452027036/The-main-characteristics-of-big-data-the-11-Vs.jpg){.absolute width="40%" .fragment .fade-in}
+
+## Les douze V?
+
+![](https://www.researchgate.net/profile/Ernane-Martins-2/publication/335105621/figure/fig2/AS:790671002726400@1565522065239/The-12-Vs-in-Big-Data-Font-Adapted-by-author-2018.png){.absolute width="60%" .fragment .fade-in}
+
+## Les treize V?
+
+![](https://clipart-library.com/images/gie5B478T.png){.absolute width="60%" .fragment .fade-in}
+
+
+## Les quatorze V?
+
+![](https://www.researchgate.net/profile/Bazlur-Rashid/publication/322247301/figure/fig1/AS:579058937614339@1515069817678/Big-Data-technology-with-14-Vs.png){.absolute width="65%" .fragment .fade-in}
+
+## Les quinze V?
+
+![](https://clipart-library.com/images/gie5B478T.png){.absolute width="60%" .fragment .fade-in}
+
+
+## Combien de "V" peut-on intégrer dans un concept ?{.biggest}
+
+::: {.r-fit-text}
+Réponse: 14!
+:::
+
+::: {.callout-important}
+### La vraie question
+Ce n'est pas "Combien de V?", mais "Comment utiliser ces données de façon responsable et pertinente?"
+:::
+
+## Une autre définition : Les 5W ? {auto-animate=true}
+
+- Who?
+- What?
+- When?
+- Where?
+- Why?
+
+## Une autre définition : Les 5W ? {auto-animate=true}
+
+- Who?
+- What?
+- When?
+- Where?
+
+## Une autre définition : Les 5W ? {auto-animate=true}
+
+- Why?
+
+## Une autre définition : Les 5W ? {auto-animate=true}
+
+- Pourquoi ?
+  - Faire de la science ?
+  - Comprendre le monde qui nous entoure ?
+  - Prendre des décisions éclairées ?
+  - Parce que c'est le fun?
+
+## Quel jeu de donnée donne les meilleurs résultats ? {auto-animate=true}
+
+- Sondage de 1000 participants représentatif?
+- 2M de commentaires facebook?
+
+## Quel jeu de donnée donne les meilleurs résultats ? {auto-animate=true}
+
+Ça dépend de la question de recherche!
+
+- Quel est l'acceptabilité sociale du kidnaping de Maduro par les États-Unis?
+
+- Quel est l'effet de conduire un camion ou une voiture électrique sur les intentions de vote? 
+
+## Avant et maintenant {.smaller}
+
+**Avant**: On créait des données spécifiquement pour répondre à une question de recherche.
+
+**Maintenant**: On utilise des données déjà existantes pour répondre à une question de recherche.
+
+L'un n'est pas mieux que l'autre. Ils répondent à des besoins différents.
+
+## Des données du quotidien deviennent des données de recherche {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Données originales**
+
+- Discussions Reddit
+- Cartes de chaleur Strava
+- Playlists Spotify
+- Profils LinkedIn
+- Tendances TikTok
+:::
+
+::: {.column width="50%"}
+**Questions de recherche**
+
+- Opinion publique sur l'IA?
+- Mobilité urbaine post-pandémie?
+- Identités culturelles générationnelles?
+- Trajectoires professionnelles genrées?
+- Diffusion des mouvements sociaux?
+:::
+
+::::
+
+
+:::{.callout-important}
+Le but de ce cours est de vous apprendre à voir des données du quotidien comme des données de recherche potentielles.
+:::
+
+## Le principe fondamental des big data
+
+### Reconversion
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](img/abstraction.png)
+:::
+
+::: {.column width="50%"}
+Notre travail
+
+![](https://cdn-icons-png.flaticon.com/512/3808/3808508.png){.absolute top=200 right=0 width="40%"}
+
+:::
+::::
+
+
+## Structure du cours
+
+![](img/structure_cours.png)
+
+## Objectifs
+
+- Avoir une connaissance globale des différentes sources de données disponibles pour étudier les phénomènes sociaux.
+
+- Développer l’autonomie nécessaire pour collecter, gérer et analyser quantitativement des bases de données, et les intégrer dans un projet de recherche.
+
+- Démontrer une compréhension des enjeux liés à la mobilisation et à l’utilisation de grandes bases de données en sciences sociales.
+
+## Les outils pour y arriver {.smaller}
+
+![](img/outils_numeriques_2025.jpg)
+
+## Évaluations {.smaller}
+
+| Évaluations                     |Points   | Dates                        |
+|---------------------------------|---------|------------------------------|
+| TP1 - Introduction              | 10%     | 28 janvier 2026 avant minuit |
+| Quiz 1                          | 15%     | 5 février 2026               |
+| TP2 - Travail de mi-session     | 20%     | 11 mars 2026 avant minuit    |
+| Quiz 2                          | 15%     | 9 avril 2026                 |
+| TP3 - Travail de session        | 30%     | 30 avril 2026 avant minuit   |
+| Participation en classe         | 10%     | 8 janvier au 30 avril        |
+| Total                           | 100%    | 8 janvier au 30 avril        |
+
+## Site du cours
+
+Le site web du cours est disponible au [https://fas1001.com](https://fas1001.com).
+Toutes les informations concernant le cours y seront publiées, y compris les diapositives, les travaux pratiques, les quiz, le plan de cours et les dates importantes.
+
+## En rafale: {.smaller}
+
+- ChatGPT?
+- Règles de retard: 10% par jour
+- Matériel requis
+- Vous avez des questions? Posez-les!
+- Vous avez des commentaires? Partagez-les!
+- Vous avez des suggestions? Proposez-les!
+
+# Bonne session!

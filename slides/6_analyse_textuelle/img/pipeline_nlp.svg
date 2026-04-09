@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Pipeline NLP: Texte brut, Nettoyage, Tokenisation, Retrait des mots vides, Analyse, avec mention de Lemmatisation ou Racinisation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5fbff"/>
+      <stop offset="1" stop-color="#eaf6ee"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="url(#bg)"/>
+  <text x="800" y="110" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="44" font-weight="700" fill="#17324a">Pipeline de traitement du langage naturel (NLP)</text>
+
+  <rect x="60" y="265" width="220" height="220" rx="22" fill="#ffffff" stroke="#95bdd8" stroke-width="4"/>
+  <rect x="360" y="265" width="220" height="220" rx="22" fill="#ffffff" stroke="#80b2cf" stroke-width="4"/>
+  <rect x="660" y="265" width="220" height="220" rx="22" fill="#ffffff" stroke="#6ea7c4" stroke-width="4"/>
+  <rect x="960" y="265" width="220" height="220" rx="22" fill="#ffffff" stroke="#5e9cb9" stroke-width="4"/>
+  <rect x="1260" y="265" width="220" height="220" rx="22" fill="#ffffff" stroke="#4c8ea9" stroke-width="4"/>
+
+  <line x1="280" y1="375" x2="340" y2="375" stroke="#2f6d9b" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="356,375 336,363 336,387" fill="#2f6d9b"/>
+  <line x1="580" y1="375" x2="640" y2="375" stroke="#2f6d9b" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="656,375 636,363 636,387" fill="#2f6d9b"/>
+  <line x1="880" y1="375" x2="940" y2="375" stroke="#2f6d9b" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="956,375 936,363 936,387" fill="#2f6d9b"/>
+  <line x1="1180" y1="375" x2="1240" y2="375" stroke="#2f6d9b" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="1256,375 1236,363 1236,387" fill="#2f6d9b"/>
+
+  <text x="170" y="350" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#3a6685">Etape 1</text>
+  <text x="470" y="350" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#3a6685">Etape 2</text>
+  <text x="770" y="350" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#3a6685">Etape 3</text>
+  <text x="1070" y="350" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#3a6685">Etape 4</text>
+
+  <text x="170" y="395" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="30" font-weight="700" fill="#17324a">Texte brut</text>
+  <text x="470" y="395" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="30" font-weight="700" fill="#17324a">Nettoyage</text>
+  <text x="770" y="395" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="29" font-weight="700" fill="#17324a">Tokenisation</text>
+  <text x="1070" y="378" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="26" font-weight="700" fill="#17324a">Retrait des</text>
+  <text x="1070" y="416" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="26" font-weight="700" fill="#17324a">mots vides</text>
+  <text x="1370" y="395" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="30" font-weight="700" fill="#17324a">Analyse</text>
+
+  <rect x="170" y="585" width="1260" height="190" rx="22" fill="#ffffff" stroke="#5f9cbc" stroke-width="4"/>
+  <text x="800" y="655" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="35" font-weight="700" fill="#17324a">Concept souvent utile en plus</text>
+  <text x="800" y="708" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="30" font-weight="700" fill="#1f4c6f">Lemmatisation / Racinisation</text>
+  <text x="800" y="748" text-anchor="middle" font-family="Verdana, Tahoma, sans-serif" font-size="24" fill="#315f7e">Exemples : "chevaux" -> "cheval" ; "suis" -> "etre"</text>
+</svg>

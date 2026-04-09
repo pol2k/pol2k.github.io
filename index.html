@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAS 1001</title>
+    <meta
+      name="description"
+      content="Cours d'introduction aux mégadonnées en sciences sociales - FAS 1001"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fas1001.github.io/" />
+    <meta
+      property="og:title"
+      content="FAS 1001 - Introduction aux mégadonnées"
+    />
+    <meta
+      property="og:description"
+      content="Cours d'introduction aux mégadonnées en sciences sociales - FAS 1001"
+    />
+    <meta
+      property="og:image"
+      content="https://fas1001.github.io/images/fas1001_logo.svg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content="https://fas1001.github.io/" />
+    <meta
+      property="twitter:title"
+      content="FAS 1001 - Introduction aux mégadonnées"
+    />
+    <meta
+      property="twitter:description"
+      content="Cours d'introduction aux mégadonnées en sciences sociales - FAS 1001"
+    />
+    <meta
+      property="twitter:image"
+      content="https://fas1001.github.io/images/fas1001_logo.svg"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="icon" type="image/svg+xml" href="images/fas1001_logo.svg" />
+    <link rel="apple-touch-icon" href="images/fas1001_logo.svg" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="background-mesh"></div>
+
+    <nav class="navbar">
+      <div class="container navbar-content">
+        <a href="#home" class="logo">
+          <img src="images/fas1001_logo.svg" alt="FAS 1001 Logo" />
+          <span>FAS 1001</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#calendar">Calendrier</a></li>
+          <li><a href="#evaluations">Évaluations</a></li>
+          <li><a href="#exercices">Exercices</a></li>
+          <li><a href="#plan">Plan</a></li>
+          <li><a href="#meetings">Rencontres</a></li>
+          <li><a href="#datacamp">DataCamp</a></li>
+          <li><a href="#diapositives">Diapositives</a></li>
+          <li>
+            <a
+              href="https://github.com/fas1001"
+              target="_blank"
+              class="github-link"
+              ><i class="fab fa-github"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header id="home" class="hero">
+      <div class="container hero-content">
+        <span class="hero-label">FAS 1001</span>
+        <h1 class="hero-title">
+          Introduction aux <span class="gradient-text">mégadonnées</span>
+          <br />en sciences sociales
+        </h1>
+        <p class="hero-subtitle">
+          Maîtrisez l'analyse de données, de la collecte à la visualisation,
+          avec R et les outils modernes de la science des données.
+        </p>
+        <div class="hero-actions">
+          <a href="#calendar" class="btn btn-primary">Voir les cours</a>
+          <a href="#plan" class="btn btn-secondary">Plan de cours</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Calendar Summary -->
+      <section id="calendar" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Calendrier</h2>
+          </div>
+          <div id="dynamic-calendar-container" class="calendar-container">
+            <!-- Dynamic Content Loaded via JS -->
+            <div class="calendar-loading">Chargement du calendrier...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Évaluations Section -->
+      <section id="evaluations" class="section section-darker">
+        <div class="container">
+          <div class="section-header">
+            <h2>Évaluations</h2>
+            <p>Dates importantes et pondération</p>
+          </div>
+
+          <div class="timeline">
+            <!-- TP1 -->
+            <div class="timeline-item completed" id="eval-tp1">
+              <div class="timeline-date">28 Jan</div>
+              <div class="timeline-content">
+                <div class="timeline-tag">Terminé</div>
+                <h3>TP1 - Introduction</h3>
+                <p>10% de la note finale</p>
+              </div>
+            </div>
+
+            <!-- Quiz 1 -->
+            <div class="timeline-item completed" id="eval-quiz1">
+              <div class="timeline-date">5 Fév</div>
+              <div class="timeline-content">
+                <div class="timeline-tag">Terminé</div>
+                <h3>Quiz 1</h3>
+                <p>15% de la note finale</p>
+              </div>
+            </div>
+
+            <!-- TP2 -->
+            <div class="timeline-item completed" id="eval-tp2">
+              <div class="timeline-date">11 Mar</div>
+              <div class="timeline-content">
+                <div class="timeline-tag">Terminé</div>
+                <h3>TP2 - Mi-session</h3>
+                <p>20% de la note finale</p>
+              </div>
+            </div>
+
+            <!-- Quiz 2 -->
+            <div class="timeline-item completed" id="eval-quiz2">
+              <div class="timeline-date">16 Avr</div>
+              <div class="timeline-content">
+                <div class="timeline-tag">Terminé</div>
+                <h3>Quiz 2</h3>
+                <p>15% de la note finale</p>
+              </div>
+            </div>
+
+            <!-- TP3 -->
+            <div class="timeline-item completed" id="eval-tp3">
+              <div class="timeline-date">30 Avr</div>
+              <div class="timeline-content">
+                <div class="timeline-tag">Terminé</div>
+                <h3>TP3 - Final</h3>
+                <p>30% de la note finale</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exercices Section -->
+      <section id="exercices" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Exercices</h2>
+            <p>Pratiquez avec des dépôts GitHub guidés.</p>
+          </div>
+
+          <div class="grid-list">
+            <a
+              href="https://github.com/fas1001/introduction_r"
+              target="_blank"
+              class="list-item"
+              id="ex-intro_r"
+            >
+              <div class="list-icon"><i class="fab fa-r-project"></i></div>
+              <div class="list-details">
+                <h3>Introduction à l'analyse de données</h3>
+                <p>
+                  Importation, nettoyage, visualisation, et statistiques de
+                  base.
+                </p>
+                <div class="list-meta">
+                  <span class="badge">Débutant</span>
+                  <span class="badge-time">1-3h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/fas1001/exercice_cleaning"
+              target="_blank"
+              class="list-item"
+              id="ex-cleaning"
+            >
+              <div class="list-icon"><i class="fas fa-broom"></i></div>
+              <div class="list-details">
+                <h3>Nettoyage des données du CES</h3>
+                <p>Recodage, valeurs manquantes et standardisation.</p>
+                <div class="list-meta">
+                  <span class="badge">Intermédiaire</span>
+                  <span class="badge-time">2h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/fas1001/exercice_analyse"
+              target="_blank"
+              class="list-item"
+              id="ex-analyse"
+            >
+              <div class="list-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="list-details">
+                <h3>Analyse factorielle et régressions</h3>
+                <p>Exploration et modélisation statistique avancée.</p>
+                <div class="list-meta">
+                  <span class="badge">Avancé</span>
+                  <span class="badge-time">2-3h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/fas1001/exercice_analyse_textuelle"
+              target="_blank"
+              class="list-item"
+              id="ex-textuelle"
+            >
+              <div class="list-icon"><i class="fas fa-quote-right"></i></div>
+              <div class="list-details">
+                <h3>Analyse de sentiment textuel</h3>
+                <p>
+                  Analyses avec lexiques (AFINN, Bing, LSD) et visualisation.
+                </p>
+                <div class="list-meta">
+                  <span class="badge">Avancé</span>
+                  <span class="badge-time">3-4h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/fas1001/exercice_scraping"
+              target="_blank"
+              class="list-item"
+              id="ex-scraping"
+            >
+              <div class="list-icon"><i class="fas fa-spider"></i></div>
+              <div class="list-details">
+                <h3>Moissonage (Web scraping)</h3>
+                <p>Extraction de données avec R, Wikipedia et API.</p>
+                <div class="list-meta">
+                  <span class="badge">Avancé</span>
+                  <span class="badge-time">1-2h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/fas1001/exercice_llm"
+              target="_blank"
+              class="list-item"
+              id="ex-llm"
+            >
+              <div class="list-icon"><i class="fas fa-robot"></i></div>
+              <div class="list-details">
+                <h3>LLM et API Prompting</h3>
+                <p>Analyse d'avis clients avec des modèles de langage.</p>
+                <div class="list-meta">
+                  <span class="badge">Intermédiaire</span>
+                  <span class="badge-time">1-2h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/clessn/gabarit_site_web"
+              target="_blank"
+              class="list-item"
+              id="ex-site_web"
+            >
+              <div class="list-icon"><i class="fas fa-globe"></i></div>
+              <div class="list-details">
+                <h3>Création d'un site web personnel</h3>
+                <p>Déployer un portfolio professionnel avec GitHub Pages.</p>
+                <div class="list-meta">
+                  <span class="badge">Intermédiaire</span>
+                  <span class="badge-time">2-3h</span>
+                </div>
+              </div>
+              <div class="list-action">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plan / Syllabus -->
+      <section id="plan" class="section section-darker">
+        <div class="container">
+          <div class="section-header">
+            <h2>Plan de cours</h2>
+            <p>Le contrat d'apprentissage officiel.</p>
+          </div>
+
+          <div class="syllabus-wrapper">
+            <div class="iframe-container">
+              <iframe
+                src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://raw.githubusercontent.com/fas1001/syllabus/main/fas1001_syllabus.pdf"
+                title="Visualiseur de plan de cours"
+              ></iframe>
+            </div>
+            <div class="actions-center">
+              <a
+                href="https://raw.githubusercontent.com/fas1001/syllabus/main/fas1001_syllabus.pdf"
+                download
+                class="btn btn-primary"
+              >
+                <i class="fas fa-download"></i> Télécharger le PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rencontres -->
+      <section id="meetings" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Rencontres</h2>
+            <p>Besoin d'aide? Prenez rendez-vous.</p>
+          </div>
+          <div class="calendar-wrapper">
+            <!-- Placeholder -->
+            <div
+              id="rencontres-placeholder"
+              class="rencontres-placeholder"
+              style="display: none"
+            >
+              <i class="fas fa-calendar-alt"></i>
+              <h3>Rencontres individuelles</h3>
+              <p>
+                Des rencontres individuelles sont prévues lors de la semaine 7
+                et la semaine 12. Un lien Google Calendar sera alors fourni en
+                temps et lieu pour préparer les rencontres. Entre-temps,
+                n'hésitez pas à m'écrire sur Slack si vous voulez planifier une
+                rencontre ou si vous avez des questions.
+              </p>
+            </div>
+
+            <!-- Iframe container -->
+            <div
+              id="rencontres-iframe-container"
+              class="iframe-container"
+              style="display: none"
+            >
+              <iframe
+                id="rencontres-iframe"
+                src=""
+                style="border: 0"
+                width="100%"
+                height="600"
+                frameborder="0"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DataCamp Section -->
+      <section id="datacamp" class="section section-darker">
+        <div class="container">
+          <div class="section-header">
+            <h2>DataCamp</h2>
+            <p>
+              Exercices interactifs et parcours de formation pour compléter le
+              cours.
+            </p>
+          </div>
+
+          <!-- Embedded Exercise -->
+          <div class="datacamp-embed-wrapper">
+            <div class="embed-header">
+              <div class="icon-box">
+                <i class="fas fa-terminal"></i>
+              </div>
+              <div>
+                <h3>Défi Interactif</h3>
+                <p>
+                  Essayez R maintenant. Calculez la moyenne de la consommation
+                  (mpg) des voitures.
+                </p>
+              </div>
+            </div>
+            <div data-datacamp-exercise data-lang="r" data-height="350">
+              <code data-type="pre-exercise-code">data(mtcars)</code>
+              <code data-type="sample-code">
+                # Le jeu de données 'mtcars' est charge. # Utilisez la fonction
+                mean() sur la variable mtcars$mpg. # Ecrivez votre code
+                ci-dessous:
+              </code>
+              <code data-type="solution"> mean(mtcars$mpg) </code>
+              <code data-type="sct">
+                test_function("mean", args = "x") success_msg("Bravo! Vous avez
+                exécuté votre premier code R.")
+              </code>
+            </div>
+          </div>
+
+          <!-- Course Tracks -->
+          <div class="datacamp-tracks">
+            <!-- Track 1: Fondamentaux -->
+            <div class="track-group">
+              <h3 class="track-title"><i class="fas fa-cube"></i> Les bases</h3>
+              <div class="grid-compact">
+                <a
+                  href="https://app.datacamp.com/learn/courses/free-introduction-to-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://www.r-project.org/logo/Rlogo.png"
+                      alt="R Logo"
+                    />
+                  </div>
+                  <span class="sticker-title">Introduction à R</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/intermediate-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://www.r-project.org/logo/Rlogo.png"
+                      alt="R Logo"
+                    />
+                  </div>
+                  <span class="sticker-title">R intermédiaire</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-the-tidyverse"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/tidyverse.png"
+                      alt="Tidyverse Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Intro au Tidyverse</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-git"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
+                      alt="Git Logo"
+                    />
+                  </div>
+                  <span class="sticker-title">Introduction à Git</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-shell"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bash_Logo_Colored.svg/512px-Bash_Logo_Colored.svg.png"
+                      alt="Bash Logo"
+                    />
+                  </div>
+                  <span class="sticker-title">Introduction au Shell</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Track 2: Données Structurées -->
+            <div class="track-group">
+              <h3 class="track-title">
+                <i class="fas fa-table"></i> Données structurées
+              </h3>
+              <div class="grid-compact">
+                <a
+                  href="https://app.datacamp.com/learn/courses/cleaning-data-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/tidyr.png"
+                      alt="tidyr Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Nettoyage de données</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/data-manipulation-with-dplyr"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/dplyr.png"
+                      alt="dplyr Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Manipulation avec dplyr</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/categorical-data-in-the-tidyverse"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/forcats.png"
+                      alt="forcats Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Données catégorielles</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/analyzing-survey-data-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/haven.png"
+                      alt="haven Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Analyse de sondages</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-regression-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/broom.png"
+                      alt="broom Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Intro à la régression</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/factor-analysis-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/purrr.png"
+                      alt="purrr Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Analyse factorielle</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Track 3: Données semi-structurées -->
+            <div class="track-group">
+              <h3 class="track-title">
+                <i class="fas fa-align-left"></i> Données semi-structurées
+              </h3>
+              <div class="grid-compact">
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-text-analysis-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/stringr.png"
+                      alt="stringr Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Analyse textuelle</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/sentiment-analysis-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/juliasilge/tidytext/master/man/figures/logo.png"
+                      alt="tidytext Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Analyse de sentiments</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/web-scraping-in-r"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png"
+                      alt="rvest Hex"
+                    />
+                  </div>
+                  <span class="sticker-title">Collecte de données</span>
+                </a>
+                <a
+                  href="https://app.datacamp.com/learn/courses/introduction-to-chatgpt"
+                  target="_blank"
+                  class="sticker-card"
+                >
+                  <div class="sticker-icon">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+                      alt="ChatGPT Logo"
+                    />
+                  </div>
+                  <span class="sticker-title">Introduction à ChatGPT</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diapositives Section -->
+      <section id="diapositives" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Diapositives</h2>
+            <p>Matériel didactique pour chaque séance de cours.</p>
+          </div>
+
+          <div class="grid-cards">
+            <!-- Cours 1 -->
+            <article class="card slide-card" id="slide-cours_1">
+              <a
+                href="slides/1_introduction/cours_1_intro.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_1.png"
+                    alt="Aperçu du cours 1"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 2 -->
+            <article class="card slide-card" id="slide-cours_2">
+              <a
+                href="slides/2_introduction_r/index.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_2.png"
+                    alt="Aperçu du cours 2"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 3 -->
+            <article class="card slide-card" id="slide-cours_3">
+              <a
+                href="slides/3_introduction_git_github/git_github.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_3.png"
+                    alt="Aperçu du cours 3"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 4 -->
+            <article class="card slide-card" id="slide-cours_4">
+              <a
+                href="slides/4_sondages/cours_4_sondages.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_4.png"
+                    alt="Aperçu du cours 4"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 5 -->
+            <article class="card slide-card" id="slide-cours_5">
+              <a
+                href="slides/5_mesures_latentes/cours_5_mesures.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_5.png"
+                    alt="Aperçu du cours 5"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 6 -->
+            <article class="card slide-card" id="slide-cours_6">
+              <a
+                href="slides/6_analyse_textuelle/cours_6_analyse_textuelle.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_6.png"
+                    alt="Aperçu du cours 6"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 7 -->
+            <article class="card slide-card" id="slide-cours_7">
+              <a
+                href="slides/7_web_scraping/cours_7_web_scraping.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_7.png"
+                    alt="Aperçu du cours 7"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 8 -->
+            <article class="card slide-card" id="slide-cours_8">
+              <a
+                href="slides/8_llms/cours_8_llms.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_8.png"
+                    alt="Aperçu du cours 8"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Cours 9 -->
+            <article class="card slide-card" id="slide-cours_9">
+              <a
+                href="slides/9_llms_agentique/cours_9_llm_agentique.html"
+                target="_blank"
+                class="card-image-link"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    src="images/cours_9.png"
+                    alt="Aperçu du cours 9"
+                    loading="lazy"
+                  />
+                  <div class="card-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Résumé -->
+            <article
+              class="card slide-card summary-card slide-card-full-width"
+              id="slide-resume"
+            >
+              <a
+                href="slides/10_resume/resume_semestre.html"
+                target="_blank"
+                class="card-image-link summary-link-wrapper"
+              >
+                <div class="summary-icon">
+                  <i class="fas fa-book-reader"></i>
+                </div>
+              </a>
+              <div class="card-content">
+                <h3>Résumé de la session</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <p>
+          &copy; 2026 FAS 1001. Propulsé par
+          <a href="https://github.com/fas1001">GitHub Pages</a>.
+        </p>
+        <div class="footer-social">
+          <a href="https://github.com/fas1001"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/course_logic.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datacamp.com/datacamp-light-latest.min.js"
+    ></script>
+  </body>
+</html>

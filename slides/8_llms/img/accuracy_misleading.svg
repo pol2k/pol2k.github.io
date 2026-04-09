@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">Pourquoi l'accuracy peut être trompeuse</title>
+  <desc id="desc">Comparaison de deux modèles pour une maladie rare. Un modèle peut avoir 99 pour cent d'accuracy tout en ratant le seul cas important.</desc>
+
+  <rect width="1400" height="820" fill="#ffffff"/>
+
+  <text x="700" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#24444b">
+    Pourquoi l'accuracy peut être trompeuse
+  </text>
+  <text x="700" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#4d6a70">
+    Exemple: détecter une maladie grave rare dans 100 cas
+  </text>
+
+  <rect x="70" y="135" width="595" height="560" rx="24" fill="#eef7f9" stroke="#b9d6dc" stroke-width="2"/>
+  <rect x="735" y="135" width="595" height="560" rx="24" fill="#f8f3e7" stroke="#dccda6" stroke-width="2"/>
+
+  <text x="367" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">
+    Modèle A: prédit toujours
+  </text>
+  <text x="367" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">
+    "pas malade"
+  </text>
+
+  <text x="1032" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">
+    Modèle B: accepte quelques erreurs,
+  </text>
+  <text x="1032" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">
+    mais détecte le cas rare
+  </text>
+
+  <rect x="220" y="245" width="295" height="58" rx="18" fill="#dcecef"/>
+  <rect x="885" y="245" width="295" height="58" rx="18" fill="#efe4c6"/>
+  <text x="367" y="283" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">Accuracy = 99%</text>
+  <text x="1032" y="283" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24444b">Accuracy = 94%</text>
+
+  <rect x="125" y="335" width="485" height="160" rx="20" fill="#ffffff" stroke="#d7e5e8" stroke-width="2"/>
+  <rect x="790" y="335" width="485" height="160" rx="20" fill="#ffffff" stroke="#e1d6bc" stroke-width="2"/>
+
+  <text x="155" y="378" font-family="Arial, sans-serif" font-size="22" fill="#355c66">Vérité terrain:</text>
+  <text x="155" y="410" font-family="Arial, sans-serif" font-size="22" fill="#355c66">99 personnes non malades</text>
+  <text x="155" y="442" font-family="Arial, sans-serif" font-size="22" fill="#355c66">1 personne malade</text>
+
+  <text x="820" y="378" font-family="Arial, sans-serif" font-size="22" fill="#355c66">Même vérité terrain:</text>
+  <text x="820" y="410" font-family="Arial, sans-serif" font-size="22" fill="#355c66">99 personnes non malades</text>
+  <text x="820" y="442" font-family="Arial, sans-serif" font-size="22" fill="#355c66">1 personne malade</text>
+
+  <rect x="155" y="520" width="220" height="54" rx="17" fill="#dcecef"/>
+  <rect x="390" y="520" width="190" height="54" rx="17" fill="#f3d9d9"/>
+  <text x="265" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#355c66">99 vrais négatifs</text>
+  <text x="485" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#8d2f2f">1 faux négatif</text>
+
+  <rect x="820" y="520" width="190" height="54" rx="17" fill="#dcecef"/>
+  <rect x="1025" y="520" width="135" height="54" rx="17" fill="#dff0d6"/>
+  <rect x="1175" y="520" width="70" height="54" rx="17" fill="#f2e3be"/>
+  <text x="915" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#355c66">93 vrais négatifs</text>
+  <text x="1092" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2f5b33">1 vrai positif</text>
+  <text x="1210" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#7e6333">6 FP</text>
+
+  <text x="155" y="625" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#8d2f2f">
+    Problème: excellent score,
+  </text>
+  <text x="155" y="660" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#8d2f2f">
+    mais aucun malade détecté
+  </text>
+
+  <text x="820" y="625" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#2f5b33">
+    Mieux pour la tâche:
+  </text>
+  <text x="820" y="660" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#2f5b33">
+    le cas important est repéré
+  </text>
+
+  <rect x="220" y="725" width="960" height="58" rx="18" fill="#40666e"/>
+  <text x="700" y="762" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff">
+    Une accuracy élevée peut masquer un échec sur les cas qui comptent vraiment.
+  </text>
+</svg>

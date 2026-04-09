@@ -1,0 +1,635 @@
+---
+title: "Cours 9 : Analyse d'images"
+subtitle: "Introduction aux mégadonnées en sciences sociales"
+author: "Étienne Proulx"
+institute: Université de Montréal
+bibliography: references.bib
+lang: fr
+from: markdown+emoji
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    logo: images/logo.png
+    footer: "[FAS1001](https://fas1001.com)"
+    transition: slide
+    transition-speed: fast
+    code-fold: false
+    code-overflow: wrap
+    highlight-style: github
+    embed-resources: true
+---
+
+## Introduction {.smaller}
+
+- **Les images comme données sociales**
+  - Impact culturel, politique et émotionnel
+
+- **Parcours du cours**
+  1. Histoire de l'analyse d'images
+  2. Tournant de l'apprentissage profond
+  3. Méthodes d'automatisation
+  4. Applications pratiques
+  
+- **Objectif**: Maîtriser l'analyse automatisée d'images à grande échelle
+
+## Pourquoi analyser les images?
+
+- Profusion d'images dans notre quotidien
+- Construction culturelle, sociale et politique
+- Question de la "vérité" de l'image
+- Impact sur nos consciences et émotions
+
+## Le contexte contemporain
+
+- Vie numérique = milliers d'images quotidiennes
+- Globalisation de la diffusion visuelle
+- Le visuel comme force sociale
+- "Tournant pictorial" de la culture
+
+## Quelles images étudier?
+
+- Chefs-d'œuvre vs. images médiatiques
+- Critères d'évaluation: contexte social, politique, historique
+- Perception variable selon les cultures
+- Élitisme vs. démocratisation visuelle
+
+## Origines de l'analyse d'image
+
+- Histoire de l'art (15-16e siècles)
+- Analyse du Beau et du Bien
+- Culture supérieure vs. culture populaire
+- Tradition humaniste universalisante
+
+## Évolution: années 1920-1930
+
+- Aby Warburg: décloisonnement des cultures et médiums
+- Carl Einstein: critique des préjugés coloniaux
+- Mise à niveau des images populaires et beaux-arts
+- Intérêt pour les arts "mineurs" et objets industriels
+
+## Crise disciplinaire (1960-1970)
+
+- Mai 68, droits civiques, décolonisation
+- Décloisonnement des disciplines
+- Naissance des cultural studies (Stuart Hall)
+- Henri Zerner: images ancrées dans l'histoire sociale
+
+## Nouvelles approches (depuis 1970)
+
+- Sémiotique, anthropologie, études postcoloniales
+- Laura Mulvey: concept du "Male Gaze"
+- Contextualisation de l'image
+- L'image comme transformatrice et reproductrice
+
+## Les Visual Studies
+
+- Crise du visuel (Nicholas Mirzoeff) ; Comment analyser la représentation dans la surabondance?
+- Focus: action produite par l'image vs. objet en soi
+- Analyse de production, réception, circulation des images
+- Expérience visuelle plurielle
+
+## Exemple emblématique
+
+![](images/I_Want_You_for_U.S._Army.jpg){fig-align="centered"}
+
+## Exemple emblématique
+
+- Affiche de l'Oncle Sam (1ère Guerre mondiale)
+- Impact sur l'inconscient politique américain
+- Dispositif visuel à grande échelle
+- Fin de l'isolationnisme américain
+
+## Importance de l'analyse d'images
+
+> "Comprendre que les images ne sont ni des vérités ni des mensonges absolus, mais des constructions qui sont simultanément des copies, des reconstitutions partielles, des simulations, des illusions et des fantaisies du réel"  
+> [@slavkova17]
+
+## Le cas du marketing
+
+- Publicités: multidimensionnalité de l'analyse
+- Les marques sont construites par les images
+- Approches qualitatives et quantitatives
+- Études comparatives transculturelles
+- Représentations et constructions sociales
+
+## Exemples d'analyses traditionnelles quanti {.smaller}
+
+- Étude comparative (Seventeen magazine):
+  - 263 publicités (USA vs Japon)
+  - Représentation des jeunes filles: 70% au Japon vs 43% aux USA
+
+- Comparaison produits/services:
+  - 471 publicités analysées
+  - Services: plus d'appel à l'émotion que les produits
+- Source: @tissier-desbordes04
+
+## Méthodes traditionnelles d'analyse
+
+- **Analyse qualitative**: récits, sens, interprétation
+- **Analyse quantitative**: fréquence, mesure, comparaison
+- **Analyse de contenu**: catégorisation, codification
+- Méthodes mixtes: triangulation des approches
+  
+## Vers les méthodes automatisées
+
+- Traitement de grands corpus d'images
+- Mégadonnées visuelles
+- Intelligence artificielle et reconnaissance d'images
+- Nouvelles perspectives pour les sciences sociales
+
+## L'ère du big data visuel
+- Instagram: 75+ millions d'images par jour (2018)
+- Impossibilité d'analyse manuelle à cette échelle
+- Nécessité de nouvelles méthodes
+- Démocratisation des outils d'analyse
+
+## Révolution de l'apprentissage profond (2012)
+
+- Concours [ImageNet](https://www.image-net.org/): tournant décisif
+  - ImageNet: 14,197,122 d'images annotées pour l'entrainement de modèles.
+  - CAPTCHA
+- Équipe de Geoffrey Hinton: première victoire avec réseaux de neurones
+- 60 millions de connexions, 650 000 neurones sur 8 couches
+- Réduction spectaculaire du taux d'erreur
+
+## Fonctionnement de l'apprentissage profond
+
+- Transformation d'une image en représentations abstraites
+- Extraction progressive de caractéristiques:
+  - Première couche: identification des arêtes
+  - Couches intermédiaires: détection des coins et contours
+  - Couches profondes: reconnaissance de parties d'objets
+- Capacité à gérer les variations d'apparence (lumière, angle, etc.)
+- Réseaux de neurones convolutifs (CNN)
+
+## ![](images/CNN.jpg)
+
+???
+
+## ![](images/facial_recognition.png)
+
+## Fonction classique de ce genre d'algorithmes 
+
+- Détection d'objets (object recognition)
+- Classification d'objets
+- Reconnaissance faciale
+- Analyse faciale (prédiction d'attributs)
+- Analyse de sentiment visuel
+
+## Frameworks d'analyse en sciences sociales
+
+- **Framework causal**:
+  - Images comme variables dépendantes (ex: choix d'images et idéologie)
+  - Images comme variables indépendantes (ex: impact émotionnel et mobilisation)
+- **Framework indicateur**:
+  - Images comme mesures d'une relation d'intérêt
+  - Ex: représentation homme/femme dans les médias
+- Source: [@williams_etal20]
+
+## Applications en sciences sociales
+
+- Classification automatique d'objets et de scènes
+- Estimation de foules dans les manifestations
+- Analyse de la couverture médiatique
+- Détection de manipulation d'images
+- Mesure de la diversité de représentation
+
+## Enjeux éthiques
+
+![](images/kosinski.png)
+
+## Enjeux éthiques
+
+- Cas @wang_kosinski18: prédiction d'orientation sexuelle
+- Précision: 91% (hommes) et 83% (femmes)
+- Questions de vie privée et de surveillance
+- Reproduction des biais sociaux dans les algorithmes
+
+## Enjeux éthiques
+
+![](images/gendershades1.png)
+
+Source: [@buolamwini_gebru18a]
+
+![](images/gendershades2.png)
+
+## Limites de l'automatisation
+
+- Test de Turing et intelligence artificielle
+- Différence entre intelligence humaine et artificielle
+- Apprentissage incarné vs. apprentissage statistique
+- Complémentarité des approches qualitatives et automatisées
+
+## Méthodologie pratique
+
+- Choix des outils selon les objectifs de recherche
+- Utilisation d'API (comme GPT Vision)
+- Développement de classificateurs spécifiques
+- Validation humaine des résultats automatisés
+
+## Projet de recherche {.smaller}
+
+Ce cours contient une démonstration pratique basée sur une recherche réelle portant sur l'analyse d'images médiatiques concernant les réfugiés climatiques dans les médias québécois.
+
+- Objectif: Analyser la représentation visuelle des migrants climatiques
+- 400+ images collectées de trois journaux québécois (2018-2023)
+- Utilisation de GPT-Vision pour analyser le contenu des images
+- Analyse quantitative des éléments visuels présents
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/JdeM_2023_02_27_b.PNG){.r-stretch}
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/JdeMontreal_2023_08_14_02_b.PNG){.r-stretch}
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/LaPresse_2023_02_11_l.PNG){.r-stretch}
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/LaPresse_2023_02_20_a.PNG){.r-stretch}
+
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/JdeMontreal_2023_08_14_01_c.PNG){.r-stretch}
+
+## {.plain background-color="#000000" background-transition="none"}
+
+![](images/JdeMontreal_2023_08_14_01_e.PNG){.r-stretch}
+
+## Étape 1: Préparation des données {.smaller}
+
+### Uniformisation des noms de fichiers
+
+- **Problématique**: Hétérogénéité des conventions de nommage
+- **Solution**: Système standardisé pour tous les fichiers médias
+- **Bénéfices**:
+  - Organisation cohérente des données
+  - Automatisation facilitée des traitements
+  - Réduction des erreurs d'analyse
+  - Traçabilité des sources
+
+## Système de nommage structuré (recommandation de ma part)
+
+- **Structure recommandée**: `Source_Date_Numéro_Type.extension`
+
+**Exemples**:
+
+- `JdeM_2023_02_27_01.png` → Journal de Montréal, 27 février 2023, image 1
+- `LaPresse_2022_11_05_02_opinion.png` → La Presse, 5 novembre 2022, image 2, article d'opinion
+
+## Extraction automatique des métadonnées
+
+```r
+df_images <- df_images %>%
+  mutate(
+    # Extraire le média à partir du nom de fichier
+    media = case_when(
+      str_detect(chemin_image, "LeDevoir") ~ "LeDevoir",
+      str_detect(chemin_image, "LaPresse") ~ "LaPresse",
+      str_detect(chemin_image, "JdeM") ~ "JournalDeMontreal",
+      TRUE ~ str_extract(nom_fichier, "^[A-Za-z]+(?=_\\d{4}_)")
+    ),
+    
+    # Extraire la date au format YYYY_MM_DD
+    date_str = str_extract(nom_fichier, "\\d{4}_\\d{2}_\\d{2}"),
+    date = case_when(
+      !is.na(date_str) ~ ymd(gsub("_", "-", date_str)),
+      TRUE ~ as.Date(NA)
+    ),
+    
+    # Déterminer si c'est un article d'opinion
+    est_opinion = case_when(
+      str_detect(chemin_image, "_opinion") ~ TRUE,
+      str_detect(nom_fichier, "opinion") ~ TRUE,
+      TRUE ~ FALSE
+    )
+  )
+```
+
+### Chargement des bibliothèques
+
+```r
+# Chargement des packages nécessaires
+library(tidyverse) # Pour la manipulation des données
+library(writexl)   # Pour écrire des fichiers Excel
+library(lubridate) # Pour manipuler les dates
+```
+
+## Étape 1: Organisation des fichiers {.smaller}
+
+### Exploration du répertoire d'images
+
+```r
+# Définition du dossier d'images
+dossier_images <- "images"
+
+# Liste tous les fichiers d'images dans le dossier
+chemins_images <- list.files(
+  path = dossier_images,                 # Dossier à scanner
+  pattern = "\\.(jpg|jpeg|png|PNG)$",    # Filtrer uniquement les fichiers image
+  recursive = TRUE,                      # Inclure les sous-dossiers
+  full.names = TRUE                      # Obtenir les chemins complets
+)
+
+# Afficher le nombre d'images trouvées
+cat("Nombre d'images trouvées:", length(chemins_images), "\n")
+```
+
+## Étape 1: Création d'un dataframe {.smaller}
+
+```r
+# Création d'un dataframe avec les chemins d'images
+df_images <- data.frame(
+  image_id = paste0("img_", 1:length(chemins_images)),
+  chemin_image = chemins_images,
+  stringsAsFactors = FALSE
+)
+```
+
+## Étape 1: Extraction des métadonnées {.smaller}
+
+```R
+# Extraction du média, de la date et du type d'article
+df_images <- df_images %>%
+  mutate(
+    # Extraction du nom de fichier
+    nom_fichier = basename(chemin_image),
+    
+    # Extraction du média
+    media = case_when(
+      str_detect(chemin_image, "LeDevoir") ~ "LeDevoir",
+      str_detect(chemin_image, "LaPresse") ~ "LaPresse",
+      str_detect(chemin_image, "JdeM") ~ "JournalDeMontreal",
+      TRUE ~ str_extract(nom_fichier, "^[A-Za-z]+(?=_\\d{4}_)")
+    ),
+    
+    # Extraction de la date 
+    date_str = str_extract(nom_fichier, "\\d{4}_\\d{2}_\\d{2}"),
+    date = case_when(
+      !is.na(date_str) ~ ymd(gsub("_", "-", date_str)),
+      TRUE ~ as.Date(NA)
+    ),
+    
+    # Détermination si c'est un article d'opinion
+    est_opinion = case_when(
+      str_detect(chemin_image, "_opinion") ~ TRUE,
+      str_detect(nom_fichier, "opinion") ~ TRUE,
+      TRUE ~ FALSE
+    )
+  ) %>%
+  select(-nom_fichier, -date_str)
+```
+
+## Résumé des données d'images {.smaller}
+
+```R
+# Résumé par média
+df_images %>%
+  group_by(media) %>%
+  summarise(
+    nombre = n(),
+    opinions = sum(est_opinion, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(nombre))
+
+# Résumé par année
+df_images %>%
+  filter(!is.na(date)) %>%
+  mutate(annee = year(date)) %>%
+  group_by(annee) %>%
+  summarise(total = n())
+```
+
+## Étape 2: Préparation pour analyse {.scrollable}
+
+### Définition des questions de recherche 
+
+
+|Type d'analyse|Exemple de prompt|Format de réponse|
+|--------------|----------------|-----------------|
+|Justification image-texte|"Cette image et ce texte correspondent au contenu d'un article médiatique du Québec. La sélection de l'image est-elle justifiée par le texte?"|Binaire (1=oui, 0=non)|
+|Description générale|"Dans un contexte de migration, décrivez cette image provenant du contenu d'un article médiatique québécois. Portez une attention particulière aux détails."|Paragraphe descriptif|
+|Identification géographique|"Cette image provient d'un article médiatique québécois. L'image semble-t-elle avoir été prise à la frontière entre le Québec et les États-Unis?"|Binaire (1=oui, 0=non)|
+|Analyse thématique|"Cette image provient d'un article médiatique québécois. Qu'est-ce qui semble être au cœur de cette image: les individus et leurs émotions, le mouvement des personnes, l'environnement, ou autre?"|Catégorisation + détails|
+|Caractéristiques culturelles|"Cette image provient d'un article médiatique québécois et peut fournir des informations liées à la migration. Quelles caractéristiques ou éléments discernables indiquent des origines culturelles ou ethniques?"|Description ou "NA"|
+|Identification d'éléments spécifiques|"Cette image provient d'un article médiatique québécois. Y a-t-il des symboles culturels ou religieux représentés dans l'image?"|Binaire (1=oui, 0=non)|
+|Analyse de représentation genrée|"Cette image provient d'un article médiatique québécois. Pensez-vous que l'image dépeint la vulnérabilité de manière genrée?"|Binaire (1=oui, 0=non)|
+|Analyse de problème/solution|"Cette image provient d'un article médiatique québécois. Si applicable, quel problème ou menace lié au thème de la migration est présenté, et quelle solution est suggérée dans l'image?"|Description analytique|
+|Catégorisation thématique multiple|"Cette image provient d'un article médiatique québécois. Quels thèmes sont représentés dans l'image?" [liste de thèmes fournie]|Énumération de thèmes|
+
+## Étape 2: Préparation des outils d'analyse {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+# Fonction pour analyser une image avec GPT Vision
+analyser_image <- function(chemin_image, prompt_texte) {
+  # Vérification que le fichier existe et est une image
+  if (file.exists(chemin_image) && 
+      tolower(tools::file_ext(chemin_image)) %in% c("jpg", "jpeg", "png")) {
+    cat("Analyse de l'image:", chemin_image, "\n")
+    
+    # Dans un contexte réel, ici on ferait appel à l'API GPT Vision
+    # Via le package clellm::gpt_vision()
+    
+    # Simulation de réponse pour démonstration
+    reponse <- paste("Analyse de l'image", basename(chemin_image),
+                   "Cette image montre [description simulée pour démonstration]")
+    
+    return(reponse)
+  } else {
+    return("ERREUR: Fichier introuvable ou format non pris en charge")
+  }
+}
+```
+
+## Comment fonctionne gpt_vision() {.smaller}
+
+Le package `clellm` fournit la fonction `gpt_vision()` qui:
+
+1. **Prend en entrée**:
+   - Chemin d'une image (`image_path`)
+   - Prompt pour guider l'analyse (`prompt`)
+   - Limite de tokens (`max_tokens`)
+   - Modèle à utiliser (`model="gpt-4o"`)
+
+2. **Fonctionnement**:
+   - Convertit l'image en Base64
+   - Envoie une requête à l'API OpenAI
+   - Inclut l'image et le prompt dans la requête
+   - Récupère et analyse la réponse
+
+3. **Retourne**: L'interprétation textuelle de l'image par GPT
+
+## Étape 2: Préparation des données {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+# Définition du tableau de prompts d'analyse
+prompts_analyse <- data.frame(
+  question = c("description", "elements", "emotions", "symboles"),
+  prompt = c(
+    "Décrivez cette image en détail.",
+    "Quels éléments visuels sont présents dans cette image?",
+    "Quelles émotions semblent être exprimées dans cette image?",
+    "Y a-t-il des symboles culturels ou politiques dans cette image?"
+  ),
+  stringsAsFactors = FALSE
+)
+
+# Sélection de quelques images pour démonstration
+images_demo <- df_images %>% slice(1:3)
+
+# Création d'un dataframe pour stocker les résultats
+resultats_demo <- data.frame(
+  image_id = character(),
+  question = character(),
+  prompt = character(),
+  reponse = character(),
+  stringsAsFactors = FALSE
+)
+```
+
+## Étape 2: Boucle d'analyse - partie 1 {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+# Boucle principale pour analyser chaque image
+for (i in 1:nrow(images_demo)) {
+  # Récupération des informations de l'image
+  image_id <- images_demo$image_id[i]
+  chemin_image <- images_demo$chemin_image[i]
+  
+  # Information de progression
+  cat("Traitement de l'image", i, "/", nrow(images_demo), ":\n")
+  cat("ID:", image_id, "\n")
+  cat("Chemin:", chemin_image, "\n\n")
+```
+
+## Étape 2: Boucle d'analyse - partie 2 {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+  # Pour chaque prompt/question
+  for (j in 1:nrow(prompts_analyse)) {
+    # Récupération du prompt
+    question <- prompts_analyse$question[j]
+    prompt <- prompts_analyse$prompt[j]
+    
+    # Information sur l'analyse en cours
+    cat("Question:", question, "\n")
+    cat("Prompt:", prompt, "\n")
+    
+    # Analyse de l'image avec le prompt actuel
+    reponse <- analyser_image(chemin_image, prompt)
+```
+
+## Étape 2: Boucle d'analyse - partie 3 {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+    # Ajout du résultat au dataframe
+    resultats_demo <- rbind(resultats_demo, data.frame(
+      image_id = image_id,
+      question = question,
+      prompt = prompt,
+      reponse = reponse,
+      stringsAsFactors = FALSE
+    ))
+    
+    # Pause entre les appels API pour éviter de dépasser 
+    # les limites de rate de l'API
+    cat("Pause entre les analyses...\n")
+    Sys.sleep(1)
+  }
+  
+  # Afficher la progression
+  cat("Progression:", i, "/", nrow(images_demo), "images analysées\n")
+}
+```
+
+## Étape 2: Sauvegarde des résultats {.smaller}
+
+```r
+#| echo: true
+#| eval: false
+
+# Créer le dossier resultats s'il n'existe pas
+if (!dir.exists("resultats")) {
+  dir.create("resultats")
+  cat("Dossier 'resultats' créé.\n")
+}
+
+# Enregistrement des résultats
+write.csv(resultats_demo, "resultats/resultats_analyse.csv", row.names = FALSE)
+write_xlsx(resultats_demo, "resultats/resultats_analyse.xlsx")
+
+cat("Les résultats ont été enregistrés!\n")
+```
+
+## Exemple de workflow complet {.smaller}
+
+1. **Préparation**
+   - Sélection des images à analyser
+   - Définition des prompts personnalisés selon les questions de recherche
+
+2. **Exécution**
+   - Analyse systématique de chaque image avec chaque prompt
+   - Stockage structuré des résultats
+
+3. **Traitement**
+   - Analyse qualitative et quantitative des réponses
+   - Identification de tendances et patterns
+
+4. **Visualisation**
+   - Création de graphiques basés sur les résultats obtenus
+
+## Avantages et limites de l'approche {.smaller}
+
+**Avantages**:
+
+- Analyse à grande échelle (centaines/milliers d'images)
+- Détection d'éléments visuels consistante
+- Flexibilité des questions de recherche via les prompts
+
+**Limites**:
+
+- Dépendance à la qualité du modèle de vision
+- Coûts associés aux API (OpenAI)
+- Biais potentiels dans l'interprétation des images
+- Nécessité de validation humaine
+
+## Considérations éthiques
+
+- Consentement et vie privée
+- Biais algorithmiques
+- Interprétation contextuelle
+- Choix des prompts et impact sur les résultats
+- Limites des modèles de vision par ordinateur
+
+
+## Questions?
+
+Merci pour votre attention!
+
+## Contact
+
+- Email: etienne.proulx.2@ulaval.ca
+
+## Bibliographie
